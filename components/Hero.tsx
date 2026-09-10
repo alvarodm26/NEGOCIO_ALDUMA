@@ -52,7 +52,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="max-w-3xl text-5xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-6xl lg:text-7xl"
+            className="max-w-3xl text-5xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-5xl lg:text-7xl"
           >
             Diseñamos sitios web que{" "}
             

@@ -46,18 +46,17 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           className="max-w-2xl"
         >
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-[#7C3AED]">
+          <p className="mb-4 text-2xl font-medium uppercase tracking-[0.2em] text-[#7C3AED]">
             Proyectos
           </p>
 
-          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-5xl">
-            Diseño que convierte ideas en experiencias digitales.
-          </h2>
+          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] md:whitespace-nowrap md:text-5xl">
+  Diseño que convierte ideas en experiencias digitales.
+</h2>
 
-          <p className="mt-6 text-lg leading-8 text-[#A1A1AA]">
-            Creamos productos digitales con una combinación de diseño,
-            tecnología y atención al detalle.
-          </p>
+<p className="mt-6 text-lg leading-8 text-[#A1A1AA] md:whitespace-nowrap">
+  Creamos productos digitales con una combinación de diseño, tecnología y atención al detalle.
+</p>
         </motion.div>
 
         {/* PROJECTS */}

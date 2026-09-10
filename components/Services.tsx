@@ -33,18 +33,17 @@ export default function Services() {
     <section id="servicios" className="py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-2xl">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-[#7C3AED]">
-            Servicios
-          </p>
+          <p className="mb-4 text-2xl font-medium uppercase tracking-[0.2em] text-[#7C3AED]">
+  Servicios
+</p>
 
-          <h2 className="text-4xl font-semibold tracking-tight md:text-5xl">
+          <h2 className="whitespace-nowrap text-3xl font-semibold tracking-tight md:text-4xl">
             Todo lo necesario para construir una presencia digital sólida.
-          </h2>
+        </h2>
 
-          <p className="mt-6 text-lg leading-8 text-[#A1A1AA]">
-            Combinamos estrategia, diseño y tecnología para crear experiencias
-            digitales que generan resultados.
-          </p>
+          <p className="mt-6 text-lg leading-8 text-[#A1A1AA] md:whitespace-nowrap">
+  Combinamos estrategia, diseño y tecnología para crear experiencias digitales que generan resultados.
+</p>
         </div>
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-[#2A2A2E] bg-[#2A2A2E] md:grid-cols-3">
