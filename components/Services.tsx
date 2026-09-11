@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "motion/react";
@@ -108,41 +107,37 @@ export default function Services() {
       {/* CONTENIDO */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+        {/* HEADER — MISMO FORMATO QUE STATS */}
 
-        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span className="h-px w-7 bg-violet-500/60" />
 
-        <div className="max-w-3xl">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-5 text-sm font-medium uppercase tracking-[0.2em] text-[#7C3AED]"
-          >
-            Servicios
-          </motion.p>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-violet-400">
+              Servicios
+            </p>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.05 }}
-            className="max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-5xl"
-          >
+            <span className="h-px w-7 bg-violet-500/60" />
+          </div>
+
+          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-5xl">
             Todo lo necesario para construir una presencia digital sólida.
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-6 max-w-xl text-[17px] leading-7 text-[#A1A1AA]"
-          >
+          <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400">
             Combinamos estrategia, diseño y tecnología para crear experiencias
             digitales que generan resultados.
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
 
         {/* TARJETAS */}
 
@@ -192,7 +187,6 @@ export default function Services() {
                 {/* CONTENIDO */}
 
                 <div className="relative z-10">
-
                   {/* ICONO + NÚMERO */}
 
                   <div className="flex items-center justify-between">
@@ -214,7 +208,7 @@ export default function Services() {
 
                   {/* TÍTULO */}
 
-                  <h3 className="mt-12 text-xl font-semibold tracking-[-0.03em]">
+                  <h3 className="mt-12 text-xl font-semibold tracking-[-0.03em] text-white">
                     {service.title}
                   </h3>
 
@@ -247,4 +241,3 @@ export default function Services() {
     </section>
   );
 }
-

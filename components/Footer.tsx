@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "motion/react";
@@ -26,324 +27,222 @@ const services = [
 export default function Footer() {
   return (
     <footer
-  className="relative overflow-hidden border-t border-[#27272A]"
-  style={{
-    backgroundImage: "url('/images/fondo.png')",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-
+      className="relative overflow-hidden border-t border-[#27272A]"
+      style={{
+        backgroundImage: "url('/images/fondo.png')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center bottom",
+      }}
+    >
       {/* ================================================== */}
-      {/* BACKGROUND */}
+      {/* FONDO */}
       {/* ================================================== */}
 
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-orange-600/[0.025] blur-[160px]" />
+      {/* Capa oscura para mejorar contraste sin ocultar el fondo */}
+      <div className="pointer-events-none absolute inset-0 bg-[#080808]/65" />
 
-      <div className="pointer-events-none absolute -bottom-40 left-1/2 h-[350px] w-[600px] -translate-x-1/2 rounded-full bg-orange-500/[0.02] blur-[140px]" />
+      {/* Integración del fondo */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#080808]/20 via-transparent to-[#080808]/90" />
 
-      <div className="relative mx-auto max-w-[1500px] px-6 lg:px-10">
+      {/* Glow sutil */}
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-[#7C3AED]/[0.035] blur-[140px]" />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
 
         {/* ================================================== */}
         {/* CONTENIDO PRINCIPAL */}
         {/* ================================================== */}
 
-        <div className="grid gap-14 py-20 sm:grid-cols-2 lg:grid-cols-[1.7fr_1fr_1fr_1.2fr] lg:py-24">
+        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.15fr] lg:gap-12 lg:py-14">
 
           {/* ================================================== */}
           {/* ALDUMA */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-
             <a
               href="#"
               className="group inline-flex items-center gap-3"
             >
-
-              {/* LOGO */}
-
-              <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-[#C2410C]">
-
+              <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-[#7C3AED]">
                 <span className="absolute h-4 w-4 rounded-full border-[2px] border-white/90" />
-
                 <span className="absolute h-7 w-7 rounded-full border border-white/20" />
-
               </span>
 
-              <span className="text-2xl font-semibold tracking-[-0.05em] text-white">
+              <span className="text-xl font-semibold tracking-[-0.04em] text-white">
                 ALDUMA
               </span>
-
             </a>
 
-
-            <p className="mt-7 max-w-sm text-[15px] leading-7 text-[#71717A]">
+            <p className="mt-4 max-w-sm text-[14px] leading-6 text-[#A1A1AA]">
               Estudio digital especializado en diseño y
-              desarrollo web. Creamos productos digitales
-              modernos, funcionales y orientados a resultados.
+              desarrollo web. Creamos experiencias digitales
+              modernas y orientadas a resultados.
             </p>
-
-
-            <div className="mt-8 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#52525B]">
-
-              <span>Perú</span>
-
-              <span className="h-1 w-1 rounded-full bg-[#3F3F46]" />
-
-              <span>Remoto</span>
-
-            </div>
-
           </motion.div>
-
 
           {/* ================================================== */}
           {/* NAVEGACIÓN */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.6,
-              delay: 0.1,
-            }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-
-            <p className="mb-7 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Explorar
             </p>
 
-            <div className="flex flex-col gap-4">
-
+            <div className="flex flex-col gap-2.5">
               {navigation.map((item) => (
-
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex w-fit items-center gap-2 text-[15px] text-[#71717A] transition-all duration-300 hover:translate-x-1 hover:text-white"
+                  className="group flex w-fit items-center gap-1.5 text-[14px] text-[#A1A1AA] transition-all duration-300 hover:translate-x-1 hover:text-white"
                 >
-
-                  <span>
-                    {item.label}
-                  </span>
+                  <span>{item.label}</span>
 
                   <ArrowUpRight
-                    size={13}
+                    size={12}
                     className="opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
                   />
-
                 </a>
-
               ))}
-
             </div>
-
           </motion.div>
-
 
           {/* ================================================== */}
           {/* SERVICIOS */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.6,
-              delay: 0.2,
-            }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
-
-            <p className="mb-7 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Servicios
             </p>
 
-            <div className="flex flex-col gap-4">
-
+            <div className="flex flex-col gap-2.5">
               {services.map((item) => (
-
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex w-fit items-center gap-2 text-[15px] text-[#71717A] transition-all duration-300 hover:translate-x-1 hover:text-white"
+                  className="group flex w-fit items-center gap-1.5 text-[14px] text-[#A1A1AA] transition-all duration-300 hover:translate-x-1 hover:text-white"
                 >
-
-                  <span>
-                    {item.label}
-                  </span>
+                  <span>{item.label}</span>
 
                   <ArrowUpRight
-                    size={13}
+                    size={12}
                     className="opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
                   />
-
                 </a>
-
               ))}
-
             </div>
-
           </motion.div>
-
 
           {/* ================================================== */}
           {/* CONTACTO */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.6,
-              delay: 0.3,
-            }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-
-            <p className="mb-7 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Contacto
             </p>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-3">
 
               {/* EMAIL */}
 
               <a
                 href="mailto:contacto@alduma.dev"
-                className="group flex items-center gap-3 text-[15px] text-[#71717A] transition-colors duration-300 hover:text-white"
+                className="group flex items-center gap-2.5 text-[14px] text-[#A1A1AA] transition-colors duration-300 hover:text-white"
               >
+                <Mail
+                  size={15}
+                  className="text-[#71717A] transition-colors group-hover:text-[#7C3AED]"
+                />
 
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#27272A] bg-[#111113] transition-colors duration-300 group-hover:border-[#C2410C]/40 group-hover:text-[#C2410C]">
-                  <Mail size={15} />
-                </span>
-
-                <span>
-                  contacto@alduma.dev
-                </span>
-
+                <span>contacto@alduma.dev</span>
               </a>
-
 
               {/* UBICACIÓN */}
 
-              <div className="flex items-center gap-3 text-[15px] text-[#71717A]">
+              <div className="flex items-center gap-2.5 text-[14px] text-[#A1A1AA]">
+                <MapPin
+                  size={15}
+                  className="text-[#71717A]"
+                />
 
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#27272A] bg-[#111113]">
-                  <MapPin size={15} />
-                </span>
-
-                <span>
-                  Arequipa, Perú
-                </span>
-
+                <span>Arequipa, Perú</span>
               </div>
 
+              {/* GITHUB */}
 
-              {/* REDES */}
-
-              <div className="mt-2 flex gap-3">
-
-                {/* LINKEDIN */}
-
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#27272A] text-[#71717A] transition-all duration-300 hover:border-[#C2410C]/50 hover:bg-[#C2410C]/10 hover:text-white"
-                >
-
-                  
-
-                </a>
-
-
-                {/* GITHUB */}
-
+              <div className="mt-1">
                 <a
                   href="#"
                   aria-label="GitHub"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#27272A] text-[#71717A] transition-all duration-300 hover:border-[#C2410C]/50 hover:bg-[#C2410C]/10 hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.10] bg-black/20 text-[#A1A1AA] transition-all duration-300 hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/10 hover:text-white"
                 >
-
-                  <FaGithub size={17} />
-
+                  <FaGithub size={15} />
                 </a>
-
               </div>
 
             </div>
-
           </motion.div>
-
         </div>
-
 
         {/* ================================================== */}
         {/* BOTTOM */}
         {/* ================================================== */}
 
-        <div className="border-t border-[#27272A]">
+        <div className="border-t border-white/[0.10]">
 
-          <div className="flex min-h-[100px] flex-col justify-between gap-5 py-7 sm:flex-row sm:items-center">
+          <div className="flex min-h-[64px] flex-col justify-between gap-3 py-4 sm:flex-row sm:items-center">
 
             {/* COPYRIGHT */}
 
-            <p className="text-xs text-[#52525B]">
+            <p className="text-xs text-[#71717A]">
               © {new Date().getFullYear()} ALDUMA. Todos los derechos reservados.
             </p>
-
-
-            {/* INFO */}
-
-            <div className="flex items-center gap-3 text-xs text-[#52525B]">
-
-              <span>
-                Diseño & Desarrollo Web
-              </span>
-
-              <span className="h-1 w-1 rounded-full bg-[#3F3F46]" />
-
-              <span>
-                Perú
-              </span>
-
-            </div>
-
 
             {/* VOLVER ARRIBA */}
 
             <motion.a
               href="#"
               whileHover={{
-                y: -4,
-                borderColor: "rgba(194,65,12,0.5)",
+                y: -3,
+                borderColor: "rgba(124,58,237,0.5)",
               }}
               whileTap={{
                 scale: 0.95,
               }}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#27272A] text-[#71717A] transition-colors duration-300 hover:text-white"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.10] bg-black/20 text-[#A1A1AA] transition-colors duration-300 hover:text-white"
               aria-label="Volver arriba"
             >
-
-              <ArrowUp size={17} />
-
+              <ArrowUp size={14} />
             </motion.a>
 
           </div>
-
         </div>
 
       </div>
-
     </footer>
   );
 }

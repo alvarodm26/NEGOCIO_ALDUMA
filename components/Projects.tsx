@@ -62,7 +62,8 @@ export default function Projects() {
       id="proyectos"
       className="relative isolate overflow-hidden bg-[#0A0A0A] py-20 lg:py-24"
     >
-      {/* MISMO FONDO Y MISMA ESCALA VISUAL QUE EL HERO */}
+      {/* FONDO */}
+
       <div
         className="pointer-events-none absolute inset-0 -z-20"
         style={{
@@ -74,12 +75,15 @@ export default function Projects() {
       />
 
       {/* OSCURECER FONDO */}
+
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[#0A0A0A]/65" />
 
       {/* INTEGRACIÓN CON LA SECCIÓN */}
+
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0A0A0A]/10 via-transparent to-[#0A0A0A]" />
 
-      {/* GLOWS */}
+      {/* GLOW IZQUIERDO */}
+
       <motion.div
         className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-[420px] w-[420px] rounded-full bg-violet-600/10 blur-[140px]"
         animate={{
@@ -92,6 +96,8 @@ export default function Projects() {
           ease: "easeInOut",
         }}
       />
+
+      {/* GLOW DERECHO */}
 
       <motion.div
         className="pointer-events-none absolute -right-40 bottom-0 -z-10 h-[420px] w-[420px] rounded-full bg-violet-600/10 blur-[140px]"
@@ -107,28 +113,45 @@ export default function Projects() {
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-        {/* HEADER */}
-        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div className="max-w-3xl">
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-[#7C3AED]">
+        {/* HEADER — MISMO FORMATO QUE STATS */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span className="h-px w-7 bg-violet-500/60" />
+
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-violet-400">
               Proyectos
             </p>
 
-            <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-5xl">
-              Experiencias digitales
-              <br />
-              <span className="text-white/45">hechas para destacar.</span>
-            </h2>
+            <span className="h-px w-7 bg-violet-500/60" />
           </div>
 
-          <p className="max-w-sm text-[17px] leading-7 text-zinc-400">
+          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-5xl">
+            Experiencias digitales
+            <br />
+            <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">
+              hechas para destacar.
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400">
             Algunos ejemplos de cómo combinamos diseño, tecnología y estrategia
             para crear productos digitales de alto nivel.
           </p>
-        </div>
+        </motion.div>
 
         {/* PROJECT */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#111113]/80 backdrop-blur-sm">
+
+        <div className="relative mt-12 overflow-hidden rounded-2xl border border-white/10 bg-[#111113]/80 backdrop-blur-sm lg:mt-14">
           <AnimatePresence mode="wait">
             <motion.div
               key={project.number}
@@ -139,6 +162,7 @@ export default function Projects() {
               className="grid min-h-[500px] lg:grid-cols-[0.85fr_1.15fr]"
             >
               {/* INFO */}
+
               <div className="flex flex-col justify-between border-b border-white/10 p-6 lg:border-b-0 lg:border-r lg:p-9">
                 <div>
                   <div className="mb-8 flex items-center justify-between">
@@ -178,6 +202,7 @@ export default function Projects() {
               </div>
 
               {/* WEBSITE PREVIEW */}
+
               <div className="relative flex items-center justify-center overflow-hidden bg-[#0D0D0F] p-6 lg:p-10">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.12),transparent_55%)]" />
 
@@ -188,6 +213,7 @@ export default function Projects() {
                   className="relative w-full max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#18181B] shadow-2xl"
                 >
                   {/* BROWSER BAR */}
+
                   <div className="flex h-9 items-center gap-1.5 border-b border-white/10 bg-[#202023] px-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
                     <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
@@ -197,6 +223,7 @@ export default function Projects() {
                   </div>
 
                   {/* WEBSITE */}
+
                   <div className="relative aspect-[16/10] overflow-hidden bg-[#111113]">
                     <div className="absolute left-6 right-6 top-5 flex items-center justify-between">
                       <div className="h-3 w-20 rounded bg-white/20" />
@@ -246,7 +273,8 @@ export default function Projects() {
             </motion.div>
           </AnimatePresence>
 
-          {/* CONTROLS */}
+          {/* CONTROLES */}
+
           <div className="flex items-center justify-between border-t border-white/10 px-6 py-4 lg:px-9">
             <div className="flex items-center gap-2">
               {projects.map((_, index) => (
