@@ -25,7 +25,15 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-[#27272A] bg-[#080808]">
+    <footer
+  className="relative overflow-hidden border-t border-[#27272A]"
+  style={{
+    backgroundImage: "url('/images/fondo.png')",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
 
       {/* ================================================== */}
       {/* BACKGROUND */}

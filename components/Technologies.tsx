@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "motion/react";
@@ -59,39 +60,133 @@ const items = [...technologies, ...technologies];
 
 export default function Technologies() {
   return (
-    <section className="relative overflow-hidden border-y border-[#2A2A2E]/60 bg-[#0A0A0A] py-16">
+    <section
+      className="relative isolate overflow-hidden border-y border-[#27272A]/70 bg-[#080808] py-16 lg:py-20"
+    >
+      {/* ================================================== */}
+      {/* GRID DE FONDO */}
+      {/* ================================================== */}
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
 
-        {/* TITLE */}
+      {/* ================================================== */}
+      {/* LÍNEAS DIAGONALES */}
+      {/* ================================================== */}
+
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.018]"
+        style={{
+          backgroundImage:
+            "linear-gradient(135deg, transparent 49.5%, #ffffff 50%, transparent 50.5%)",
+          backgroundSize: "140px 140px",
+        }}
+      />
+
+      {/* ================================================== */}
+      {/* GLOW CENTRAL */}
+      {/* ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/[0.07] blur-[140px]"
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.3, 0.55, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ================================================== */}
+      {/* GLOW IZQUIERDO */}
+      {/* ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-40 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-violet-600/[0.04] blur-[120px]"
+        animate={{
+          x: [0, 80, 0],
+          opacity: [0.25, 0.5, 0.25],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ================================================== */}
+      {/* GLOW DERECHO */}
+      {/* ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -right-40 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-violet-600/[0.04] blur-[120px]"
+        animate={{
+          x: [0, -80, 0],
+          opacity: [0.25, 0.5, 0.25],
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ================================================== */}
+      {/* CONTENIDO */}
+      {/* ================================================== */}
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+
+        {/* TÍTULO */}
 
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center text-xs font-semibold uppercase tracking-[0.28em] text-[#71717A]"
+          className="mb-10 text-center text-sm font-medium uppercase tracking-[0.2em] text-[#71717A]"
         >
           Tecnologías con las que trabajamos
         </motion.p>
 
+        {/* MARQUEE */}
+
         <div className="relative overflow-hidden">
 
-          {/* FADE LEFT */}
+          {/* FADE IZQUIERDO */}
 
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-24 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-transparent lg:w-32" />
 
-          {/* FADE RIGHT */}
+          {/* FADE DERECHO */}
 
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-24 bg-gradient-to-l from-[#080808] via-[#080808]/80 to-transparent lg:w-32" />
 
-          {/* MARQUEE */}
+          {/* LÍNEA SUPERIOR */}
+
+          <div className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#2A2A2E] to-transparent" />
+
+          {/* LÍNEA INFERIOR */}
+
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2A2A2E] to-transparent" />
+
+          {/* CONTENEDOR MARQUEE */}
 
           <motion.div
-            className="flex w-max items-center gap-5"
-            animate={{ x: ["0%", "-50%"] }}
+            className="flex w-max items-center gap-4 py-5"
+            animate={{
+              x: ["0%", "-50%"],
+            }}
             transition={{
-              duration: 30,
+              duration: 32,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -104,26 +199,25 @@ export default function Technologies() {
                   key={`${technology.name}-${index}`}
                   whileHover={{
                     y: -4,
-                    scale: 1.04,
+                    scale: 1.025,
                   }}
                   transition={{
                     type: "spring",
                     stiffness: 400,
-                    damping: 20,
+                    damping: 22,
                   }}
-                  className="group relative flex h-[72px] items-center gap-4 rounded-2xl border border-[#27272A] bg-[#111113] px-7 shadow-[0_8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-300 hover:border-[#3F3F46] hover:bg-[#18181B]"
+                  className="group relative flex h-[64px] items-center gap-3 rounded-2xl border border-white/[0.07] bg-[#0D0D0F]/90 px-5 backdrop-blur-xl transition-all duration-300 hover:border-[#7C3AED]/25 hover:bg-[#111114]"
                 >
-
-                  {/* ICON */}
+                  {/* ICONO */}
 
                   <div
-                    className="flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300"
+                    className="flex h-9 w-9 items-center justify-center rounded-xl"
                     style={{
-                      backgroundColor: `${technology.color}12`,
+                      backgroundColor: `${technology.color}10`,
                     }}
                   >
                     <Icon
-                      size={25}
+                      size={22}
                       style={{
                         color: technology.color,
                       }}
@@ -131,27 +225,31 @@ export default function Technologies() {
                     />
                   </div>
 
-                  {/* NAME */}
+                  {/* NOMBRE */}
 
-                  <span className="whitespace-nowrap text-[15px] font-semibold tracking-[-0.01em] text-[#A1A1AA] transition-colors duration-300 group-hover:text-white">
+                  <span className="whitespace-nowrap text-[15px] font-medium tracking-[-0.01em] text-[#A1A1AA] transition-colors duration-300 group-hover:text-white">
                     {technology.name}
                   </span>
 
                   {/* GLOW */}
 
                   <div
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-10"
+                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-[0.08]"
                     style={{
                       backgroundColor: technology.color,
                     }}
                   />
+
+                  {/* BORDE INFERIOR */}
+
+                  <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-[#7C3AED] transition-all duration-500 group-hover:w-1/2" />
                 </motion.div>
               );
             })}
           </motion.div>
-
         </div>
       </div>
     </section>
   );
 }
+
