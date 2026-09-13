@@ -23,7 +23,7 @@ const data = contours as {
 };
 
 export default function LedContour({
-  src = "/toros-misti.png",
+  src = "images/toros-misti.png",
   duration = 18000,
   className = "",
 }: LedContourProps) {
