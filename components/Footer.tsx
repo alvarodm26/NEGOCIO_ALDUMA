@@ -36,7 +36,7 @@ export default function Footer() {
 
         <LedContour
           src="/images/toros-misti.png"
-          duration={20000}
+          duration={30000}
         />
 
       </div>
