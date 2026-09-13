@@ -25,7 +25,7 @@ const data = contours as {
 
 export default function LedContour({
   src = "/images/toros-misti.png",
-  duration = 30000,
+  duration = 45000,
   className = "",
 }: LedContourProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -40,6 +40,7 @@ export default function LedContour({
     if (!ctx) return;
 
     const image = new Image();
+
     image.src = src;
 
     let raf = 0;
@@ -47,7 +48,7 @@ export default function LedContour({
     let resizeObserver: ResizeObserver | null = null;
 
     // ============================================================
-    // PRECALCULAR LONGITUD DE LOS CONTORNOS
+    // PRECALCULAR CONTORNOS
     // ============================================================
 
     const paths = data.paths.map((path) => {
@@ -93,8 +94,13 @@ export default function LedContour({
         2
       );
 
-      canvas.width = Math.round(rect.width * dpr);
-      canvas.height = Math.round(rect.height * dpr);
+      canvas.width = Math.round(
+        rect.width * dpr
+      );
+
+      canvas.height = Math.round(
+        rect.height * dpr
+      );
 
       ctx.setTransform(
         dpr,
@@ -143,7 +149,7 @@ export default function LedContour({
         2;
 
       // ============================================================
-      // LIMPIAR CANVAS
+      // LIMPIAR
       // ============================================================
 
       ctx.clearRect(
@@ -154,14 +160,14 @@ export default function LedContour({
       );
 
       // ============================================================
-      // DIBUJO ORIGINAL
+      // IMAGEN ORIGINAL
       // ============================================================
 
       ctx.save();
 
-      // Hacemos que el dibujo original sea tenue
-      // para que el LED amarillo destaque.
-      ctx.globalAlpha = 0.35;
+      // El dibujo queda visible pero bastante tenue.
+      // Esto permite que el LED amarillo domine visualmente.
+      ctx.globalAlpha = 0.28;
 
       ctx.drawImage(
         image,
@@ -179,7 +185,8 @@ export default function LedContour({
 
       let remaining = distance;
 
-      let active = paths[paths.length - 1];
+      let active =
+        paths[paths.length - 1];
 
       for (const path of paths) {
         if (remaining <= path.total) {
@@ -190,14 +197,20 @@ export default function LedContour({
         remaining -= path.total;
       }
 
-      const localDistance = remaining;
+      const localDistance =
+        remaining;
 
-      const points = active.points;
-      const cumulative = active.cumulative;
-      const total = active.total;
+      const points =
+        active.points;
+
+      const cumulative =
+        active.cumulative;
+
+      const total =
+        active.total;
 
       // ============================================================
-      // ENCONTRAR POSICIÓN ACTUAL DEL LED
+      // POSICIÓN DE LA CABEZA
       // ============================================================
 
       let segment = 0;
@@ -224,10 +237,14 @@ export default function LedContour({
             (segmentEnd -
               segmentStart);
 
-      const a = points[segment];
+      const a =
+        points[segment];
 
       const b =
-        points[(segment + 1) % points.length];
+        points[
+          (segment + 1) %
+            points.length
+        ];
 
       const head: Point = [
         a[0] +
@@ -238,23 +255,25 @@ export default function LedContour({
       ];
 
       // ============================================================
-      // TRAIL DEL LED
+      // TRAIL MUCHO MÁS LARGO
       // ============================================================
 
-      // Mucho más largo que antes.
-      const trailLength = Math.min(
-        520,
-        total * 0.32
-      );
+      const trailLength =
+        Math.min(
+          850,
+          total * 0.48
+        );
 
-      const trailStart = Math.max(
-        0,
-        localDistance - trailLength
-      );
+      const trailStart =
+        Math.max(
+          0,
+          localDistance -
+            trailLength
+        );
 
       const trail: Point[] = [];
 
-      const samples = 45;
+      const samples = 70;
 
       for (
         let i = 0;
@@ -277,11 +296,13 @@ export default function LedContour({
           s++;
         }
 
-        const sa = points[s];
+        const sa =
+          points[s];
 
         const sb =
           points[
-            (s + 1) % points.length
+            (s + 1) %
+              points.length
           ];
 
         const sd0 =
@@ -306,7 +327,7 @@ export default function LedContour({
       }
 
       // ============================================================
-      // CONVERTIR A COORDENADAS DE PANTALLA
+      // COORDENADAS DE PANTALLA
       // ============================================================
 
       const toScreen = (
@@ -326,25 +347,90 @@ export default function LedContour({
       ctx.save();
 
       ctx.globalCompositeOperation =
-        "screen";
+        "lighter";
 
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
 
       // ============================================================
-      // GLOW EXTERIOR
+      // 1. GLOW EXTERIOR MUY GRANDE
       // ============================================================
 
-      ctx.shadowColor = "#FFC107";
+      ctx.shadowColor =
+        "#FFB300";
 
-      ctx.shadowBlur = 45;
+      ctx.shadowBlur = 70;
 
       ctx.strokeStyle =
-        "rgba(255, 193, 7, 0.65)";
+        "rgba(255, 179, 0, 0.45)";
+
+      ctx.lineWidth = Math.max(
+        12,
+        22 * scale
+      );
+
+      ctx.beginPath();
+
+      trail.forEach((p, i) => {
+        const [x, y] =
+          toScreen(p);
+
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+
+      ctx.stroke();
+
+      // ============================================================
+      // 2. GLOW AMARILLO FUERTE
+      // ============================================================
+
+      ctx.shadowColor =
+        "#FFC107";
+
+      ctx.shadowBlur = 38;
+
+      ctx.strokeStyle =
+        "rgba(255, 193, 7, 0.95)";
+
+      ctx.lineWidth = Math.max(
+        8,
+        14 * scale
+      );
+
+      ctx.beginPath();
+
+      trail.forEach((p, i) => {
+        const [x, y] =
+          toScreen(p);
+
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+
+      ctx.stroke();
+
+      // ============================================================
+      // 3. LÍNEA CENTRAL AMARILLA
+      // ============================================================
+
+      ctx.shadowColor =
+        "#FFD740";
+
+      ctx.shadowBlur = 18;
+
+      ctx.strokeStyle =
+        "#FFD21F";
 
       ctx.lineWidth = Math.max(
         5,
-        11 * scale
+        8 * scale
       );
 
       ctx.beginPath();
@@ -363,19 +449,20 @@ export default function LedContour({
       ctx.stroke();
 
       // ============================================================
-      // LÍNEA AMARILLA PRINCIPAL
+      // 4. CENTRO CALIENTE DEL LED
       // ============================================================
 
-      ctx.shadowColor = "#FFD740";
+      ctx.shadowColor =
+        "#FFF176";
 
-      ctx.shadowBlur = 22;
+      ctx.shadowBlur = 15;
 
       ctx.strokeStyle =
-        "rgba(255, 214, 64, 0.98)";
+        "#FFF59D";
 
       ctx.lineWidth = Math.max(
-        2.5,
-        5 * scale
+        2,
+        3.5 * scale
       );
 
       ctx.beginPath();
@@ -394,19 +481,20 @@ export default function LedContour({
       ctx.stroke();
 
       // ============================================================
-      // CABEZA DEL LED
+      // 5. CABEZA DEL LED — GRANDE
       // ============================================================
 
       const [hx, hy] =
         toScreen(head);
 
-      // Glow grande
-      ctx.shadowColor = "#FFD740";
+      // Halo gigante
+      ctx.shadowColor =
+        "#FFB300";
 
-      ctx.shadowBlur = 45;
+      ctx.shadowBlur = 80;
 
       ctx.fillStyle =
-        "#FFE082";
+        "rgba(255, 179, 0, 0.9)";
 
       ctx.beginPath();
 
@@ -414,8 +502,8 @@ export default function LedContour({
         hx,
         hy,
         Math.max(
-          4,
-          6 * scale
+          12,
+          17 * scale
         ),
         0,
         Math.PI * 2
@@ -423,11 +511,56 @@ export default function LedContour({
 
       ctx.fill();
 
-      // Núcleo blanco/amarillo
-      ctx.shadowBlur = 15;
+      // Núcleo amarillo
+      ctx.shadowColor =
+        "#FFD600";
+
+      ctx.shadowBlur = 45;
 
       ctx.fillStyle =
-        "#FFFDE7";
+        "#FFD600";
+
+      ctx.beginPath();
+
+      ctx.arc(
+        hx,
+        hy,
+        Math.max(
+          7,
+          10 * scale
+        ),
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fill();
+
+      // Centro blanco/amarillo
+      ctx.shadowBlur = 20;
+
+      ctx.fillStyle =
+        "#FFF59D";
+
+      ctx.beginPath();
+
+      ctx.arc(
+        hx,
+        hy,
+        Math.max(
+          3,
+          5 * scale
+        ),
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fill();
+
+      // Punto central
+      ctx.shadowBlur = 8;
+
+      ctx.fillStyle =
+        "#FFFFFF";
 
       ctx.beginPath();
 
@@ -436,7 +569,7 @@ export default function LedContour({
         hy,
         Math.max(
           1.5,
-          2.2 * scale
+          2.5 * scale
         ),
         0,
         Math.PI * 2
@@ -471,7 +604,9 @@ export default function LedContour({
       );
 
       raf =
-        requestAnimationFrame(draw);
+        requestAnimationFrame(
+          draw
+        );
     };
 
     // ============================================================
@@ -495,10 +630,10 @@ export default function LedContour({
 }
 ```
 
-Y en tu **Footer** déjalo así:
+Y en tu `Footer` usa:
 
 ```tsx
 <LedContour
   src="/images/toros-misti.png"
-  duration={30000}
+  duration={45000}
 />
