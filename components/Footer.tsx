@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "motion/react";
@@ -9,6 +8,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import LedContour from "@/components/LedContour";
 
 const navigation = [
   { label: "Inicio", href: "#" },
@@ -26,35 +26,49 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer
-      className="relative overflow-hidden border-t border-[#27272A]"
-      style={{
-        backgroundImage: "url('/images/fondo.png')",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center bottom",
-      }}
-    >
+    <footer className="relative isolate overflow-hidden border-t border-[#27272A] bg-[#080808]">
+
       {/* ================================================== */}
-      {/* FONDO */}
+      {/* FONDO ORIGINAL + ANIMACIÓN LED */}
       {/* ================================================== */}
 
-      {/* Capa oscura para mejorar contraste sin ocultar el fondo */}
-      <div className="pointer-events-none absolute inset-0 bg-[#080808]/65" />
+      <div className="pointer-events-none absolute inset-0 z-0">
 
-      {/* Integración del fondo */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#080808]/20 via-transparent to-[#080808]/90" />
+        <LedContour
+          src="/images/toros.png"
+          duration={20000}
+        />
 
-      {/* Glow sutil */}
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-[#7C3AED]/[0.035] blur-[140px]" />
+      </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      {/* ================================================== */}
+      {/* CAPAS DE OSCURECIMIENTO */}
+      {/* ================================================== */}
+
+      {/* Oscurece ligeramente el dibujo para que el contenido
+          del footer siga teniendo prioridad visual */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[#080808]/55" />
+
+      {/* Degradado superior */}
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-[#080808]/95 via-[#080808]/35 to-[#080808]/80" />
+
+      {/* Degradado inferior */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[45%] bg-gradient-to-t from-[#080808] via-[#080808]/45 to-transparent" />
+
+      {/* Glow violeta muy sutil para integrarlo con ALDUMA */}
+      <div className="pointer-events-none absolute left-1/2 top-0 z-[2] h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[#7C3AED]/[0.035] blur-[150px]" />
+
+      {/* ================================================== */}
+      {/* CONTENIDO */}
+      {/* ================================================== */}
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
 
         {/* ================================================== */}
         {/* CONTENIDO PRINCIPAL */}
         {/* ================================================== */}
 
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.15fr] lg:gap-12 lg:py-14">
+        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.15fr] lg:gap-12 lg:py-20">
 
           {/* ================================================== */}
           {/* ALDUMA */}
@@ -71,8 +85,11 @@ export default function Footer() {
               className="group inline-flex items-center gap-3"
             >
               <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-[#7C3AED]">
+
                 <span className="absolute h-4 w-4 rounded-full border-[2px] border-white/90" />
+
                 <span className="absolute h-7 w-7 rounded-full border border-white/20" />
+
               </span>
 
               <span className="text-xl font-semibold tracking-[-0.04em] text-white">
@@ -95,7 +112,10 @@ export default function Footer() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.1,
+            }}
           >
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Explorar
@@ -127,7 +147,10 @@ export default function Footer() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.15,
+            }}
           >
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Servicios
@@ -159,7 +182,10 @@ export default function Footer() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.2,
+            }}
           >
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Contacto
@@ -178,7 +204,9 @@ export default function Footer() {
                   className="text-[#71717A] transition-colors group-hover:text-[#7C3AED]"
                 />
 
-                <span>contacto@alduma.dev</span>
+                <span>
+                  contacto@alduma.dev
+                </span>
               </a>
 
               {/* UBICACIÓN */}
@@ -189,7 +217,9 @@ export default function Footer() {
                   className="text-[#71717A]"
                 />
 
-                <span>Arequipa, Perú</span>
+                <span>
+                  Arequipa, Perú
+                </span>
               </div>
 
               {/* GITHUB */}
