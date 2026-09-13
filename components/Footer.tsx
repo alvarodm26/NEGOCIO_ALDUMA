@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="pointer-events-none absolute inset-0 z-0">
 
         <LedContour
-          src="/public/images/toros-misti.png"
+          src="/images/toros-misti.png"
           duration={20000}
         />
 
