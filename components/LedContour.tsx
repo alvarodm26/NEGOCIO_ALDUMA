@@ -628,12 +628,4 @@ export default function LedContour({
     />
   );
 }
-```
 
-Y en tu `Footer` usa:
-
-```tsx
-<LedContour
-  src="/images/toros-misti.png"
-  duration={45000}
-/>
