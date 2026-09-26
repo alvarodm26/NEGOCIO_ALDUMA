@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "motion/react";
@@ -37,40 +36,40 @@ export default function Services() {
   return (
     <section
       id="servicios"
-      className="relative isolate overflow-hidden border-y border-[#27272A]/70 bg-[#080808] py-20 lg:py-24"
+      className="relative isolate overflow-hidden border-y border-white/[0.06] bg-[#050505] py-20 lg:py-24"
     >
-      {/* =========================================================
-          FONDO
-      ========================================================== */}
+      {/* ==================================================
+          FONDO BASE
+      ================================================== */}
 
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 -z-50 bg-[#050505]" />
 
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, transparent 49.5%, #ffffff 50%, transparent 50.5%)",
-          backgroundSize: "140px 140px",
-        }}
-      />
-
-      {/* =========================================================
-          GLOW IZQUIERDO
-      ========================================================== */}
+      {/* ==================================================
+          GRID PRINCIPAL
+      ================================================== */}
 
       <motion.div
-        className="pointer-events-none absolute -left-[180px] top-[15%] h-[500px] w-[500px] rounded-full bg-violet-600/[0.08] blur-[150px]"
+        className="pointer-events-none absolute inset-0 -z-40"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.09) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.09) 1px, transparent 1px)
+          `,
+          backgroundSize: "72px 72px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 18%, transparent 82%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 18%, transparent 82%)",
+        }}
         animate={{
-          x: [0, 140, 60, 0],
-          y: [0, 80, -40, 0],
-          scale: [1, 1.12, 0.96, 1],
+          backgroundPosition: [
+            "0px 0px",
+            "36px 36px",
+            "0px 72px",
+            "-36px 36px",
+            "0px 0px",
+          ],
+          opacity: [0.18, 0.38, 0.22, 0.34, 0.18],
         }}
         transition={{
           duration: 18,
@@ -79,32 +78,182 @@ export default function Services() {
         }}
       />
 
-      {/* =========================================================
-          GLOW DERECHO
-      ========================================================== */}
+      {/* ==================================================
+          GRID SECUNDARIO
+      ================================================== */}
 
       <motion.div
-        className="pointer-events-none absolute -right-[200px] bottom-[5%] h-[450px] w-[450px] rounded-full bg-violet-500/[0.05] blur-[140px]"
+        className="pointer-events-none absolute inset-0 -z-40"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)
+          `,
+          backgroundSize: "140px 140px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 5%, transparent 74%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 5%, transparent 74%)",
+        }}
         animate={{
-          x: [0, -100, -30, 0],
-          y: [0, -70, 50, 0],
-          scale: [1, 0.92, 1.1, 1],
+          backgroundPosition: [
+            "0px 0px",
+            "-70px 70px",
+            "0px 140px",
+            "70px 70px",
+            "0px 0px",
+          ],
+          opacity: [0.1, 0.24, 0.12, 0.22, 0.1],
         }}
         transition={{
-          duration: 22,
+          duration: 24,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* ==================================================
+          AURORA VIOLETA CENTRAL
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-[-35%] top-[8%] -z-30 h-[45%] w-[170%] rotate-[-7deg]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 4%, rgba(255,255,255,0.015) 15%, rgba(124,58,237,0.06) 30%, rgba(139,92,246,0.13) 44%, rgba(124,58,237,0.10) 58%, rgba(167,139,250,0.06) 72%, rgba(124,58,237,0.025) 85%, transparent 97%)",
+          filter: "blur(60px)",
+        }}
+        animate={{
+          x: ["-10%", "10%", "-6%", "8%", "-10%"],
+          y: [0, 30, -15, 20, 0],
+          rotate: [-7, -3, -9, -4, -7],
+          scaleY: [0.85, 1.15, 0.9, 1.1, 0.85],
+          opacity: [0.35, 0.75, 0.45, 0.7, 0.35],
+        }}
+        transition={{
+          duration: 18,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      {/* =========================================================
-          LÍNEA CENTRAL
-      ========================================================== */}
+      {/* ==================================================
+          AURORA INFERIOR
+      ================================================== */}
 
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-0 h-full w-px bg-gradient-to-b from-transparent via-[#7C3AED]/10 to-transparent"
+        className="pointer-events-none absolute right-[-40%] bottom-[-5%] -z-30 h-[50%] w-[180%] rotate-[8deg]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 3%, rgba(76,29,149,0.025) 18%, rgba(124,58,237,0.07) 32%, rgba(139,92,246,0.12) 47%, rgba(167,139,250,0.06) 61%, rgba(124,58,237,0.10) 76%, rgba(139,92,246,0.025) 90%, transparent 98%)",
+          filter: "blur(65px)",
+        }}
         animate={{
-          opacity: [0.3, 0.7, 0.3],
+          x: ["10%", "-10%", "5%", "-8%", "10%"],
+          y: [0, -30, 15, -20, 0],
+          rotate: [8, 3, 10, 4, 8],
+          scaleY: [1, 0.78, 1.12, 0.9, 1],
+          opacity: [0.3, 0.65, 0.4, 0.7, 0.3],
+        }}
+        transition={{
+          duration: 21,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW CENTRAL
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-30 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(124,58,237,0.09) 0%, rgba(139,92,246,0.05) 28%, rgba(76,29,149,0.04) 48%, transparent 72%)",
+          filter: "blur(85px)",
+        }}
+        animate={{
+          scale: [0.8, 1.18, 0.9, 1.12, 0.8],
+          x: ["-5%", "6%", "-3%", "5%", "-5%"],
+          y: ["2%", "-4%", "4%", "-3%", "2%"],
+          opacity: [0.3, 0.65, 0.38, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          ONDA SUPERIOR
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-[25%] top-[12%] -z-20 h-[130px] w-[150%] rounded-[50%]"
+        style={{
+          borderTop: "1px solid rgba(139,92,246,0.12)",
+          borderBottom: "1px solid rgba(124,58,237,0.06)",
+          boxShadow:
+            "0 -15px 55px rgba(124,58,237,0.04), 0 10px 35px rgba(139,92,246,0.025)",
+        }}
+        animate={{
+          x: ["-5%", "6%", "-4%", "5%", "-5%"],
+          y: [0, -20, 10, -14, 0],
+          scaleY: [1, 1.28, 0.86, 1.18, 1],
+          rotate: [-5, -1, -7, -2, -5],
+          opacity: [0.2, 0.6, 0.28, 0.55, 0.2],
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          ONDA INFERIOR
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-[25%] bottom-[10%] -z-20 h-[140px] w-[150%] rounded-[50%]"
+        style={{
+          borderTop: "1px solid rgba(167,139,250,0.08)",
+          borderBottom: "1px solid rgba(124,58,237,0.07)",
+          boxShadow:
+            "0 15px 55px rgba(76,29,149,0.04), 0 -10px 35px rgba(139,92,246,0.025)",
+        }}
+        animate={{
+          x: ["5%", "-6%", "4%", "-5%", "5%"],
+          y: [0, 22, -12, 16, 0],
+          scaleY: [1, 0.8, 1.2, 0.88, 1],
+          rotate: [5, 1, 7, 2, 5],
+          opacity: [0.18, 0.55, 0.25, 0.5, 0.18],
+        }}
+        transition={{
+          duration: 13,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          LÍNEAS DE LUZ
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-[-30%] top-[34%] -z-10 h-px w-[160%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.02), rgba(167,139,250,0.18), rgba(124,58,237,0.12), rgba(196,181,253,0.10), transparent)",
+          boxShadow:
+            "0 0 25px rgba(124,58,237,0.06), 0 0 70px rgba(139,92,246,0.04)",
+        }}
+        animate={{
+          x: ["-12%", "12%", "-12%"],
+          opacity: [0.08, 0.55, 0.08],
+          scaleX: [0.8, 1.12, 0.8],
         }}
         transition={{
           duration: 8,
@@ -113,15 +262,159 @@ export default function Services() {
         }}
       />
 
-      {/* =========================================================
+      <motion.div
+        className="pointer-events-none absolute left-[-30%] top-[70%] -z-10 h-px w-[160%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(124,58,237,0.02), rgba(139,92,246,0.14), rgba(167,139,250,0.10), transparent)",
+          boxShadow: "0 0 40px rgba(124,58,237,0.05)",
+        }}
+        animate={{
+          x: ["12%", "-10%", "12%"],
+          opacity: [0.06, 0.45, 0.06],
+          scaleX: [0.85, 1.1, 0.85],
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW IZQUIERDO
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-[180px] top-1/2 -z-20 h-[420px] w-[420px] -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(124,58,237,0.07) 0%, rgba(76,29,149,0.04) 35%, transparent 72%)",
+          filter: "blur(75px)",
+        }}
+        animate={{
+          x: [0, 90, 20, -35, 0],
+          y: [0, 35, -25, 15, 0],
+          scale: [0.9, 1.18, 0.95, 1.1, 0.9],
+          opacity: [0.25, 0.65, 0.3, 0.55, 0.25],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW DERECHO
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -right-[180px] top-1/2 -z-20 h-[450px] w-[450px] -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(139,92,246,0.08) 0%, rgba(76,29,149,0.035) 38%, transparent 72%)",
+          filter: "blur(80px)",
+        }}
+        animate={{
+          x: [0, -85, -20, -50, 0],
+          y: [0, -30, 25, -15, 0],
+          scale: [1, 0.86, 1.18, 0.95, 1],
+          opacity: [0.25, 0.6, 0.32, 0.55, 0.25],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          PARTÍCULAS
+      ================================================== */}
+
+      {[
+        {
+          left: "10%",
+          top: "20%",
+          opacity: 0.45,
+          shadow: "0 0 14px rgba(167,139,250,0.5)",
+          duration: 6,
+          delay: 0,
+        },
+        {
+          left: "24%",
+          top: "70%",
+          opacity: 0.3,
+          shadow: "0 0 14px rgba(139,92,246,0.45)",
+          duration: 8,
+          delay: 1,
+        },
+        {
+          left: "42%",
+          top: "25%",
+          opacity: 0.4,
+          shadow: "0 0 14px rgba(196,181,253,0.5)",
+          duration: 7,
+          delay: 2,
+        },
+        {
+          left: "58%",
+          top: "76%",
+          opacity: 0.3,
+          shadow: "0 0 14px rgba(167,139,250,0.45)",
+          duration: 9,
+          delay: 1.5,
+        },
+        {
+          left: "74%",
+          top: "18%",
+          opacity: 0.4,
+          shadow: "0 0 14px rgba(139,92,246,0.5)",
+          duration: 7,
+          delay: 3,
+        },
+        {
+          left: "88%",
+          top: "68%",
+          opacity: 0.3,
+          shadow: "0 0 14px rgba(196,181,253,0.45)",
+          duration: 10,
+          delay: 2.5,
+        },
+      ].map((particle, index) => (
+        <motion.div
+          key={index}
+          className="pointer-events-none absolute -z-10 h-1 w-1 rounded-full bg-white"
+          style={{
+            left: particle.left,
+            top: particle.top,
+            opacity: particle.opacity,
+            boxShadow: particle.shadow,
+          }}
+          animate={{
+            x: [0, 25, -10, 0],
+            y: [0, -30, 15, 0],
+            opacity: [0.04, particle.opacity, 0.08, 0.04],
+            scale: [1, 1.8, 1.1, 1],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: particle.delay,
+          }}
+        />
+      ))}
+
+      {/* ==================================================
           CONTENIDO
-      ========================================================== */}
+      ================================================== */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-
-        {/* =======================================================
+        {/* ==================================================
             HEADER
-        ======================================================== */}
+        ================================================== */}
 
         <motion.div
           initial={{
@@ -257,9 +550,9 @@ export default function Services() {
           </motion.p>
         </motion.div>
 
-        {/* =======================================================
+        {/* ==================================================
             TARJETAS
-        ======================================================== */}
+        ================================================== */}
 
         <div className="mt-12 grid gap-4 md:grid-cols-3 lg:mt-14">
           {services.map((service, index) => {
@@ -299,19 +592,16 @@ export default function Services() {
                 className="group relative rounded-[1.5rem]"
               >
                 {/* =================================================
-                    BORDE LED AZUL INDIVIDUAL
+                    BORDE VIOLETA INDIVIDUAL
                 ================================================== */}
 
-                <div
-                  className="pointer-events-none absolute inset-0 z-30 rounded-[1.5rem] border-2 border-cyan-400/[0.30] shadow-[0_0_12px_rgba(34,211,238,0.16),0_0_30px_rgba(14,165,233,0.06),inset_0_0_12px_rgba(14,165,233,0.04)]"
-                />
+                <div className="pointer-events-none absolute inset-0 z-30 rounded-[1.5rem] border border-violet-400/[0.16] shadow-[0_0_12px_rgba(124,58,237,0.05),0_0_30px_rgba(124,58,237,0.025),inset_0_0_12px_rgba(124,58,237,0.02)]" />
 
                 {/* =================================================
                     TARJETA INTERNA
                 ================================================== */}
 
                 <div className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.08] bg-[#0D0D0F]/80 p-6 backdrop-blur-xl transition-all duration-500 group-hover:border-[#7C3AED]/30 group-hover:bg-[#111114]/90 lg:p-7">
-
                   {/* LED VIOLETA ANIMADO */}
 
                   <motion.div
@@ -355,7 +645,6 @@ export default function Services() {
                   ================================================== */}
 
                   <div className="relative z-10">
-
                     {/* ICONO + NÚMERO */}
 
                     <div className="flex items-center justify-between">
