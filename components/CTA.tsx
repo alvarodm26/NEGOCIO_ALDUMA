@@ -17,29 +17,6 @@ import {
   X,
 } from "lucide-react";
 
-const InstagramIcon = ({ size = 20 }: { size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <rect
-      x="3"
-      y="3"
-      width="18"
-      height="18"
-      rx="5"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
-    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-  </svg>
-);
-
 const projectTypes = [
   {
     id: "web",
@@ -146,18 +123,11 @@ export default function CTA() {
 
   return (
     <>
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-
       <section
         id="contacto"
         className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] py-32 md:py-22"
       >
-        {/* ==================================================
-            GRID PRINCIPAL
-        ================================================== */}
-
+        {/* GRID PRINCIPAL */}
         <motion.div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -194,10 +164,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            GRID SECUNDARIO
-        ================================================== */}
-
+        {/* GRID SECUNDARIO */}
         <motion.div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -234,10 +201,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            GLOW CENTRAL
-        ================================================== */}
-
+        {/* GLOW CENTRAL */}
         <motion.div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/[0.08] blur-[140px]"
           animate={{
@@ -253,10 +217,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            AURORA HORIZONTAL
-        ================================================== */}
-
+        {/* AURORA HORIZONTAL */}
         <motion.div
           className="pointer-events-none absolute left-[-30%] top-[25%] h-[180px] w-[160%] -rotate-[5deg] rounded-[50%]"
           style={{
@@ -278,10 +239,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            AURORA INFERIOR
-        ================================================== */}
-
+        {/* AURORA INFERIOR */}
         <motion.div
           className="pointer-events-none absolute left-[-30%] bottom-[12%] h-[170px] w-[160%] rotate-[5deg] rounded-[50%]"
           style={{
@@ -303,10 +261,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            LÍNEA DE LUZ SUPERIOR
-        ================================================== */}
-
+        {/* LÍNEA DE LUZ SUPERIOR */}
         <motion.div
           className="pointer-events-none absolute left-[-25%] top-[20%] h-px w-[150%]"
           style={{
@@ -327,10 +282,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            LÍNEA DE LUZ CENTRAL
-        ================================================== */}
-
+        {/* LÍNEA DE LUZ CENTRAL */}
         <motion.div
           className="pointer-events-none absolute left-[-25%] top-[50%] h-px w-[150%]"
           style={{
@@ -350,10 +302,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            LÍNEA DE LUZ INFERIOR
-        ================================================== */}
-
+        {/* LÍNEA DE LUZ INFERIOR */}
         <motion.div
           className="pointer-events-none absolute left-[-25%] top-[78%] h-px w-[150%]"
           style={{
@@ -373,10 +322,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            ONDA SUPERIOR
-        ================================================== */}
-
+        {/* ONDA SUPERIOR */}
         <motion.div
           className="pointer-events-none absolute -left-[25%] top-[15%] h-[120px] w-[150%] rounded-[50%]"
           style={{
@@ -399,10 +345,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            ONDA INFERIOR
-        ================================================== */}
-
+        {/* ONDA INFERIOR */}
         <motion.div
           className="pointer-events-none absolute -left-[25%] bottom-[13%] h-[130px] w-[150%] rounded-[50%]"
           style={{
@@ -425,10 +368,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            GLOW IZQUIERDO
-        ================================================== */}
-
+        {/* GLOW IZQUIERDO */}
         <motion.div
           className="pointer-events-none absolute -left-[180px] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full"
           style={{
@@ -449,10 +389,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            GLOW DERECHO
-        ================================================== */}
-
+        {/* GLOW DERECHO */}
         <motion.div
           className="pointer-events-none absolute -right-[180px] top-1/2 h-[450px] w-[450px] -translate-y-1/2 rounded-full"
           style={{
@@ -473,10 +410,7 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            PARTÍCULAS
-        ================================================== */}
-
+        {/* PARTÍCULAS */}
         <motion.div
           className="pointer-events-none absolute left-[12%] top-[22%] h-1 w-1 rounded-full bg-white/60"
           style={{
@@ -552,13 +486,9 @@ export default function CTA() {
           }}
         />
 
-        {/* ==================================================
-            CONTENIDO
-        ================================================== */}
-
+        {/* CONTENIDO */}
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-10">
           {/* BADGE */}
-
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -571,7 +501,6 @@ export default function CTA() {
           </motion.div>
 
           {/* TITULO */}
-
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -590,7 +519,6 @@ export default function CTA() {
           </motion.h2>
 
           {/* DESCRIPCIÓN */}
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -606,7 +534,6 @@ export default function CTA() {
           </motion.p>
 
           {/* BOTONES */}
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -618,7 +545,6 @@ export default function CTA() {
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             {/* EMPECEMOS TU PROYECTO */}
-
             <motion.button
               type="button"
               onClick={() => {
@@ -643,7 +569,6 @@ export default function CTA() {
             </motion.button>
 
             {/* CONTACTANOS - WHATSAPP */}
-
             <motion.a
               href={`https://wa.me/51958032002?text=${encodeURIComponent(
                 "Hola, vi su página web y me gustaría solicitar información sobre un proyecto. Quisiera contarles mi idea y recibir orientación. ¡Gracias!"
@@ -652,19 +577,17 @@ export default function CTA() {
               rel="noopener noreferrer"
               whileHover={{
                 scale: 1.04,
-                boxShadow: "0 0 50px rgba(37,211,102,0.16)",
+                boxShadow: "0 0 70px rgba(37,211,102,0.25)",
               }}
-              whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center gap-2.5 rounded-full border border-white/[0.1] bg-white/[0.04] px-6 py-4 text-sm font-medium text-white backdrop-blur-xl transition-colors hover:border-white/[0.18] hover:bg-white/[0.07]"
+              whileTap={{
+                scale: 0.97,
+              }}
+              className="group inline-flex items-center gap-3 rounded-full bg-[#25D366] px-8 py-4 text-sm font-medium text-white shadow-[0_0_35px_rgba(37,211,102,0.15)] transition-colors hover:bg-[#20bd5a]"
             >
-              <InstagramIcon
-                size={17}
-              />
-
               <MessageCircle
                 size={19}
-                strokeWidth={2}
-                className="text-[#25D366] transition-transform duration-300 group-hover:scale-110"
+                strokeWidth={2.2}
+                className="transition-transform duration-300 group-hover:scale-110"
               />
 
               <span>Contáctanos</span>
@@ -672,7 +595,6 @@ export default function CTA() {
           </motion.div>
 
           {/* LINEA */}
-
           <motion.div
             initial={{ width: 0, opacity: 0 }}
             whileInView={{
@@ -689,10 +611,7 @@ export default function CTA() {
         </div>
       </section>
 
-      {/* =====================================================
-          MODAL
-      ===================================================== */}
-
+      {/* MODAL */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -703,7 +622,6 @@ export default function CTA() {
             onClick={closeModal}
           >
             {/* PANEL */}
-
             <motion.div
               initial={{
                 opacity: 0,
@@ -728,11 +646,9 @@ export default function CTA() {
               className="relative w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/[0.1] bg-[#0a0a0a] shadow-2xl shadow-black/50"
             >
               {/* TOP GLOW */}
-
               <div className="pointer-events-none absolute left-1/2 top-0 h-40 w-72 -translate-x-1/2 rounded-full bg-violet-600/10 blur-[80px]" />
 
               {/* CLOSE */}
-
               <button
                 onClick={closeModal}
                 disabled={isSending}
@@ -743,7 +659,6 @@ export default function CTA() {
 
               <div className="relative p-7 sm:p-10">
                 {/* SUCCESS */}
-
                 {isSent ? (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -791,11 +706,9 @@ export default function CTA() {
                 ) : (
                   <>
                     {/* HEADER */}
-
                     <div className="mb-10">
                       <div className="mb-4 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-violet-400">
                         <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-500" />
-
                         {step === 3 ? "Resumen" : `Paso 0${step} de 02`}
                       </div>
 
@@ -803,18 +716,9 @@ export default function CTA() {
                         {step === 1 && (
                           <motion.div
                             key="header-1"
-                            initial={{
-                              opacity: 0,
-                              x: 15,
-                            }}
-                            animate={{
-                              opacity: 1,
-                              x: 0,
-                            }}
-                            exit={{
-                              opacity: 0,
-                              x: -15,
-                            }}
+                            initial={{ opacity: 0, x: 15 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -15 }}
                           >
                             <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">
                               ¿Qué podemos crear?
@@ -829,18 +733,9 @@ export default function CTA() {
                         {step === 2 && (
                           <motion.div
                             key="header-2"
-                            initial={{
-                              opacity: 0,
-                              x: 15,
-                            }}
-                            animate={{
-                              opacity: 1,
-                              x: 0,
-                            }}
-                            exit={{
-                              opacity: 0,
-                              x: -15,
-                            }}
+                            initial={{ opacity: 0, x: 15 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -15 }}
                           >
                             <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">
                               Hablemos del proyecto.
@@ -856,18 +751,9 @@ export default function CTA() {
                         {step === 3 && (
                           <motion.div
                             key="header-3"
-                            initial={{
-                              opacity: 0,
-                              x: 15,
-                            }}
-                            animate={{
-                              opacity: 1,
-                              x: 0,
-                            }}
-                            exit={{
-                              opacity: 0,
-                              x: -15,
-                            }}
+                            initial={{ opacity: 0, x: 15 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -15 }}
                           >
                             <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">
                               Revisa tu solicitud.
@@ -883,7 +769,6 @@ export default function CTA() {
                     </div>
 
                     {/* PROGRESS */}
-
                     <div className="mb-8 flex gap-2">
                       {[1, 2, 3].map((item) => (
                         <div
@@ -904,28 +789,15 @@ export default function CTA() {
                     </div>
 
                     {/* CONTENT */}
-
                     <AnimatePresence mode="wait">
                       {/* STEP 1 */}
-
                       {step === 1 && (
                         <motion.div
                           key="step1"
-                          initial={{
-                            opacity: 0,
-                            x: 30,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            x: 0,
-                          }}
-                          exit={{
-                            opacity: 0,
-                            x: -30,
-                          }}
-                          transition={{
-                            duration: 0.3,
-                          }}
+                          initial={{ opacity: 0, x: 30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -30 }}
+                          transition={{ duration: 0.3 }}
                           className="space-y-3"
                         >
                           {projectTypes.map((project) => {
@@ -993,14 +865,12 @@ export default function CTA() {
                             className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-white py-3.5 text-sm font-medium text-black transition-all disabled:cursor-not-allowed disabled:opacity-30"
                           >
                             Continuar
-
                             <ChevronRight size={17} />
                           </motion.button>
                         </motion.div>
                       )}
 
                       {/* STEP 2 */}
-
                       {step === 2 && (
                         <motion.form
                           key="step2"
@@ -1008,25 +878,12 @@ export default function CTA() {
                             e.preventDefault();
                             setStep(3);
                           }}
-                          initial={{
-                            opacity: 0,
-                            x: 30,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            x: 0,
-                          }}
-                          exit={{
-                            opacity: 0,
-                            x: -30,
-                          }}
-                          transition={{
-                            duration: 0.3,
-                          }}
+                          initial={{ opacity: 0, x: 30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -30 }}
+                          transition={{ duration: 0.3 }}
                           className="space-y-5"
                         >
-                          {/* NAME */}
-
                           <div>
                             <label className="mb-2 block text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">
                               Nombre
@@ -1042,8 +899,6 @@ export default function CTA() {
                               className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3.5 text-sm text-white outline-none transition-all placeholder:text-zinc-700 focus:border-violet-500/40 focus:bg-white/[0.04] focus:ring-1 focus:ring-violet-500/20"
                             />
                           </div>
-
-                          {/* EMAIL */}
 
                           <div>
                             <label className="mb-2 block text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">
@@ -1069,8 +924,6 @@ export default function CTA() {
                             </div>
                           </div>
 
-                          {/* MESSAGE */}
-
                           <div>
                             <label className="mb-2 block text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">
                               Cuéntanos un poco más
@@ -1087,8 +940,6 @@ export default function CTA() {
                               className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3.5 text-sm leading-6 text-white outline-none transition-all placeholder:text-zinc-700 focus:border-violet-500/40 focus:bg-white/[0.04] focus:ring-1 focus:ring-violet-500/20"
                             />
                           </div>
-
-                          {/* BUTTONS */}
 
                           <div className="flex gap-3 pt-2">
                             <button
@@ -1112,28 +963,14 @@ export default function CTA() {
                       )}
 
                       {/* STEP 3 */}
-
                       {step === 3 && (
                         <motion.div
                           key="step3"
-                          initial={{
-                            opacity: 0,
-                            x: 30,
-                          }}
-                          animate={{
-                            opacity: 1,
-                            x: 0,
-                          }}
-                          exit={{
-                            opacity: 0,
-                            x: -30,
-                          }}
-                          transition={{
-                            duration: 0.3,
-                          }}
+                          initial={{ opacity: 0, x: 30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -30 }}
+                          transition={{ duration: 0.3 }}
                         >
-                          {/* SUCCESS ICON */}
-
                           <motion.div
                             initial={{
                               scale: 0,
@@ -1156,8 +993,6 @@ export default function CTA() {
                               className="text-violet-400"
                             />
                           </motion.div>
-
-                          {/* SUMMARY */}
 
                           <div className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02]">
                             <div className="border-b border-white/[0.07] p-5">
@@ -1202,8 +1037,6 @@ export default function CTA() {
                               </p>
                             </div>
                           </div>
-
-                          {/* FINAL ACTION */}
 
                           <motion.button
                             type="button"
