@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "motion/react";
@@ -68,7 +67,7 @@ export default function Technologies() {
       <div className="pointer-events-none absolute inset-0 -z-50 bg-[#050B16]" />
 
       {/* ==================================================
-          GRID AZUL — MISMO CONCEPTO DEL CTA
+          GRID AZUL
       ================================================== */}
 
       <motion.div
@@ -102,7 +101,7 @@ export default function Technologies() {
       />
 
       {/* ==================================================
-          GRID SECUNDARIO — MOVIMIENTO INVERSO
+          GRID SECUNDARIO
       ================================================== */}
 
       <motion.div
