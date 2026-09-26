@@ -9,8 +9,10 @@ import {
   ChevronRight,
   Code2,
   Mail,
+  MessageCircle,
   MessageSquare,
   Monitor,
+  Instagram,
   ShoppingBag,
   Sparkles,
   X,
@@ -581,7 +583,7 @@ export default function CTA() {
             convertir tu idea en una experiencia digital moderna.
           </motion.p>
 
-          {/* BOTÓN */}
+          {/* BOTONES */}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -591,8 +593,9 @@ export default function CTA() {
               duration: 0.7,
               delay: 0.3,
             }}
-            className="mt-10"
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
+            {/* EMPECEMOS TU PROYECTO */}
             <motion.button
               type="button"
               onClick={() => {
@@ -615,6 +618,35 @@ export default function CTA() {
                 className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
               />
             </motion.button>
+
+            {/* CONTACTANOS - WHATSAPP */}
+            <motion.a
+              href={`https://wa.me/51958032002?text=${encodeURIComponent(
+                "Hola, vi su página web y me gustaría solicitar información sobre un proyecto. Quisiera contarles mi idea y recibir orientación. ¡Gracias!"
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                scale: 1.04,
+                boxShadow: "0 0 50px rgba(37,211,102,0.16)",
+              }}
+              whileTap={{ scale: 0.97 }}
+              className="group inline-flex items-center gap-2.5 rounded-full border border-white/[0.1] bg-white/[0.04] px-6 py-4 text-sm font-medium text-white backdrop-blur-xl transition-colors hover:border-white/[0.18] hover:bg-white/[0.07]"
+            >
+              <Instagram
+                size={17}
+                strokeWidth={1.8}
+                className="text-white transition-transform duration-300 group-hover:scale-110"
+              />
+
+              <MessageCircle
+                size={19}
+                strokeWidth={2}
+                className="text-[#25D366] transition-transform duration-300 group-hover:scale-110"
+              />
+
+              <span>Contáctanos</span>
+            </motion.a>
           </motion.div>
 
           {/* LINEA */}
