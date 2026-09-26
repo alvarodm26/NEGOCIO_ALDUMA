@@ -44,6 +44,21 @@ const projectTypes = [
   },
 ];
 
+const particles = [
+  { left: "12%", top: "20%", duration: 6 },
+  { left: "24%", top: "72%", duration: 8 },
+  { left: "35%", top: "28%", duration: 7 },
+  { left: "47%", top: "82%", duration: 9 },
+  { left: "58%", top: "18%", duration: 6 },
+  { left: "69%", top: "68%", duration: 8 },
+  { left: "76%", top: "30%", duration: 7 },
+  { left: "88%", top: "76%", duration: 9 },
+  { left: "92%", top: "22%", duration: 6 },
+  { left: "18%", top: "46%", duration: 8 },
+  { left: "82%", top: "50%", duration: 7 },
+  { left: "63%", top: "88%", duration: 10 },
+];
+
 export default function CTA() {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
@@ -127,9 +142,9 @@ export default function CTA() {
         id="contacto"
         className="relative isolate overflow-hidden border-y border-[#3D321C]/70 bg-[#080705] py-20 lg:py-24"
       >
-        {/* =========================================================
-            FONDO ANIMADO — MISMO ESTILO QUE PROCESS / TECHNOLOGIES
-        ========================================================== */}
+        {/* =====================================================
+            FONDO — MISMO ESTILO DEL PROCESS
+        ====================================================== */}
 
         {/* GRID PRINCIPAL */}
         <motion.div
@@ -172,7 +187,7 @@ export default function CTA() {
           className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(245,183,65,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(245,183,65,0.10) 1px, transparent 1px)",
+              "linear-gradient(rgba(245,183,65,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(245,183,65,0.1) 1px, transparent 1px)",
             backgroundSize: "140px 140px",
             maskImage:
               "radial-gradient(ellipse 80% 100% at 50% 50%, black, transparent 80%)",
@@ -216,7 +231,12 @@ export default function CTA() {
               "radial-gradient(ellipse 75% 100% at 50% 50%, black 10%, transparent 82%)",
           }}
           animate={{
-            backgroundPosition: ["0px 0px", "80px 80px", "160px 0px", "0px 0px"],
+            backgroundPosition: [
+              "0px 0px",
+              "80px 80px",
+              "160px 0px",
+              "0px 0px",
+            ],
             opacity: [0.12, 0.3, 0.16, 0.12],
           }}
           transition={{
@@ -304,7 +324,7 @@ export default function CTA() {
           style={{
             border: "1px solid rgba(217,158,48,0.22)",
             boxShadow:
-              "0 -15px 60px rgba(217,158,48,0.10), 0 10px 40px rgba(245,183,65,0.04)",
+              "0 -15px 60px rgba(217,158,48,0.1), 0 10px 40px rgba(245,183,65,0.04)",
           }}
           animate={{
             x: ["-4%", "5%", "-3%", "4%", "-4%"],
@@ -347,7 +367,7 @@ export default function CTA() {
           style={{
             border: "1px solid rgba(184,121,24,0.24)",
             boxShadow:
-              "0 15px 60px rgba(184,121,24,0.10), 0 -10px 40px rgba(245,183,65,0.04)",
+              "0 15px 60px rgba(184,121,24,0.1), 0 -10px 40px rgba(245,183,65,0.04)",
           }}
           animate={{
             x: ["4%", "-5%", "3%", "-4%", "4%"],
@@ -471,7 +491,7 @@ export default function CTA() {
           className="pointer-events-none absolute -right-[180px] top-1/2 h-[450px] w-[450px] -translate-y-1/2 rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(184,121,24,0.10) 38%, transparent 72%)",
+              "radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(184,121,24,0.1) 38%, transparent 72%)",
             filter: "blur(70px)",
           }}
           animate={{
@@ -523,37 +543,34 @@ export default function CTA() {
         />
 
         {/* PARTÍCULAS */}
-        {[
-          ["12%", "20%", 6],
-          ["24%", "72%", 8],
-          ["35%", "28%", 7],
-          ["47%", "82%", 9],
-          ["58%", "18%", 6],
-          ["69%", "68%", 8],
-          ["76%", "30%", 7],
-          ["88%", "76%", 9],
-          ["92%", "22%", 6],
-          ["18%", "46%", 8],
-          ["82%", "50%", 7],
-          ["63%", "88%", 10],
-        ].map(([left, top, duration], index) => (
+        {particles.map((particle, index) => (
           <motion.div
             key={index}
             className="pointer-events-none absolute h-1 w-1 rounded-full bg-[#F5C35B]"
             style={{
-              left,
-              top,
+              left: particle.left,
+              top: particle.top,
               boxShadow:
                 "0 0 12px rgba(245,195,91,0.7), 0 0 24px rgba(217,158,48,0.3)",
             }}
             animate={{
-              x: [0, index % 2 === 0 ? 20 : -25, index % 3 === 0 ? -8 : 10, 0],
-              y: [0, index % 2 === 0 ? -30 : 22, index % 3 === 0 ? 15 : -12, 0],
+              x: [
+                0,
+                index % 2 === 0 ? 20 : -25,
+                index % 3 === 0 ? -8 : 10,
+                0,
+              ],
+              y: [
+                0,
+                index % 2 === 0 ? -30 : 22,
+                index % 3 === 0 ? 15 : -12,
+                0,
+              ],
               opacity: [0.12, 0.9, 0.2, 0.12],
               scale: [1, 1.8, 1.1, 1],
             }}
             transition={{
-              duration,
+              duration: particle.duration,
               repeat: Infinity,
               ease: "easeInOut",
               delay: index * 0.55,
@@ -561,9 +578,9 @@ export default function CTA() {
           />
         ))}
 
-        {/* =========================================================
+        {/* =====================================================
             CONTENIDO
-        ========================================================== */}
+        ====================================================== */}
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-10">
           {/* BADGE */}
@@ -631,7 +648,7 @@ export default function CTA() {
               }}
               whileHover={{
                 scale: 1.04,
-                boxShadow: "0 0 70px rgba(217,158,48,0.30)",
+                boxShadow: "0 0 70px rgba(217,158,48,0.3)",
               }}
               whileTap={{
                 scale: 0.97,
@@ -689,9 +706,9 @@ export default function CTA() {
         </div>
       </section>
 
-      {/* =========================================================
+      {/* =====================================================
           MODAL
-      ========================================================== */}
+      ====================================================== */}
 
       <AnimatePresence>
         {isOpen && (
@@ -702,7 +719,6 @@ export default function CTA() {
             exit={{ opacity: 0 }}
             onClick={closeModal}
           >
-            {/* PANEL */}
             <motion.div
               initial={{
                 opacity: 0,
