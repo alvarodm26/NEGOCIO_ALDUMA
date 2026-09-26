@@ -12,11 +12,33 @@ import {
   MessageCircle,
   MessageSquare,
   Monitor,
-  Instagram,
   ShoppingBag,
   Sparkles,
   X,
 } from "lucide-react";
+
+const InstagramIcon = ({ size = 20 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <rect
+      x="3"
+      y="3"
+      width="18"
+      height="18"
+      rx="5"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+  </svg>
+);
 
 const projectTypes = [
   {
@@ -596,6 +618,7 @@ export default function CTA() {
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             {/* EMPECEMOS TU PROYECTO */}
+
             <motion.button
               type="button"
               onClick={() => {
@@ -620,6 +643,7 @@ export default function CTA() {
             </motion.button>
 
             {/* CONTACTANOS - WHATSAPP */}
+
             <motion.a
               href={`https://wa.me/51958032002?text=${encodeURIComponent(
                 "Hola, vi su página web y me gustaría solicitar información sobre un proyecto. Quisiera contarles mi idea y recibir orientación. ¡Gracias!"
@@ -633,10 +657,8 @@ export default function CTA() {
               whileTap={{ scale: 0.97 }}
               className="group inline-flex items-center gap-2.5 rounded-full border border-white/[0.1] bg-white/[0.04] px-6 py-4 text-sm font-medium text-white backdrop-blur-xl transition-colors hover:border-white/[0.18] hover:bg-white/[0.07]"
             >
-              <Instagram
+              <InstagramIcon
                 size={17}
-                strokeWidth={1.8}
-                className="text-white transition-transform duration-300 group-hover:scale-110"
               />
 
               <MessageCircle
