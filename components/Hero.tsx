@@ -7,19 +7,24 @@ import { ArrowDownRight, Sparkles } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative isolate min-h-screen overflow-hidden bg-[#0A0A0A] pt-20">
-      {/* ================= FONDO DE TOROS ================= */}
 
-      <div
-        className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/images/fondo.png')",
-        }}
+      {/* ================= VIDEO DE FONDO ================= */}
+
+      <video
+        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+        src="/images/video_presentacion.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
       />
 
       {/* CAPA OSCURA */}
+
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[#0A0A0A]/65" />
 
       {/* DEGRADADO PARA FUNDIR CON EL RESTO DE LA PÁGINA */}
+
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0A0A0A]/10 via-transparent to-[#0A0A0A]" />
 
       {/* ================= GLOW DE FONDO ================= */}
@@ -40,7 +45,7 @@ export default function Hero() {
       {/* ================= GRID / CONTENIDO ================= */}
 
       <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-6 py-12 lg:grid-cols-2 lg:gap-16 lg:px-10 lg:py-16">
-        
+
         {/* ================= CONTENIDO ================= */}
 
         <motion.div
@@ -51,6 +56,7 @@ export default function Hero() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
+
           {/* BADGE */}
 
           <motion.div
@@ -115,6 +121,7 @@ export default function Hero() {
             }}
             className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
+
             <motion.a
               href="#contacto"
               whileHover={{
@@ -147,6 +154,7 @@ export default function Hero() {
             >
               Ver proyectos
             </motion.a>
+
           </motion.div>
 
           {/* MINI TEXTO */}
@@ -164,6 +172,7 @@ export default function Hero() {
 
             Diseño · Desarrollo · Optimización
           </motion.div>
+
         </motion.div>
 
         {/* ================= MOCKUP ================= */}
@@ -186,6 +195,7 @@ export default function Hero() {
           }}
           className="relative"
         >
+
           {/* GLOW DEL MOCKUP */}
 
           <motion.div
@@ -213,6 +223,7 @@ export default function Hero() {
               ease: "easeInOut",
             }}
           >
+
             <motion.div
               whileHover={{
                 rotateX: 2,
@@ -226,16 +237,19 @@ export default function Hero() {
               }}
               className="relative rounded-[1.75rem] border border-[#2A2A2E] bg-[#18181B]/80 p-2 shadow-2xl backdrop-blur-xl"
             >
+
               <div className="overflow-hidden rounded-[1.35rem] border border-[#2A2A2E] bg-[#0A0A0A]">
 
                 {/* BARRA DEL NAVEGADOR */}
 
                 <div className="flex items-center gap-2 border-b border-[#2A2A2E] px-4 py-3">
+
                   <span className="h-2 w-2 rounded-full bg-zinc-700" />
                   <span className="h-2 w-2 rounded-full bg-zinc-700" />
                   <span className="h-2 w-2 rounded-full bg-zinc-700" />
 
                   <div className="mx-auto h-4 w-32 rounded-full bg-[#18181B]" />
+
                 </div>
 
                 {/* CONTENIDO */}
@@ -245,6 +259,7 @@ export default function Hero() {
                   {/* TOP */}
 
                   <div className="flex items-center justify-between">
+
                     <div className="h-3.5 w-20 rounded bg-[#2A2A2E]" />
 
                     <motion.div
@@ -257,6 +272,7 @@ export default function Hero() {
                       }}
                       className="h-7 w-7 rounded-full bg-violet-500/20"
                     />
+
                   </div>
 
                   {/* HERO MOCKUP */}
@@ -293,6 +309,7 @@ export default function Hero() {
                       }}
                       className="mt-6 h-9 w-28 rounded-full bg-[#7C3AED]"
                     />
+
                   </div>
 
                   {/* CARDS */}
@@ -332,11 +349,15 @@ export default function Hero() {
 
                 </div>
               </div>
+
             </motion.div>
+
           </motion.div>
+
         </motion.div>
 
       </div>
+
     </section>
   );
 }

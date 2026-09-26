@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "motion/react";
@@ -45,53 +46,224 @@ export default function Process() {
   return (
     <section
       id="nosotros"
-      className="relative isolate overflow-hidden border-y border-white/[0.06] bg-[#0A0A0A] py-20 lg:py-24"
+      className="relative isolate overflow-hidden border-y border-white/[0.06] bg-[#080808] py-20 lg:py-24"
     >
-      {/* FONDO — MISMO FORMATO QUE STATS */}
+      {/* ==================================================
+          FONDO BASE
+      ================================================== */}
+
+      <div className="pointer-events-none absolute inset-0 -z-40 bg-[#080808]" />
+
+      {/* ==================================================
+          CUADRÍCULA PRINCIPAL
+      ================================================== */}
+
       <div
-        className="pointer-events-none absolute inset-0 -z-20"
-        style={{
-          backgroundImage: "url('/images/fondo.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-
-      {/* OVERLAY */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[#0A0A0A]/80" />
-
-      {/* INTEGRACIÓN DEL FONDO */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0A0A0A]/20 via-transparent to-[#0A0A0A]" />
-
-      {/* GRID SUTIL */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.025]"
+        className="pointer-events-none absolute inset-0 -z-30 opacity-[0.045]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "70px 70px",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      {/* CENTER GLOW */}
+      {/* ==================================================
+          CUADRÍCULA SECUNDARIA
+      ================================================== */}
+
+      <div
+        className="pointer-events-none absolute inset-0 -z-30 opacity-[0.018]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
+
+      {/* ==================================================
+          LÍNEAS DIAGONALES
+      ================================================== */}
+
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/[0.07] blur-[130px]"
+        className="pointer-events-none absolute inset-0 -z-30 opacity-[0.025]"
+        style={{
+          backgroundImage:
+            "linear-gradient(135deg, transparent 49.5%, rgba(255,255,255,0.8) 50%, transparent 50.5%)",
+          backgroundSize: "160px 160px",
+        }}
         animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.35, 0.65, 0.35],
+          backgroundPosition: ["0px 0px", "160px 160px"],
         }}
         transition={{
-          duration: 8,
+          duration: 18,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* ==================================================
+          LÍNEA HORIZONTAL ANIMADA
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-[-20%] top-[28%] -z-20 h-px w-[140%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(124,58,237,0.05), rgba(139,92,246,0.45), rgba(124,58,237,0.05), transparent)",
+          boxShadow: "0 0 30px rgba(124,58,237,0.12)",
+        }}
+        animate={{
+          x: ["-8%", "8%", "-8%"],
+          opacity: [0.2, 0.75, 0.2],
+        }}
+        transition={{
+          duration: 12,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      {/* DECORATIVE GLOWS */}
+      {/* ==================================================
+          SEGUNDA LÍNEA ANIMADA
+      ================================================== */}
+
       <motion.div
-        className="pointer-events-none absolute -left-32 top-20 -z-10 h-64 w-64 rounded-full bg-violet-500/[0.04] blur-[100px]"
-        animate={{ y: [0, 25, 0] }}
+        className="pointer-events-none absolute left-[-20%] top-[72%] -z-20 h-px w-[140%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(167,139,250,0.04), rgba(124,58,237,0.35), rgba(167,139,250,0.04), transparent)",
+          boxShadow: "0 0 25px rgba(124,58,237,0.08)",
+        }}
+        animate={{
+          x: ["8%", "-8%", "8%"],
+          opacity: [0.15, 0.6, 0.15],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW CENTRAL
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-20 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(124,58,237,0.10) 0%, rgba(124,58,237,0.035) 40%, transparent 72%)",
+          filter: "blur(110px)",
+        }}
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.35, 0.7, 0.35],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW IZQUIERDO
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-40 top-[10%] -z-20 h-[360px] w-[360px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%)",
+          filter: "blur(90px)",
+        }}
+        animate={{
+          x: [0, 70, 20, 0],
+          y: [0, 50, -20, 0],
+          scale: [1, 1.15, 0.95, 1],
+        }}
+        transition={{
+          duration: 17,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW DERECHO
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -right-40 bottom-[5%] -z-20 h-[380px] w-[380px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 70%)",
+          filter: "blur(100px)",
+        }}
+        animate={{
+          x: [0, -60, -20, 0],
+          y: [0, -40, 30, 0],
+          scale: [1, 0.9, 1.12, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          LÍNEAS VERTICALES DE LUZ
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-[12%] top-[-10%] -z-20 h-[120%] w-px"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent, rgba(124,58,237,0.16), transparent)",
+        }}
+        animate={{
+          opacity: [0.15, 0.5, 0.15],
+          x: [0, 12, 0],
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <motion.div
+        className="pointer-events-none absolute right-[14%] top-[-10%] -z-20 h-[120%] w-px"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent, rgba(167,139,250,0.12), transparent)",
+        }}
+        animate={{
+          opacity: [0.1, 0.45, 0.1],
+          x: [0, -10, 0],
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+      />
+
+      {/* ==================================================
+          PUNTOS DE LUZ
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-[18%] top-[20%] -z-10 h-1 w-1 rounded-full bg-violet-400/60 shadow-[0_0_12px_rgba(124,58,237,0.6)]"
+        animate={{
+          y: [0, -35, 0],
+          x: [0, 15, 0],
+          opacity: [0.1, 0.9, 0.1],
+          scale: [1, 1.8, 1],
+        }}
         transition={{
           duration: 7,
           repeat: Infinity,
@@ -100,17 +272,43 @@ export default function Process() {
       />
 
       <motion.div
-        className="pointer-events-none absolute -right-32 bottom-20 -z-10 h-64 w-64 rounded-full bg-fuchsia-500/[0.035] blur-[100px]"
-        animate={{ y: [0, -25, 0] }}
+        className="pointer-events-none absolute left-[78%] top-[32%] -z-10 h-1 w-1 rounded-full bg-violet-300/50 shadow-[0_0_12px_rgba(168,85,247,0.5)]"
+        animate={{
+          y: [0, 40, 0],
+          x: [0, -20, 0],
+          opacity: [0.1, 0.8, 0.1],
+          scale: [1, 1.7, 1],
+        }}
         transition={{
           duration: 9,
           repeat: Infinity,
           ease: "easeInOut",
+          delay: 1,
         }}
       />
 
+      <motion.div
+        className="pointer-events-none absolute left-[86%] top-[76%] -z-10 h-1 w-1 rounded-full bg-purple-300/50 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+        animate={{
+          x: [0, -30, 0],
+          y: [0, -20, 0],
+          opacity: [0.1, 0.7, 0.1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+      />
+
+      {/* ==================================================
+          CONTENIDO
+      ================================================== */}
+
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-        {/* HEADER — MISMO FORMATO QUE STATS */}
+        {/* HEADER */}
+
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +319,6 @@ export default function Process() {
           }}
           className="mx-auto max-w-3xl text-center"
         >
-          {/* EYEBROW */}
           <div className="mb-5 flex items-center justify-center gap-3">
             <span className="h-px w-7 bg-violet-500/60" />
 
@@ -132,7 +329,6 @@ export default function Process() {
             <span className="h-px w-7 bg-violet-500/60" />
           </div>
 
-          {/* TITLE */}
           <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-5xl">
             De una idea a una
             <br />
@@ -141,16 +337,19 @@ export default function Process() {
             </span>
           </h2>
 
-          {/* DESCRIPTION */}
           <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400">
             Trabajamos de forma estructurada para convertir objetivos de
             negocio en productos digitales claros, rápidos y efectivos.
           </p>
         </motion.div>
 
-        {/* PROCESS */}
+        {/* ==================================================
+            PROCESS
+        ================================================== */}
+
         <div className="relative mt-12">
           {/* TIMELINE */}
+
           <motion.div
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
@@ -180,279 +379,296 @@ export default function Process() {
                   }}
                   className="group relative"
                 >
-                  <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#090909]/90 transition-all duration-500 group-hover:border-violet-500/20 group-hover:bg-[#0b0b0b]">
-                    {/* HOVER GLOW */}
-                    <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-violet-600/0 blur-[90px] transition-all duration-700 group-hover:bg-violet-600/[0.12]" />
+                  {/* ==================================================
+                      CUADRO + LED INDIVIDUAL
+                  ================================================== */}
 
-                    {/* NUMBER */}
-                    <span className="pointer-events-none absolute -bottom-7 right-3 text-[100px] font-bold leading-none tracking-[-0.08em] text-white/[0.02] transition-all duration-700 group-hover:text-violet-500/[0.055]">
-                      {step.number}
-                    </span>
+                  <div className="relative rounded-2xl">
+                    {/* LED AZUL ESTÁTICO */}
 
-                    <div className="relative grid md:grid-cols-[64px_1fr_220px]">
-                      {/* NODE */}
-                      <div className="relative hidden items-start justify-center pt-7 md:flex">
-                        <motion.div
-                          whileHover={{ scale: 1.12 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 18,
-                          }}
-                          className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.1] bg-[#090909] transition-all duration-500 group-hover:border-violet-500/50 group-hover:shadow-[0_0_25px_rgba(124,58,237,0.15)]"
-                        >
+                    <div className="pointer-events-none absolute inset-0 z-30 rounded-2xl border-2 border-cyan-400/[0.30] shadow-[0_0_12px_rgba(34,211,238,0.16),0_0_30px_rgba(14,165,233,0.06),inset_0_0_12px_rgba(14,165,233,0.04)]" />
+
+                    <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#090909]/90 transition-all duration-500 group-hover:border-violet-500/20 group-hover:bg-[#0b0b0b]">
+                      {/* HOVER GLOW */}
+
+                      <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-violet-600/0 blur-[90px] transition-all duration-700 group-hover:bg-violet-600/[0.12]" />
+
+                      {/* NUMBER */}
+
+                      <span className="pointer-events-none absolute -bottom-7 right-3 text-[100px] font-bold leading-none tracking-[-0.08em] text-white/[0.02] transition-all duration-700 group-hover:text-violet-500/[0.055]">
+                        {step.number}
+                      </span>
+
+                      <div className="relative grid md:grid-cols-[64px_1fr_220px]">
+                        {/* NODE */}
+
+                        <div className="relative hidden items-start justify-center pt-7 md:flex">
                           <motion.div
-                            className="h-1.5 w-1.5 rounded-full bg-violet-500"
-                            animate={{
-                              scale: [1, 1.3, 1],
-                              opacity: [0.5, 1, 0.5],
-                            }}
+                            whileHover={{ scale: 1.12 }}
                             transition={{
-                              duration: 2.5,
-                              repeat: Infinity,
-                              delay: index * 0.35,
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 18,
                             }}
-                          />
-                        </motion.div>
-                      </div>
-
-                      {/* CONTENT */}
-                      <div className="p-6 md:p-7">
-                        <div className="mb-4 flex items-center gap-3">
-                          <motion.div
-                            whileHover={{
-                              rotate: 5,
-                              scale: 1.08,
-                            }}
-                            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.035] text-zinc-400 transition-all duration-500 group-hover:border-violet-500/30 group-hover:bg-violet-500/10 group-hover:text-violet-400"
+                            className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.1] bg-[#090909] transition-all duration-500 group-hover:border-violet-500/50 group-hover:shadow-[0_0_25px_rgba(124,58,237,0.15)]"
                           >
-                            <Icon size={18} strokeWidth={1.6} />
-                          </motion.div>
-
-                          <span className="font-mono text-xs tracking-[0.16em] text-zinc-600">
-                            STEP {step.number}
-                          </span>
-                        </div>
-
-                        <h3 className="text-xl font-semibold tracking-[-0.02em] text-white transition-transform duration-500 group-hover:translate-x-1 md:text-2xl">
-                          {step.title}
-                        </h3>
-
-                        <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
-                          {step.description}
-                        </p>
-
-                        <div className="mt-5 h-px w-full overflow-hidden bg-white/[0.06]">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: "30%" }}
-                            viewport={{ once: true }}
-                            transition={{
-                              duration: 0.8,
-                              delay: index * 0.1 + 0.25,
-                            }}
-                            className="h-full bg-violet-500/60 transition-all duration-700 group-hover:w-full"
-                          />
-                        </div>
-                      </div>
-
-                      {/* VISUAL */}
-                      <div className="relative hidden min-h-[180px] overflow-hidden border-l border-white/[0.06] bg-white/[0.015] md:block">
-                        {index === 0 && (
-                          <div className="absolute inset-0 flex items-center justify-center">
                             <motion.div
+                              className="h-1.5 w-1.5 rounded-full bg-violet-500"
                               animate={{
-                                scale: [1, 1.08, 1],
-                                rotate: [0, 2, 0],
+                                scale: [1, 1.3, 1],
+                                opacity: [0.5, 1, 0.5],
                               }}
                               transition={{
-                                duration: 4,
+                                duration: 2.5,
                                 repeat: Infinity,
-                                ease: "easeInOut",
+                                delay: index * 0.35,
                               }}
-                              className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-violet-500/30 bg-violet-500/10 shadow-[0_0_35px_rgba(124,58,237,0.12)]"
-                            >
-                              <Compass
-                                size={22}
-                                className="text-violet-400"
-                              />
-                            </motion.div>
+                            />
+                          </motion.div>
+                        </div>
 
-                            {[0, 1, 2, 3].map((node) => (
-                              <motion.div
-                                key={node}
-                                animate={{
-                                  scale: [1, 1.3, 1],
-                                  opacity: [0.3, 1, 0.3],
-                                }}
-                                transition={{
-                                  duration: 2,
-                                  repeat: Infinity,
-                                  delay: node * 0.35,
-                                }}
-                                className="absolute h-2.5 w-2.5 rounded-full bg-violet-400/60"
-                                style={{
-                                  transform: `rotate(${node * 90}deg) translateY(-52px)`,
-                                }}
-                              />
-                            ))}
-                          </div>
-                        )}
+                        {/* CONTENT */}
 
-                        {index === 1 && (
-                          <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="p-6 md:p-7">
+                          <div className="mb-4 flex items-center gap-3">
                             <motion.div
-                              animate={{ y: [0, -4, 0] }}
-                              transition={{
-                                duration: 4,
-                                repeat: Infinity,
-                                ease: "easeInOut",
+                              whileHover={{
+                                rotate: 5,
+                                scale: 1.08,
                               }}
-                              className="relative h-32 w-44 rounded-xl border border-white/[0.1] bg-[#0d0d0d] p-3 shadow-2xl"
+                              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.035] text-zinc-400 transition-all duration-500 group-hover:border-violet-500/30 group-hover:bg-violet-500/10 group-hover:text-violet-400"
                             >
-                              <div className="flex gap-1">
-                                <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                                <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                                <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                              </div>
-
-                              <div className="mt-3 flex gap-2">
-                                <div className="h-20 w-12 rounded-lg bg-violet-500/15" />
-
-                                <div className="flex flex-1 flex-col gap-2">
-                                  <div className="h-2 w-4/5 rounded-full bg-white/10" />
-                                  <div className="h-2 w-3/5 rounded-full bg-white/[0.06]" />
-
-                                  <motion.div
-                                    animate={{ opacity: [0.3, 0.8, 0.3] }}
-                                    transition={{
-                                      duration: 2,
-                                      repeat: Infinity,
-                                    }}
-                                    className="mt-1 h-9 rounded-lg border border-violet-500/20 bg-violet-500/[0.05]"
-                                  />
-                                </div>
-                              </div>
+                              <Icon size={18} strokeWidth={1.6} />
                             </motion.div>
+
+                            <span className="font-mono text-xs tracking-[0.16em] text-zinc-600">
+                              STEP {step.number}
+                            </span>
                           </div>
-                        )}
 
-                        {index === 2 && (
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-44 rounded-xl border border-white/[0.08] bg-[#0b0b0b] p-4 font-mono text-[9px] leading-4 text-zinc-600 shadow-2xl">
-                              <div className="mb-2 flex gap-1">
-                                <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                                <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                                <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
-                              </div>
+                          <h3 className="text-xl font-semibold tracking-[-0.02em] text-white transition-transform duration-500 group-hover:translate-x-1 md:text-2xl">
+                            {step.title}
+                          </h3>
 
-                              <motion.div
-                                animate={{ opacity: [0.4, 1, 0.4] }}
-                                transition={{
-                                  duration: 2,
-                                  repeat: Infinity,
-                                }}
-                                className="space-y-0.5"
-                              >
-                                <p>
-                                  <span className="text-violet-400/70">
-                                    const
-                                  </span>{" "}
-                                  website =
-                                </p>
-                                <p className="pl-2">
-                                  {"{"} modern: true,
-                                </p>
-                                <p className="pl-2">
-                                  responsive: true,
-                                </p>
-                                <p className="pl-2">
-                                  optimized: true
-                                </p>
-                                <p>{"}"}</p>
-                              </motion.div>
+                          <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
+                            {step.description}
+                          </p>
 
-                              <div className="mt-3 flex items-center gap-2">
-                                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-500" />
-                                <span className="text-zinc-700">
-                                  compiling...
-                                </span>
-                              </div>
-                            </div>
+                          <div className="mt-5 h-px w-full overflow-hidden bg-white/[0.06]">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: "30%" }}
+                              viewport={{ once: true }}
+                              transition={{
+                                duration: 0.8,
+                                delay: index * 0.1 + 0.25,
+                              }}
+                              className="h-full bg-violet-500/60 transition-all duration-700 group-hover:w-full"
+                            />
                           </div>
-                        )}
+                        </div>
 
-                        {index === 3 && (
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="relative">
+                        {/* VISUAL */}
+
+                        <div className="relative hidden min-h-[180px] overflow-hidden border-l border-white/[0.06] bg-white/[0.015] md:block">
+                          {index === 0 && (
+                            <div className="absolute inset-0 flex items-center justify-center">
                               <motion.div
                                 animate={{
-                                  scale: [1, 1.35],
-                                  opacity: [0.4, 0],
+                                  scale: [1, 1.08, 1],
+                                  rotate: [0, 2, 0],
                                 }}
                                 transition={{
-                                  duration: 2.5,
-                                  repeat: Infinity,
-                                }}
-                                className="absolute inset-0 rounded-full border border-violet-500/30"
-                              />
-
-                              <motion.div
-                                animate={{
-                                  scale: [1, 1.2],
-                                  opacity: [0.3, 0],
-                                }}
-                                transition={{
-                                  duration: 2.5,
-                                  repeat: Infinity,
-                                  delay: 0.5,
-                                }}
-                                className="absolute inset-0 rounded-full border border-violet-500/20"
-                              />
-
-                              <motion.div
-                                animate={{ y: [0, -6, 0] }}
-                                transition={{
-                                  duration: 3,
+                                  duration: 4,
                                   repeat: Infinity,
                                   ease: "easeInOut",
                                 }}
-                                className="relative flex h-16 w-16 items-center justify-center rounded-full border border-violet-500/30 bg-violet-500/10 shadow-[0_0_40px_rgba(124,58,237,0.12)]"
+                                className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-violet-500/30 bg-violet-500/10 shadow-[0_0_35px_rgba(124,58,237,0.12)]"
                               >
-                                <Rocket
-                                  size={24}
+                                <Compass
+                                  size={22}
                                   className="text-violet-400"
                                 />
                               </motion.div>
+
+                              {[0, 1, 2, 3].map((node) => (
+                                <motion.div
+                                  key={node}
+                                  animate={{
+                                    scale: [1, 1.3, 1],
+                                    opacity: [0.3, 1, 0.3],
+                                  }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    delay: node * 0.35,
+                                  }}
+                                  className="absolute h-2.5 w-2.5 rounded-full bg-violet-400/60"
+                                  style={{
+                                    transform: `rotate(${node * 90}deg) translateY(-52px)`,
+                                  }}
+                                />
+                              ))}
                             </div>
-                          </div>
-                        )}
+                          )}
+
+                          {index === 1 && (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <motion.div
+                                animate={{ y: [0, -4, 0] }}
+                                transition={{
+                                  duration: 4,
+                                  repeat: Infinity,
+                                  ease: "easeInOut",
+                                }}
+                                className="relative h-32 w-44 rounded-xl border border-white/[0.1] bg-[#0d0d0d] p-3 shadow-2xl"
+                              >
+                                <div className="flex gap-1">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                                  <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+                                  <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+                                </div>
+
+                                <div className="mt-3 flex gap-2">
+                                  <div className="h-20 w-12 rounded-lg bg-violet-500/15" />
+
+                                  <div className="flex flex-1 flex-col gap-2">
+                                    <div className="h-2 w-4/5 rounded-full bg-white/10" />
+                                    <div className="h-2 w-3/5 rounded-full bg-white/[0.06]" />
+
+                                    <motion.div
+                                      animate={{ opacity: [0.3, 0.8, 0.3] }}
+                                      transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                      }}
+                                      className="mt-1 h-9 rounded-lg border border-violet-500/20 bg-violet-500/[0.05]"
+                                    />
+                                  </div>
+                                </div>
+                              </motion.div>
+                            </div>
+                          )}
+
+                          {index === 2 && (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-44 rounded-xl border border-white/[0.08] bg-[#0b0b0b] p-4 font-mono text-[9px] leading-4 text-zinc-600 shadow-2xl">
+                                <div className="mb-2 flex gap-1">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                                  <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+                                  <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+                                </div>
+
+                                <motion.div
+                                  animate={{ opacity: [0.4, 1, 0.4] }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                  }}
+                                  className="space-y-0.5"
+                                >
+                                  <p>
+                                    <span className="text-violet-400/70">
+                                      const
+                                    </span>{" "}
+                                    website =
+                                  </p>
+                                  <p className="pl-2">
+                                    {"{"} modern: true,
+                                  </p>
+                                  <p className="pl-2">
+                                    responsive: true,
+                                  </p>
+                                  <p className="pl-2">
+                                    optimized: true
+                                  </p>
+                                  <p>{"}"}</p>
+                                </motion.div>
+
+                                <div className="mt-3 flex items-center gap-2">
+                                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-500" />
+                                  <span className="text-zinc-700">
+                                    compiling...
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {index === 3 && (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="relative">
+                                <motion.div
+                                  animate={{
+                                    scale: [1, 1.35],
+                                    opacity: [0.4, 0],
+                                  }}
+                                  transition={{
+                                    duration: 2.5,
+                                    repeat: Infinity,
+                                  }}
+                                  className="absolute inset-0 rounded-full border border-violet-500/30"
+                                />
+
+                                <motion.div
+                                  animate={{
+                                    scale: [1, 1.2],
+                                    opacity: [0.3, 0],
+                                  }}
+                                  transition={{
+                                    duration: 2.5,
+                                    repeat: Infinity,
+                                    delay: 0.5,
+                                  }}
+                                  className="absolute inset-0 rounded-full border border-violet-500/20"
+                                />
+
+                                <motion.div
+                                  animate={{ y: [0, -6, 0] }}
+                                  transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                  }}
+                                  className="relative flex h-16 w-16 items-center justify-center rounded-full border border-violet-500/30 bg-violet-500/10 shadow-[0_0_40px_rgba(124,58,237,0.12)]"
+                                >
+                                  <Rocket
+                                    size={24}
+                                    className="text-violet-400"
+                                  />
+                                </motion.div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
 
-                    {/* MOBILE */}
-                    <div className="flex items-center justify-between border-t border-white/[0.06] px-6 py-4 md:hidden">
-                      <span className="text-xs uppercase tracking-[0.18em] text-zinc-700">
-                        {index === 0 && "Analizamos"}
-                        {index === 1 && "Diseñamos"}
-                        {index === 2 && "Construimos"}
-                        {index === 3 && "Publicamos"}
-                      </span>
+                      {/* MOBILE */}
 
-                      <motion.div
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
-                        className="text-zinc-600"
-                      >
-                        <ArrowUpRight size={16} />
-                      </motion.div>
+                      <div className="flex items-center justify-between border-t border-white/[0.06] px-6 py-4 md:hidden">
+                        <span className="text-xs uppercase tracking-[0.18em] text-zinc-700">
+                          {index === 0 && "Analizamos"}
+                          {index === 1 && "Diseñamos"}
+                          {index === 2 && "Construimos"}
+                          {index === 3 && "Publicamos"}
+                        </span>
+
+                        <motion.div
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                          }}
+                          className="text-zinc-600"
+                        >
+                          <ArrowUpRight size={16} />
+                        </motion.div>
+                      </div>
                     </div>
                   </div>
 
                   {/* CHECKPOINT */}
+
                   {index < steps.length - 1 && (
                     <motion.div
                       initial={{ opacity: 0 }}
@@ -474,7 +690,10 @@ export default function Process() {
           </div>
         </div>
 
-        {/* BOTTOM */}
+        {/* ==================================================
+            BOTTOM
+        ================================================== */}
+
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}

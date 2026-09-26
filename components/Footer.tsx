@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "motion/react";
@@ -8,7 +9,6 @@ import {
   MapPin,
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import LedContour from "@/components/LedContour";
 
 const navigation = [
   { label: "Inicio", href: "#" },
@@ -26,250 +26,262 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-[#27272A] bg-[#080808]">
+    <footer className="relative overflow-hidden border-t border-white/[0.10] bg-black">
 
       {/* ================================================== */}
-      {/* FONDO ORIGINAL + ANIMACIÓN LED */}
+      {/* VIDEO DE FONDO */}
       {/* ================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 z-0">
+      <video
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover brightness-[0.9] contrast-[1.05]"
+        src="/images/video_presentacion2.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+      />
 
-        <LedContour
-          src="/images/toros-misti.png"
-          duration={30000}
-        />
-
-      </div>
-
-      {/* ================================================== */}
-      {/* CAPAS DE OSCURECIMIENTO */}
-      {/* ================================================== */}
-
-      {/* Oscurece ligeramente el dibujo para que el contenido
-          del footer siga teniendo prioridad visual */}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[#080808]/55" />
+      {/* Overlay principal:
+          suficientemente oscuro para leer el texto,
+          pero sin ocultar el video */}
+      <div className="pointer-events-none absolute inset-0 bg-black/35" />
 
       {/* Degradado superior */}
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-[#080808]/95 via-[#080808]/35 to-[#080808]/80" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-black/70" />
 
-      {/* Degradado inferior */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[45%] bg-gradient-to-t from-[#080808] via-[#080808]/45 to-transparent" />
+      {/* Degradado lateral para centrar la atención */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-black/55" />
 
-      {/* Glow violeta muy sutil para integrarlo con ALDUMA */}
-      <div className="pointer-events-none absolute left-1/2 top-0 z-[2] h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[#7C3AED]/[0.035] blur-[150px]" />
 
       {/* ================================================== */}
       {/* CONTENIDO */}
       {/* ================================================== */}
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
 
         {/* ================================================== */}
         {/* CONTENIDO PRINCIPAL */}
         {/* ================================================== */}
 
-        <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.15fr] lg:gap-12 lg:py-20">
+        <div className="grid gap-14 py-16 sm:grid-cols-2 lg:grid-cols-[1.7fr_1fr_1fr_1.15fr] lg:gap-16 lg:py-20">
 
           {/* ================================================== */}
           {/* ALDUMA */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
             <a
               href="#"
               className="group inline-flex items-center gap-3"
             >
-              <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-[#7C3AED]">
+              <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-white/[0.18] bg-black/30 backdrop-blur-sm transition-all duration-500 group-hover:border-white/40">
 
-                <span className="absolute h-4 w-4 rounded-full border-[2px] border-white/90" />
+                <span className="absolute h-[15px] w-[15px] rounded-full border-[1.5px] border-white" />
 
-                <span className="absolute h-7 w-7 rounded-full border border-white/20" />
+                <span className="absolute h-[28px] w-[28px] rounded-full border border-white/[0.20]" />
 
+                <span className="absolute h-1 w-1 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
               </span>
 
-              <span className="text-xl font-semibold tracking-[-0.04em] text-white">
+              <span className="text-[21px] font-semibold tracking-[-0.055em] text-white">
                 ALDUMA
               </span>
             </a>
 
-            <p className="mt-4 max-w-sm text-[14px] leading-6 text-[#A1A1AA]">
-              Estudio digital especializado en diseño y
-              desarrollo web. Creamos experiencias digitales
-              modernas y orientadas a resultados.
+            <p className="mt-5 max-w-[290px] text-[13px] leading-6 text-white/75">
+              Diseño y desarrollo web para marcas que quieren crecer.
             </p>
+
+            <a
+              href="#contacto"
+              className="group mt-7 inline-flex items-center gap-2 text-[13px] font-medium text-white transition-colors duration-300 hover:text-white/70"
+            >
+              Hablemos de tu proyecto
+
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
           </motion.div>
+
 
           {/* ================================================== */}
           {/* NAVEGACIÓN */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: 0.1,
-            }}
+            transition={{ duration: 0.6, delay: 0.08 }}
           >
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
               Explorar
             </p>
 
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3">
               {navigation.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex w-fit items-center gap-1.5 text-[14px] text-[#A1A1AA] transition-all duration-300 hover:translate-x-1 hover:text-white"
+                  className="group flex w-fit items-center gap-2 text-[13px] text-white/70 transition-all duration-300 hover:translate-x-1 hover:text-white"
                 >
                   <span>{item.label}</span>
 
                   <ArrowUpRight
-                    size={12}
-                    className="opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+                    size={11}
+                    className="translate-y-0.5 opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
                   />
                 </a>
               ))}
             </div>
           </motion.div>
+
 
           {/* ================================================== */}
           {/* SERVICIOS */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: 0.15,
-            }}
+            transition={{ duration: 0.6, delay: 0.14 }}
           >
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
               Servicios
             </p>
 
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3">
               {services.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex w-fit items-center gap-1.5 text-[14px] text-[#A1A1AA] transition-all duration-300 hover:translate-x-1 hover:text-white"
+                  className="group flex w-fit items-center gap-2 text-[13px] text-white/70 transition-all duration-300 hover:translate-x-1 hover:text-white"
                 >
                   <span>{item.label}</span>
 
                   <ArrowUpRight
-                    size={12}
-                    className="opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+                    size={11}
+                    className="translate-y-0.5 opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
                   />
                 </a>
               ))}
             </div>
           </motion.div>
 
+
           {/* ================================================== */}
           {/* CONTACTO */}
           {/* ================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: 0.2,
-            }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <p className="mb-6 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">
               Contacto
             </p>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
 
               {/* EMAIL */}
 
               <a
                 href="mailto:contacto@alduma.dev"
-                className="group flex items-center gap-2.5 text-[14px] text-[#A1A1AA] transition-colors duration-300 hover:text-white"
+                className="group flex items-center gap-3 text-[13px] text-white/70 transition-colors duration-300 hover:text-white"
               >
-                <Mail
-                  size={15}
-                  className="text-[#71717A] transition-colors group-hover:text-[#7C3AED]"
-                />
-
-                <span>
-                  contacto@alduma.dev
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.15] bg-black/25 backdrop-blur-sm transition-all duration-300 group-hover:border-white/30">
+                  <Mail
+                    size={14}
+                    className="text-white/60 transition-colors duration-300 group-hover:text-white"
+                  />
                 </span>
+
+                <span>contacto@alduma.dev</span>
               </a>
+
 
               {/* UBICACIÓN */}
 
-              <div className="flex items-center gap-2.5 text-[14px] text-[#A1A1AA]">
-                <MapPin
-                  size={15}
-                  className="text-[#71717A]"
-                />
-
-                <span>
-                  Arequipa, Perú
+              <div className="flex items-center gap-3 text-[13px] text-white/70">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.15] bg-black/25 backdrop-blur-sm">
+                  <MapPin
+                    size={14}
+                    className="text-white/60"
+                  />
                 </span>
+
+                <span>Arequipa, Perú</span>
               </div>
+
 
               {/* GITHUB */}
 
-              <div className="mt-1">
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.10] bg-black/20 text-[#A1A1AA] transition-all duration-300 hover:border-[#7C3AED]/50 hover:bg-[#7C3AED]/10 hover:text-white"
-                >
-                  <FaGithub size={15} />
-                </a>
-              </div>
+              <a
+                href="#"
+                aria-label="GitHub"
+                className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.15] bg-black/25 text-white/65 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-black/40 hover:text-white"
+              >
+                <FaGithub size={14} />
+              </a>
 
             </div>
           </motion.div>
+
         </div>
+
 
         {/* ================================================== */}
         {/* BOTTOM */}
         {/* ================================================== */}
 
-        <div className="border-t border-white/[0.10]">
+        <div className="border-t border-white/[0.15]">
 
-          <div className="flex min-h-[64px] flex-col justify-between gap-3 py-4 sm:flex-row sm:items-center">
+          <div className="flex min-h-[72px] flex-col justify-between gap-4 py-5 sm:flex-row sm:items-center">
 
-            {/* COPYRIGHT */}
+            <div className="flex flex-col gap-1">
+              <p className="text-[11px] text-white/50">
+                © {new Date().getFullYear()} ALDUMA
+              </p>
 
-            <p className="text-xs text-[#71717A]">
-              © {new Date().getFullYear()} ALDUMA. Todos los derechos reservados.
+              <p className="text-[10px] text-white/30">
+                Diseño · Desarrollo · Tecnología
+              </p>
+            </div>
+
+
+            <p className="hidden text-[10px] uppercase tracking-[0.2em] text-white/35 md:block">
+              Arequipa · Perú
             </p>
 
-            {/* VOLVER ARRIBA */}
 
             <motion.a
               href="#"
               whileHover={{
                 y: -3,
-                borderColor: "rgba(124,58,237,0.5)",
+                borderColor: "rgba(255,255,255,0.45)",
               }}
               whileTap={{
-                scale: 0.95,
+                scale: 0.94,
               }}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.10] bg-black/20 text-[#A1A1AA] transition-colors duration-300 hover:text-white"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.18] bg-black/25 text-white/70 backdrop-blur-sm transition-colors duration-300 hover:text-white"
               aria-label="Volver arriba"
             >
               <ArrowUp size={14} />
             </motion.a>
 
           </div>
+
         </div>
 
       </div>

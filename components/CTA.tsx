@@ -101,9 +101,7 @@ export default function CTA() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data?.error || "No se pudo enviar la solicitud."
-        );
+        throw new Error(data?.error || "No se pudo enviar la solicitud.");
       }
 
       setIsSent(true);
@@ -116,9 +114,7 @@ export default function CTA() {
       });
     } catch (error) {
       console.error("Error al enviar la solicitud:", error);
-      alert(
-        "No se pudo enviar la solicitud. Inténtalo nuevamente."
-      );
+      alert("No se pudo enviar la solicitud. Inténtalo nuevamente.");
     } finally {
       setIsSending(false);
     }
@@ -132,35 +128,411 @@ export default function CTA() {
 
       <section
         id="contacto"
-        className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] py-32 md:py-40"
+        className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] py-32 md:py-22"
       >
-        {/* GRID */}
+        {/* ==================================================
+            GRID PRINCIPAL
+        ================================================== */}
 
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        <motion.div
+          className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
+            opacity: 0.035,
+            maskImage:
+              "radial-gradient(ellipse 90% 100% at 50% 50%, black 15%, transparent 85%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 90% 100% at 50% 50%, black 15%, transparent 85%)",
+          }}
+          animate={{
+            backgroundPosition: [
+              "0px 0px",
+              "40px 40px",
+              "0px 80px",
+              "-40px 40px",
+              "0px 0px",
+            ],
+            opacity: [0.025, 0.055, 0.035, 0.06, 0.025],
+          }}
+          transition={{
+            backgroundPosition: {
+              duration: 16,
+              repeat: Infinity,
+              ease: "linear",
+            },
+            opacity: {
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
           }}
         />
 
-        {/* GLOW CENTRAL */}
+        {/* ==================================================
+            GRID SECUNDARIO
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+            backgroundSize: "160px 160px",
+            opacity: 0.018,
+            maskImage:
+              "radial-gradient(ellipse 80% 100% at 50% 50%, black, transparent 80%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 100% at 50% 50%, black, transparent 80%)",
+          }}
+          animate={{
+            backgroundPosition: [
+              "0px 0px",
+              "-80px 80px",
+              "0px 160px",
+              "80px 80px",
+              "0px 0px",
+            ],
+            opacity: [0.012, 0.035, 0.018, 0.04, 0.012],
+          }}
+          transition={{
+            backgroundPosition: {
+              duration: 24,
+              repeat: Infinity,
+              ease: "linear",
+            },
+            opacity: {
+              duration: 9,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+        />
+
+        {/* ==================================================
+            GLOW CENTRAL
+        ================================================== */}
 
         <motion.div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/[0.08] blur-[140px]"
           animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.35, 0.6, 0.35],
+            scale: [1, 1.15, 0.92, 1.12, 1],
+            x: ["-50%", "-47%", "-53%", "-48%", "-50%"],
+            y: ["-50%", "-54%", "-47%", "-52%", "-50%"],
+            opacity: [0.3, 0.6, 0.4, 0.55, 0.3],
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
 
-        <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-10">
+        {/* ==================================================
+            AURORA HORIZONTAL
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute left-[-30%] top-[25%] h-[180px] w-[160%] -rotate-[5deg] rounded-[50%]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.015) 20%, rgba(167,139,250,0.08) 40%, rgba(124,58,237,0.14) 50%, rgba(168,85,247,0.07) 65%, transparent 95%)",
+            filter: "blur(45px)",
+          }}
+          animate={{
+            x: ["-8%", "8%", "-5%", "7%", "-8%"],
+            y: [0, 25, -15, 18, 0],
+            rotate: [-5, -2, -7, -3, -5],
+            scaleY: [0.8, 1.15, 0.9, 1.1, 0.8],
+            opacity: [0.3, 0.75, 0.4, 0.65, 0.3],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            AURORA INFERIOR
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute left-[-30%] bottom-[12%] h-[170px] w-[160%] rotate-[5deg] rounded-[50%]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 5%, rgba(99,102,241,0.04) 20%, rgba(124,58,237,0.12) 40%, rgba(168,85,247,0.08) 55%, rgba(139,92,246,0.12) 70%, transparent 95%)",
+            filter: "blur(50px)",
+          }}
+          animate={{
+            x: ["7%", "-8%", "5%", "-6%", "7%"],
+            y: [0, -22, 14, -18, 0],
+            rotate: [5, 2, 7, 3, 5],
+            scaleY: [1, 0.8, 1.15, 0.9, 1],
+            opacity: [0.25, 0.65, 0.35, 0.6, 0.25],
+          }}
+          transition={{
+            duration: 21,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            LÍNEA DE LUZ SUPERIOR
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute left-[-25%] top-[20%] h-px w-[150%]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.03), rgba(167,139,250,0.28), rgba(255,255,255,0.08), transparent)",
+            boxShadow:
+              "0 0 30px rgba(139,92,246,0.08), 0 0 70px rgba(124,58,237,0.05)",
+          }}
+          animate={{
+            x: ["-10%", "10%", "-10%"],
+            opacity: [0.15, 0.7, 0.15],
+            scaleX: [0.8, 1.12, 0.8],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            LÍNEA DE LUZ CENTRAL
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute left-[-25%] top-[50%] h-px w-[150%]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.02), rgba(167,139,250,0.22), rgba(255,255,255,0.06), transparent)",
+            boxShadow: "0 0 35px rgba(124,58,237,0.07)",
+          }}
+          animate={{
+            x: ["8%", "-8%", "8%"],
+            opacity: [0.1, 0.55, 0.1],
+            scaleX: [0.9, 1.08, 0.9],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            LÍNEA DE LUZ INFERIOR
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute left-[-25%] top-[78%] h-px w-[150%]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, rgba(99,102,241,0.03), rgba(168,85,247,0.2), rgba(255,255,255,0.04), transparent)",
+            boxShadow: "0 0 35px rgba(139,92,246,0.06)",
+          }}
+          animate={{
+            x: ["-8%", "8%", "-8%"],
+            opacity: [0.1, 0.5, 0.1],
+            scaleX: [0.85, 1.1, 0.85],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            ONDA SUPERIOR
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute -left-[25%] top-[15%] h-[120px] w-[150%] rounded-[50%]"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            borderBottom: "1px solid rgba(167,139,250,0.05)",
+            boxShadow:
+              "0 -15px 50px rgba(124,58,237,0.04), 0 10px 30px rgba(255,255,255,0.02)",
+          }}
+          animate={{
+            x: ["-4%", "5%", "-3%", "4%", "-4%"],
+            y: [0, -16, 8, -10, 0],
+            scaleY: [1, 1.2, 0.9, 1.12, 1],
+            rotate: [-4, -1, -6, -2, -4],
+            opacity: [0.18, 0.55, 0.25, 0.5, 0.18],
+          }}
+          transition={{
+            duration: 13,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            ONDA INFERIOR
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute -left-[25%] bottom-[13%] h-[130px] w-[150%] rounded-[50%]"
+          style={{
+            borderTop: "1px solid rgba(139,92,246,0.06)",
+            borderBottom: "1px solid rgba(255,255,255,0.035)",
+            boxShadow:
+              "0 15px 50px rgba(124,58,237,0.04), 0 -10px 30px rgba(255,255,255,0.015)",
+          }}
+          animate={{
+            x: ["4%", "-5%", "3%", "-4%", "4%"],
+            y: [0, 18, -10, 12, 0],
+            scaleY: [1, 0.84, 1.16, 0.9, 1],
+            rotate: [4, 1, 6, 2, 4],
+            opacity: [0.15, 0.5, 0.22, 0.45, 0.15],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            GLOW IZQUIERDO
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute -left-[180px] top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.025) 0%, rgba(124,58,237,0.055) 35%, transparent 72%)",
+            filter: "blur(65px)",
+          }}
+          animate={{
+            x: [0, 70, 20, -25, 0],
+            y: [0, 30, -20, 15, 0],
+            scale: [0.9, 1.15, 0.95, 1.08, 0.9],
+            opacity: [0.3, 0.7, 0.4, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 17,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            GLOW DERECHO
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute -right-[180px] top-1/2 h-[450px] w-[450px] -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(99,102,241,0.06) 38%, transparent 72%)",
+            filter: "blur(70px)",
+          }}
+          animate={{
+            x: [0, -75, -20, -45, 0],
+            y: [0, -25, 22, -15, 0],
+            scale: [1, 0.88, 1.15, 0.96, 1],
+            opacity: [0.3, 0.65, 0.4, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* ==================================================
+            PARTÍCULAS
+        ================================================== */}
+
+        <motion.div
+          className="pointer-events-none absolute left-[12%] top-[22%] h-1 w-1 rounded-full bg-white/60"
+          style={{
+            boxShadow: "0 0 12px rgba(255,255,255,0.5)",
+          }}
+          animate={{
+            x: [0, 20, -5, 0],
+            y: [0, -30, 15, 0],
+            opacity: [0.08, 0.7, 0.15, 0.08],
+            scale: [1, 1.8, 1.2, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        <motion.div
+          className="pointer-events-none absolute left-[30%] bottom-[20%] h-1 w-1 rounded-full bg-violet-300/70"
+          style={{
+            boxShadow: "0 0 12px rgba(167,139,250,0.6)",
+          }}
+          animate={{
+            x: [0, -25, 10, 0],
+            y: [0, 20, -10, 0],
+            opacity: [0.08, 0.7, 0.15, 0.08],
+            scale: [1, 1.6, 1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+
+        <motion.div
+          className="pointer-events-none absolute left-[72%] top-[18%] h-1 w-1 rounded-full bg-white/50"
+          style={{
+            boxShadow: "0 0 12px rgba(255,255,255,0.45)",
+          }}
+          animate={{
+            x: [0, -20, 15, 0],
+            y: [0, 35, -15, 0],
+            opacity: [0.08, 0.75, 0.15, 0.08],
+            scale: [1, 1.7, 1, 1],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+
+        <motion.div
+          className="pointer-events-none absolute left-[88%] bottom-[24%] h-1 w-1 rounded-full bg-violet-300/60"
+          style={{
+            boxShadow: "0 0 12px rgba(139,92,246,0.55)",
+          }}
+          animate={{
+            x: [0, -30, 5, 0],
+            y: [0, -20, 15, 0],
+            opacity: [0.08, 0.65, 0.12, 0.08],
+            scale: [1, 1.5, 1, 1],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+        />
+
+        {/* ==================================================
+            CONTENIDO
+        ================================================== */}
+
+        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-10">
           {/* BADGE */}
 
           <motion.div
@@ -229,8 +601,7 @@ export default function CTA() {
               }}
               whileHover={{
                 scale: 1.04,
-                boxShadow:
-                  "0 0 70px rgba(124,58,237,0.28)",
+                boxShadow: "0 0 70px rgba(124,58,237,0.28)",
               }}
               whileTap={{
                 scale: 0.97,
@@ -259,7 +630,7 @@ export default function CTA() {
               duration: 1,
               delay: 0.5,
             }}
-            className="mx-auto mt-20 h-px max-w-md bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"
+            className="mx-auto mt-10 h-px max-w-md bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"
           />
         </div>
       </section>
@@ -341,10 +712,7 @@ export default function CTA() {
                       }}
                       className="mx-auto mb-7 flex h-20 w-20 items-center justify-center rounded-full border border-violet-500/20 bg-violet-500/10"
                     >
-                      <Check
-                        size={34}
-                        className="text-violet-400"
-                      />
+                      <Check size={34} className="text-violet-400" />
                     </motion.div>
 
                     <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">
@@ -352,9 +720,8 @@ export default function CTA() {
                     </h3>
 
                     <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-zinc-500">
-                      Gracias por contactarnos. Hemos recibido tu
-                      solicitud y nos pondremos en contacto contigo
-                      pronto.
+                      Gracias por contactarnos. Hemos recibido tu solicitud y
+                      nos pondremos en contacto contigo pronto.
                     </p>
 
                     <motion.button
@@ -375,9 +742,7 @@ export default function CTA() {
                       <div className="mb-4 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-violet-400">
                         <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-500" />
 
-                        {step === 3
-                          ? "Resumen"
-                          : `Paso 0${step} de 02`}
+                        {step === 3 ? "Resumen" : `Paso 0${step} de 02`}
                       </div>
 
                       <AnimatePresence mode="wait">
@@ -402,8 +767,7 @@ export default function CTA() {
                             </h3>
 
                             <p className="mt-3 text-sm leading-6 text-zinc-500">
-                              Cuéntanos qué tipo de experiencia
-                              tienes en mente.
+                              Cuéntanos qué tipo de experiencia tienes en mente.
                             </p>
                           </motion.div>
                         )}
@@ -429,8 +793,8 @@ export default function CTA() {
                             </h3>
 
                             <p className="mt-3 text-sm leading-6 text-zinc-500">
-                              Unos datos y podremos entender mejor
-                              lo que necesitas.
+                              Unos datos y podremos entender mejor lo que
+                              necesitas.
                             </p>
                           </motion.div>
                         )}
@@ -456,8 +820,8 @@ export default function CTA() {
                             </h3>
 
                             <p className="mt-3 text-sm leading-6 text-zinc-500">
-                              Todo listo. Comprueba que los datos sean
-                              correctos antes de enviarlos.
+                              Todo listo. Comprueba que los datos sean correctos
+                              antes de enviarlos.
                             </p>
                           </motion.div>
                         )}
@@ -475,8 +839,7 @@ export default function CTA() {
                           <motion.div
                             className="h-full bg-violet-500"
                             animate={{
-                              width:
-                                step >= item ? "100%" : "0%",
+                              width: step >= item ? "100%" : "0%",
                             }}
                             transition={{
                               duration: 0.4,
@@ -513,18 +876,14 @@ export default function CTA() {
                         >
                           {projectTypes.map((project) => {
                             const Icon = project.icon;
-                            const selected =
-                              form.type === project.id;
+                            const selected = form.type === project.id;
 
                             return (
                               <motion.button
                                 key={project.id}
                                 type="button"
                                 onClick={() =>
-                                  updateForm(
-                                    "type",
-                                    project.id
-                                  )
+                                  updateForm("type", project.id)
                                 }
                                 whileHover={{ x: 4 }}
                                 whileTap={{ scale: 0.99 }}
@@ -541,10 +900,7 @@ export default function CTA() {
                                       : "border-white/[0.07] bg-white/[0.03] text-zinc-500 group-hover:text-zinc-300"
                                   }`}
                                 >
-                                  <Icon
-                                    size={20}
-                                    strokeWidth={1.6}
-                                  />
+                                  <Icon size={20} strokeWidth={1.6} />
                                 </div>
 
                                 <div className="flex-1">
@@ -564,9 +920,7 @@ export default function CTA() {
                                       : "border-white/[0.12]"
                                   }`}
                                 >
-                                  {selected && (
-                                    <Check size={12} />
-                                  )}
+                                  {selected && <Check size={12} />}
                                 </div>
                               </motion.button>
                             );
@@ -628,10 +982,7 @@ export default function CTA() {
                               required
                               value={form.name}
                               onChange={(e) =>
-                                updateForm(
-                                  "name",
-                                  e.target.value
-                                )
+                                updateForm("name", e.target.value)
                               }
                               placeholder="Tu nombre"
                               className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3.5 text-sm text-white outline-none transition-all placeholder:text-zinc-700 focus:border-violet-500/40 focus:bg-white/[0.04] focus:ring-1 focus:ring-violet-500/20"
@@ -656,10 +1007,7 @@ export default function CTA() {
                                 type="email"
                                 value={form.email}
                                 onChange={(e) =>
-                                  updateForm(
-                                    "email",
-                                    e.target.value
-                                  )
+                                  updateForm("email", e.target.value)
                                 }
                                 placeholder="tu@email.com"
                                 className="w-full rounded-xl border border-white/[0.08] bg-white/[0.025] py-3.5 pl-11 pr-4 text-sm text-white outline-none transition-all placeholder:text-zinc-700 focus:border-violet-500/40 focus:bg-white/[0.04] focus:ring-1 focus:ring-violet-500/20"
@@ -678,10 +1026,7 @@ export default function CTA() {
                               required
                               value={form.message}
                               onChange={(e) =>
-                                updateForm(
-                                  "message",
-                                  e.target.value
-                                )
+                                updateForm("message", e.target.value)
                               }
                               rows={4}
                               placeholder="¿Qué tienes en mente? No necesitas tenerlo todo definido."

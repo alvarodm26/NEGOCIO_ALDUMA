@@ -60,78 +60,147 @@ const items = [...technologies, ...technologies];
 
 export default function Technologies() {
   return (
-    <section
-      className="relative isolate overflow-hidden border-y border-[#27272A]/70 bg-[#080808] py-16 lg:py-20"
-    >
-      {/* ================================================== */}
-      {/* GRID DE FONDO */}
-      {/* ================================================== */}
+    <section className="relative isolate overflow-hidden border-y border-blue-400/[0.08] bg-[#050B16] py-16 lg:py-20">
+      {/* ==================================================
+          FONDO BASE
+      ================================================== */}
 
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+      <div className="pointer-events-none absolute inset-0 -z-50 bg-[#050B16]" />
+
+      {/* ==================================================
+          GRID AZUL — MISMO CONCEPTO DEL CTA
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute inset-0 -z-40"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
+          backgroundImage: `
+            linear-gradient(rgba(37,99,235,0.16) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37,99,235,0.16) 1px, transparent 1px)
+          `,
+          backgroundSize: "72px 72px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 20%, transparent 82%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 20%, transparent 82%)",
+        }}
+        animate={{
+          backgroundPosition: [
+            "0px 0px",
+            "36px 36px",
+            "0px 72px",
+            "-36px 36px",
+            "0px 0px",
+          ],
+          opacity: [0.35, 0.65, 0.45, 0.7, 0.35],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
       />
 
-      {/* ================================================== */}
-      {/* LÍNEAS DIAGONALES */}
-      {/* ================================================== */}
+      {/* ==================================================
+          GRID SECUNDARIO — MOVIMIENTO INVERSO
+      ================================================== */}
 
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.018]"
+      <motion.div
+        className="pointer-events-none absolute inset-0 -z-40"
         style={{
-          backgroundImage:
-            "linear-gradient(135deg, transparent 49.5%, #ffffff 50%, transparent 50.5%)",
+          backgroundImage: `
+            linear-gradient(rgba(34,211,238,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(34,211,238,0.08) 1px, transparent 1px)
+          `,
           backgroundSize: "140px 140px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 5%, transparent 72%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 5%, transparent 72%)",
+        }}
+        animate={{
+          backgroundPosition: [
+            "0px 0px",
+            "-70px 70px",
+            "0px 140px",
+            "70px 70px",
+            "0px 0px",
+          ],
+          opacity: [0.2, 0.5, 0.25, 0.45, 0.2],
+        }}
+        transition={{
+          duration: 24,
+          repeat: Infinity,
+          ease: "linear",
         }}
       />
 
-      {/* ================================================== */}
-      {/* GLOW CENTRAL */}
-      {/* ================================================== */}
+      {/* ==================================================
+          AURORA AZUL CENTRAL
+      ================================================== */}
 
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/[0.07] blur-[140px]"
+        className="pointer-events-none absolute left-[-35%] top-[10%] -z-30 h-[45%] w-[170%] rotate-[-7deg]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 4%, rgba(6,182,212,0.025) 15%, rgba(14,165,233,0.12) 30%, rgba(37,99,235,0.20) 44%, rgba(99,102,241,0.18) 58%, rgba(34,211,238,0.11) 72%, rgba(59,130,246,0.05) 85%, transparent 97%)",
+          filter: "blur(55px)",
+        }}
         animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.3, 0.55, 0.3],
+          x: ["-10%", "10%", "-6%", "8%", "-10%"],
+          y: [0, 30, -15, 20, 0],
+          rotate: [-7, -3, -9, -4, -7],
+          scaleY: [0.85, 1.15, 0.9, 1.1, 0.85],
+          opacity: [0.65, 1, 0.75, 1, 0.65],
         }}
         transition={{
-          duration: 8,
+          duration: 18,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      {/* ================================================== */}
-      {/* GLOW IZQUIERDO */}
-      {/* ================================================== */}
+      {/* ==================================================
+          AURORA INFERIOR
+      ================================================== */}
 
       <motion.div
-        className="pointer-events-none absolute -left-40 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-violet-600/[0.04] blur-[120px]"
+        className="pointer-events-none absolute right-[-40%] bottom-[-5%] -z-30 h-[50%] w-[180%] rotate-[8deg]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent 3%, rgba(79,70,229,0.04) 18%, rgba(37,99,235,0.14) 32%, rgba(59,130,246,0.20) 47%, rgba(34,211,238,0.12) 61%, rgba(99,102,241,0.18) 76%, rgba(37,99,235,0.06) 90%, transparent 98%)",
+          filter: "blur(60px)",
+        }}
         animate={{
-          x: [0, 80, 0],
-          opacity: [0.25, 0.5, 0.25],
+          x: ["10%", "-10%", "5%", "-8%", "10%"],
+          y: [0, -30, 15, -20, 0],
+          rotate: [8, 3, 10, 4, 8],
+          scaleY: [1, 0.78, 1.12, 0.9, 1],
+          opacity: [0.6, 0.95, 0.7, 1, 0.6],
         }}
         transition={{
-          duration: 12,
+          duration: 21,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      {/* ================================================== */}
-      {/* GLOW DERECHO */}
-      {/* ================================================== */}
+      {/* ==================================================
+          GLOW CENTRAL
+      ================================================== */}
 
       <motion.div
-        className="pointer-events-none absolute -right-40 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-violet-600/[0.04] blur-[120px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-30 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, rgba(34,211,238,0.08) 28%, rgba(79,70,229,0.07) 48%, transparent 72%)",
+          filter: "blur(75px)",
+        }}
         animate={{
-          x: [0, -80, 0],
-          opacity: [0.25, 0.5, 0.25],
+          scale: [0.8, 1.18, 0.9, 1.12, 0.8],
+          x: ["-5%", "6%", "-3%", "5%", "-5%"],
+          y: ["2%", "-4%", "4%", "-3%", "2%"],
+          opacity: [0.5, 0.95, 0.6, 0.9, 0.5],
         }}
         transition={{
           duration: 14,
@@ -140,12 +209,231 @@ export default function Technologies() {
         }}
       />
 
-      {/* ================================================== */}
-      {/* CONTENIDO */}
-      {/* ================================================== */}
+      {/* ==================================================
+          ONDA SUPERIOR
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-[25%] top-[12%] -z-20 h-[130px] w-[150%] rounded-[50%]"
+        style={{
+          borderTop: "1px solid rgba(34,211,238,0.20)",
+          borderBottom: "1px solid rgba(59,130,246,0.10)",
+          boxShadow:
+            "0 -15px 55px rgba(34,211,238,0.08), 0 10px 35px rgba(37,99,235,0.05)",
+        }}
+        animate={{
+          x: ["-5%", "6%", "-4%", "5%", "-5%"],
+          y: [0, -20, 10, -14, 0],
+          scaleY: [1, 1.28, 0.86, 1.18, 1],
+          rotate: [-5, -1, -7, -2, -5],
+          opacity: [0.3, 0.9, 0.4, 0.8, 0.3],
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          ONDA INFERIOR
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-[25%] bottom-[10%] -z-20 h-[140px] w-[150%] rounded-[50%]"
+        style={{
+          borderTop: "1px solid rgba(99,102,241,0.15)",
+          borderBottom: "1px solid rgba(34,211,238,0.12)",
+          boxShadow:
+            "0 15px 55px rgba(79,70,229,0.07), 0 -10px 35px rgba(34,211,238,0.04)",
+        }}
+        animate={{
+          x: ["5%", "-6%", "4%", "-5%", "5%"],
+          y: [0, 22, -12, 16, 0],
+          scaleY: [1, 0.8, 1.2, 0.88, 1],
+          rotate: [5, 1, 7, 2, 5],
+          opacity: [0.28, 0.8, 0.38, 0.72, 0.28],
+        }}
+        transition={{
+          duration: 13,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          LÍNEAS DE LUZ
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute left-[-30%] top-[34%] -z-10 h-px w-[160%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(34,211,238,0.05), rgba(56,189,248,0.40), rgba(96,165,250,0.20), rgba(129,140,248,0.30), transparent)",
+          boxShadow:
+            "0 0 25px rgba(34,211,238,0.14), 0 0 70px rgba(37,99,235,0.10)",
+        }}
+        animate={{
+          x: ["-12%", "12%", "-12%"],
+          opacity: [0.12, 0.9, 0.12],
+          scaleX: [0.8, 1.12, 0.8],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <motion.div
+        className="pointer-events-none absolute left-[-30%] top-[70%] -z-10 h-px w-[160%]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.06), rgba(37,99,235,0.30), rgba(34,211,238,0.22), transparent)",
+          boxShadow: "0 0 40px rgba(37,99,235,0.10)",
+        }}
+        animate={{
+          x: ["12%", "-10%", "12%"],
+          opacity: [0.1, 0.75, 0.1],
+          scaleX: [0.85, 1.1, 0.85],
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW IZQUIERDO
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -left-[180px] top-1/2 -z-20 h-[420px] w-[420px] -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(6,182,212,0.16) 0%, rgba(14,116,144,0.07) 35%, transparent 72%)",
+          filter: "blur(65px)",
+        }}
+        animate={{
+          x: [0, 90, 20, -35, 0],
+          y: [0, 35, -25, 15, 0],
+          scale: [0.9, 1.18, 0.95, 1.1, 0.9],
+          opacity: [0.45, 0.95, 0.55, 0.85, 0.45],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          GLOW DERECHO
+      ================================================== */}
+
+      <motion.div
+        className="pointer-events-none absolute -right-[180px] top-1/2 -z-20 h-[450px] w-[450px] -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(79,70,229,0.08) 38%, transparent 72%)",
+          filter: "blur(70px)",
+        }}
+        animate={{
+          x: [0, -85, -20, -50, 0],
+          y: [0, -30, 25, -15, 0],
+          scale: [1, 0.86, 1.18, 0.95, 1],
+          opacity: [0.45, 0.9, 0.55, 0.85, 0.45],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* ==================================================
+          PARTÍCULAS
+      ================================================== */}
+
+      {[
+        {
+          left: "10%",
+          top: "20%",
+          color: "bg-cyan-300",
+          shadow: "0 0 14px rgba(34,211,238,0.8)",
+          duration: 6,
+          delay: 0,
+        },
+        {
+          left: "24%",
+          top: "70%",
+          color: "bg-blue-300",
+          shadow: "0 0 14px rgba(59,130,246,0.8)",
+          duration: 8,
+          delay: 1,
+        },
+        {
+          left: "42%",
+          top: "25%",
+          color: "bg-indigo-300",
+          shadow: "0 0 14px rgba(129,140,248,0.8)",
+          duration: 7,
+          delay: 2,
+        },
+        {
+          left: "58%",
+          top: "76%",
+          color: "bg-cyan-200",
+          shadow: "0 0 14px rgba(34,211,238,0.8)",
+          duration: 9,
+          delay: 1.5,
+        },
+        {
+          left: "74%",
+          top: "18%",
+          color: "bg-blue-300",
+          shadow: "0 0 14px rgba(59,130,246,0.8)",
+          duration: 7,
+          delay: 3,
+        },
+        {
+          left: "88%",
+          top: "68%",
+          color: "bg-indigo-300",
+          shadow: "0 0 14px rgba(129,140,248,0.8)",
+          duration: 10,
+          delay: 2.5,
+        },
+      ].map((particle, index) => (
+        <motion.div
+          key={index}
+          className={`pointer-events-none absolute -z-10 h-1 w-1 rounded-full ${particle.color}`}
+          style={{
+            left: particle.left,
+            top: particle.top,
+            boxShadow: particle.shadow,
+          }}
+          animate={{
+            x: [0, 25, -10, 0],
+            y: [0, -30, 15, 0],
+            opacity: [0.1, 0.95, 0.2, 0.1],
+            scale: [1, 1.8, 1.1, 1],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: particle.delay,
+          }}
+        />
+      ))}
+
+      {/* ==================================================
+          CONTENIDO
+      ================================================== */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-
         {/* TÍTULO */}
 
         <motion.p
@@ -153,7 +441,7 @@ export default function Technologies() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10 text-center text-sm font-medium uppercase tracking-[0.2em] text-[#71717A]"
+          className="mb-10 text-center text-sm font-medium uppercase tracking-[0.2em] text-cyan-300/70"
         >
           Tecnologías con las que trabajamos
         </motion.p>
@@ -161,22 +449,41 @@ export default function Technologies() {
         {/* MARQUEE */}
 
         <div className="relative overflow-hidden">
-
           {/* FADE IZQUIERDO */}
 
-          <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-24 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-transparent lg:w-32" />
+          <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-24 bg-gradient-to-r from-[#050B16] via-[#050B16]/85 to-transparent lg:w-32" />
 
           {/* FADE DERECHO */}
 
-          <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-24 bg-gradient-to-l from-[#080808] via-[#080808]/80 to-transparent lg:w-32" />
+          <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-24 bg-gradient-to-l from-[#050B16] via-[#050B16]/85 to-transparent lg:w-32" />
 
           {/* LÍNEA SUPERIOR */}
 
-          <div className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#2A2A2E] to-transparent" />
+          <motion.div
+            className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
+            animate={{
+              opacity: [0.25, 0.8, 0.25],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
 
           {/* LÍNEA INFERIOR */}
 
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2A2A2E] to-transparent" />
+          <motion.div
+            className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"
+            animate={{
+              opacity: [0.2, 0.75, 0.2],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
 
           {/* CONTENEDOR MARQUEE */}
 
@@ -198,20 +505,29 @@ export default function Technologies() {
                 <motion.div
                   key={`${technology.name}-${index}`}
                   whileHover={{
-                    y: -4,
-                    scale: 1.025,
+                    y: -5,
+                    scale: 1.03,
                   }}
                   transition={{
                     type: "spring",
                     stiffness: 400,
                     damping: 22,
                   }}
-                  className="group relative flex h-[64px] items-center gap-3 rounded-2xl border border-white/[0.07] bg-[#0D0D0F]/90 px-5 backdrop-blur-xl transition-all duration-300 hover:border-[#7C3AED]/25 hover:bg-[#111114]"
+                  className="group relative flex h-[64px] items-center gap-3 overflow-hidden rounded-2xl border border-white/[0.07] bg-[#09111F]/90 px-5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/20 hover:bg-[#0D1726]"
                 >
+                  {/* GLOW INTERNO */}
+
+                  <motion.div
+                    className="pointer-events-none absolute -inset-8 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-20"
+                    style={{
+                      backgroundColor: technology.color,
+                    }}
+                  />
+
                   {/* ICONO */}
 
                   <div
-                    className="flex h-9 w-9 items-center justify-center rounded-xl"
+                    className="relative z-10 flex h-9 w-9 items-center justify-center rounded-xl"
                     style={{
                       backgroundColor: `${technology.color}10`,
                     }}
@@ -227,22 +543,18 @@ export default function Technologies() {
 
                   {/* NOMBRE */}
 
-                  <span className="whitespace-nowrap text-[15px] font-medium tracking-[-0.01em] text-[#A1A1AA] transition-colors duration-300 group-hover:text-white">
+                  <span className="relative z-10 whitespace-nowrap text-[15px] font-medium tracking-[-0.01em] text-[#A1A1AA] transition-colors duration-300 group-hover:text-white">
                     {technology.name}
                   </span>
 
-                  {/* GLOW */}
-
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-[0.08]"
-                    style={{
-                      backgroundColor: technology.color,
-                    }}
-                  />
-
                   {/* BORDE INFERIOR */}
 
-                  <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-[#7C3AED] transition-all duration-500 group-hover:w-1/2" />
+                  <motion.div
+                    className="pointer-events-none absolute bottom-0 left-1/2 h-px -translate-x-1/2 bg-cyan-400"
+                    initial={{ width: 0 }}
+                    whileHover={{ width: "50%" }}
+                    transition={{ duration: 0.4 }}
+                  />
                 </motion.div>
               );
             })}
@@ -252,4 +564,3 @@ export default function Technologies() {
     </section>
   );
 }
-
