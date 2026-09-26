@@ -48,399 +48,136 @@ export default function Process() {
       className="relative isolate overflow-hidden border-y border-[#3D321C]/70 bg-[#080705] py-20 lg:py-24"
     >
       {/* ========================================================= */}
-      {/* FONDO BASE                                                 */}
+      {/* FONDO BASE                                                */}
       {/* ========================================================= */}
 
       <div className="pointer-events-none absolute inset-0 -z-50 bg-[#080705]" />
 
       {/* ========================================================= */}
-      {/* GRID PRINCIPAL ANIMADO                                    */}
+      {/* GRID PRINCIPAL ESTÁTICO                                   */}
       {/* ========================================================= */}
 
-      <motion.div
+      <div
         className="pointer-events-none absolute inset-0 -z-40"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(217,158,48,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(217,158,48,0.16) 1px, transparent 1px)",
+            "linear-gradient(rgba(217,158,48,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(217,158,48,0.12) 1px, transparent 1px)",
           backgroundSize: "72px 72px",
           maskImage:
             "radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 88%)",
           WebkitMaskImage:
             "radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 88%)",
         }}
-        animate={{
-          backgroundPosition: [
-            "0px 0px",
-            "36px 36px",
-            "0px 72px",
-            "-36px 36px",
-            "0px 0px",
-          ],
-          opacity: [0.25, 0.65, 0.35, 0.7, 0.25],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
       />
 
       {/* ========================================================= */}
-      {/* GRID SECUNDARIO                                           */}
+      {/* GRID SECUNDARIO ESTÁTICO                                  */}
       {/* ========================================================= */}
 
-      <motion.div
+      <div
         className="pointer-events-none absolute inset-0 -z-40"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(245,183,65,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(245,183,65,0.10) 1px, transparent 1px)",
+            "linear-gradient(rgba(245,183,65,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(245,183,65,0.055) 1px, transparent 1px)",
           backgroundSize: "140px 140px",
           maskImage:
             "radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 82%)",
           WebkitMaskImage:
             "radial-gradient(ellipse 85% 75% at 50% 50%, black 15%, transparent 82%)",
         }}
-        animate={{
-          backgroundPosition: [
-            "0px 0px",
-            "-70px 70px",
-            "-140px 0px",
-            "-70px -70px",
-            "0px 0px",
-          ],
-          opacity: [0.15, 0.4, 0.2, 0.45, 0.15],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "linear",
-        }}
       />
 
       {/* ========================================================= */}
-      {/* LÍNEAS DIAGONALES                                        */}
+      {/* LÍNEAS DIAGONALES ESTÁTICAS                               */}
       {/* ========================================================= */}
 
-      <motion.div
+      <div
         className="pointer-events-none absolute inset-0 -z-40"
         style={{
           backgroundImage:
-            "linear-gradient(135deg, transparent 49.5%, rgba(217,158,48,0.13) 50%, transparent 50.5%)",
+            "linear-gradient(135deg, transparent 49.5%, rgba(217,158,48,0.08) 50%, transparent 50.5%)",
           backgroundSize: "160px 160px",
           maskImage:
             "radial-gradient(ellipse 85% 80% at 50% 50%, black 15%, transparent 85%)",
           WebkitMaskImage:
             "radial-gradient(ellipse 85% 80% at 50% 50%, black 15%, transparent 85%)",
         }}
-        animate={{
-          backgroundPosition: [
-            "0px 0px",
-            "160px 160px",
-            "0px 320px",
-          ],
-          opacity: [0.15, 0.5, 0.15],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "linear",
-        }}
       />
 
       {/* ========================================================= */}
-      {/* AURORA SUPERIOR                                          */}
+      {/* GLOW SUPERIOR ESTÁTICO                                    */}
       {/* ========================================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-[-22%] -z-30 h-[540px] w-[1100px] -translate-x-1/2 rotate-[-8deg] rounded-full blur-[55px]"
+      <div
+        className="pointer-events-none absolute left-1/2 top-[-22%] -z-30 h-[500px] w-[1050px] -translate-x-1/2 rotate-[-8deg] rounded-full blur-[90px]"
         style={{
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(120,78,15,0.20) 12%, rgba(180,120,25,0.38) 28%, rgba(245,183,65,0.28) 45%, rgba(217,158,48,0.40) 58%, rgba(150,95,15,0.25) 76%, transparent 100%)",
-        }}
-        animate={{
-          x: ["-12%", "10%", "-5%", "12%", "-12%"],
-          y: [0, 55, -30, 35, 0],
-          rotate: [-8, -2, -12, -4, -8],
-          scaleX: [1, 1.12, 0.92, 1.08, 1],
-          scaleY: [1, 1.18, 0.9, 1.12, 1],
-          opacity: [0.55, 0.95, 0.65, 1, 0.55],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "linear-gradient(90deg, transparent 0%, rgba(120,78,15,0.12) 15%, rgba(180,120,25,0.22) 30%, rgba(245,183,65,0.16) 48%, rgba(217,158,48,0.22) 62%, rgba(150,95,15,0.12) 78%, transparent 100%)",
         }}
       />
 
       {/* ========================================================= */}
-      {/* AURORA INFERIOR                                          */}
+      {/* GLOW INFERIOR ESTÁTICO                                    */}
       {/* ========================================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute bottom-[-28%] left-1/2 -z-30 h-[500px] w-[1000px] -translate-x-1/2 rounded-full blur-[60px]"
+      <div
+        className="pointer-events-none absolute bottom-[-28%] left-1/2 -z-30 h-[460px] w-[950px] -translate-x-1/2 rounded-full blur-[100px]"
         style={{
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(120,78,15,0.18) 15%, rgba(180,120,25,0.32) 32%, rgba(245,183,65,0.24) 50%, rgba(170,105,18,0.36) 68%, rgba(90,55,10,0.20) 85%, transparent 100%)",
-        }}
-        animate={{
-          x: ["10%", "-12%", "7%", "-5%", "10%"],
-          y: [0, -55, 30, -35, 0],
-          rotate: [4, -7, 9, -4, 4],
-          scaleX: [1, 1.15, 0.9, 1.12, 1],
-          scaleY: [1, 0.88, 1.16, 0.92, 1],
-          opacity: [0.45, 0.9, 0.55, 0.85, 0.45],
-        }}
-        transition={{
-          duration: 17,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "linear-gradient(90deg, transparent 0%, rgba(120,78,15,0.10) 15%, rgba(180,120,25,0.18) 32%, rgba(245,183,65,0.12) 50%, rgba(170,105,18,0.20) 68%, rgba(90,55,10,0.10) 85%, transparent 100%)",
         }}
       />
 
       {/* ========================================================= */}
-      {/* GLOW CENTRAL                                             */}
+      {/* GLOW CENTRAL ESTÁTICO                                     */}
       {/* ========================================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-30 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[75px]"
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-30 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(245,183,65,0.30) 0%, rgba(217,158,48,0.20) 25%, rgba(160,100,20,0.14) 45%, rgba(90,55,10,0.08) 60%, transparent 75%)",
-        }}
-        animate={{
-          scale: [0.75, 1.2, 0.85, 1.15, 0.75],
-          x: [0, 70, -50, 35, 0],
-          y: [0, -45, 40, -20, 0],
-          opacity: [0.35, 0.85, 0.45, 0.75, 0.35],
-        }}
-        transition={{
-          duration: 11,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "radial-gradient(circle, rgba(245,183,65,0.14) 0%, rgba(217,158,48,0.09) 28%, rgba(160,100,20,0.05) 48%, transparent 72%)",
         }}
       />
 
       {/* ========================================================= */}
-      {/* ONDA SUPERIOR                                             */}
+      {/* ONDAS ESTÁTICAS                                           */}
       {/* ========================================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-[5%] -z-30 h-[230px] w-[850px] -translate-x-1/2 rounded-[50%] border border-[#D99E30]/20 shadow-[0_0_70px_rgba(217,158,48,0.10),inset_0_0_50px_rgba(217,158,48,0.05)]"
-        animate={{
-          rotate: [0, 4, -3, 2, 0],
-          scaleX: [1, 1.12, 0.92, 1.08, 1],
-          scaleY: [1, 0.9, 1.12, 0.95, 1],
-          y: [0, 25, -18, 12, 0],
-          opacity: [0.35, 0.8, 0.4, 0.75, 0.35],
-        }}
-        transition={{
-          duration: 13,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="pointer-events-none absolute left-1/2 top-[5%] -z-30 h-[230px] w-[850px] -translate-x-1/2 rounded-[50%] border border-[#D99E30]/15 shadow-[0_0_55px_rgba(217,158,48,0.05),inset_0_0_40px_rgba(217,158,48,0.025)]" />
 
-      {/* ONDA SUPERIOR INTERNA */}
+      <div className="pointer-events-none absolute left-1/2 top-[11%] -z-30 h-[140px] w-[600px] -translate-x-1/2 rounded-[50%] border border-[#F5B741]/[0.07]" />
 
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-[11%] -z-30 h-[140px] w-[600px] -translate-x-1/2 rounded-[50%] border border-[#F5B741]/10"
-        animate={{
-          rotate: [0, -3, 3, 0],
-          scaleX: [1, 0.88, 1.1, 1],
-          y: [0, -15, 18, 0],
-          opacity: [0.2, 0.6, 0.25, 0.2],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="pointer-events-none absolute bottom-[4%] left-1/2 -z-30 h-[210px] w-[820px] -translate-x-1/2 rounded-[50%] border border-[#B87918]/15 shadow-[0_0_55px_rgba(180,120,25,0.04),inset_0_0_40px_rgba(217,158,48,0.025)]" />
+
+      <div className="pointer-events-none absolute bottom-[10%] left-1/2 -z-30 h-[120px] w-[580px] -translate-x-1/2 rounded-[50%] border border-[#F5B741]/[0.06]" />
 
       {/* ========================================================= */}
-      {/* ONDA INFERIOR                                             */}
+      {/* LÍNEAS DE LUZ ESTÁTICAS                                   */}
       {/* ========================================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute bottom-[4%] left-1/2 -z-30 h-[210px] w-[820px] -translate-x-1/2 rounded-[50%] border border-[#B87918]/20 shadow-[0_0_70px_rgba(180,120,25,0.08),inset_0_0_50px_rgba(217,158,48,0.04)]"
-        animate={{
-          rotate: [0, -4, 3, -2, 0],
-          scaleX: [1, 0.9, 1.13, 0.94, 1],
-          scaleY: [1, 1.12, 0.9, 1.08, 1],
-          y: [0, -25, 20, -10, 0],
-          opacity: [0.25, 0.7, 0.35, 0.65, 0.25],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="pointer-events-none absolute left-1/2 top-[28%] -z-20 h-px w-[78%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#F5B741]/25 to-transparent" />
 
-      {/* ONDA INFERIOR INTERNA */}
-
-      <motion.div
-        className="pointer-events-none absolute bottom-[10%] left-1/2 -z-30 h-[120px] w-[580px] -translate-x-1/2 rounded-[50%] border border-[#F5B741]/10"
-        animate={{
-          rotate: [0, 3, -3, 0],
-          scaleX: [1, 1.12, 0.9, 1],
-          y: [0, 15, -18, 0],
-          opacity: [0.15, 0.55, 0.2, 0.15],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="pointer-events-none absolute bottom-[27%] left-1/2 -z-20 h-px w-[72%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#D99E30]/20 to-transparent" />
 
       {/* ========================================================= */}
-      {/* LÍNEAS DE LUZ                                            */}
+      {/* GLOWS LATERALES ESTÁTICOS                                 */}
       {/* ========================================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-[28%] -z-20 h-px w-[78%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#F5B741]/40 to-transparent shadow-[0_0_12px_rgba(245,183,65,0.25)]"
-        animate={{
-          scaleX: [0.5, 1, 0.7, 1, 0.5],
-          opacity: [0.15, 0.8, 0.25, 0.65, 0.15],
-          y: [0, 8, -5, 5, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="pointer-events-none absolute -left-[220px] top-[18%] -z-20 h-[500px] w-[500px] rounded-full bg-[#C68A20]/[0.08] blur-[160px]" />
 
-      <motion.div
-        className="pointer-events-none absolute bottom-[27%] left-1/2 -z-20 h-px w-[72%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#D99E30]/35 to-transparent shadow-[0_0_12px_rgba(217,158,48,0.20)]"
-        animate={{
-          scaleX: [0.6, 1, 0.45, 0.9, 0.6],
-          opacity: [0.1, 0.7, 0.2, 0.6, 0.1],
-          y: [0, -7, 5, -4, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="pointer-events-none absolute -right-[220px] bottom-[8%] -z-20 h-[480px] w-[480px] rounded-full bg-[#9A6414]/[0.09] blur-[160px]" />
 
       {/* ========================================================= */}
-      {/* GLOW IZQUIERDO                                           */}
+      {/* LÍNEAS VERTICALES ESTÁTICAS                               */}
       {/* ========================================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute -left-[220px] top-[18%] -z-20 h-[520px] w-[520px] rounded-full bg-[#C68A20]/[0.16] blur-[140px]"
-        animate={{
-          x: [0, 160, 60, -30, 0],
-          y: [0, 90, -55, 40, 0],
-          scale: [1, 1.2, 0.9, 1.12, 1],
-          opacity: [0.4, 0.9, 0.5, 0.8, 0.4],
-        }}
-        transition={{
-          duration: 16,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="pointer-events-none absolute left-[12%] top-[-10%] -z-20 h-[120%] w-px bg-gradient-to-b from-transparent via-[#D99E30]/15 to-transparent" />
+
+      <div className="pointer-events-none absolute right-[14%] top-[-10%] -z-20 h-[120%] w-px bg-gradient-to-b from-transparent via-[#F5B741]/12 to-transparent" />
 
       {/* ========================================================= */}
-      {/* GLOW DERECHO                                             */}
-      {/* ========================================================= */}
-
-      <motion.div
-        className="pointer-events-none absolute -right-[220px] bottom-[8%] -z-20 h-[500px] w-[500px] rounded-full bg-[#9A6414]/[0.17] blur-[140px]"
-        animate={{
-          x: [0, -150, -45, -100, 0],
-          y: [0, -90, 55, -35, 0],
-          scale: [1, 0.88, 1.18, 0.94, 1],
-          opacity: [0.35, 0.85, 0.5, 0.75, 0.35],
-        }}
-        transition={{
-          duration: 19,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* ========================================================= */}
-      {/* LÍNEAS VERTICALES                                        */}
-      {/* ========================================================= */}
-
-      <motion.div
-        className="pointer-events-none absolute left-[12%] top-[-10%] -z-20 h-[120%] w-px bg-gradient-to-b from-transparent via-[#D99E30]/25 to-transparent"
-        animate={{
-          opacity: [0.15, 0.65, 0.15],
-          x: [0, 14, 0],
-        }}
-        transition={{
-          duration: 11,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      <motion.div
-        className="pointer-events-none absolute right-[14%] top-[-10%] -z-20 h-[120%] w-px bg-gradient-to-b from-transparent via-[#F5B741]/20 to-transparent"
-        animate={{
-          opacity: [0.1, 0.55, 0.1],
-          x: [0, -12, 0],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
-
-      {/* ========================================================= */}
-      {/* PARTÍCULAS                                               */}
-      {/* ========================================================= */}
-
-      {[
-        { left: "8%", top: "18%", size: 3, duration: 4, delay: 0 },
-        { left: "15%", top: "70%", size: 2, duration: 6, delay: 1 },
-        { left: "27%", top: "30%", size: 2, duration: 5, delay: 2 },
-        { left: "36%", top: "78%", size: 3, duration: 7, delay: 0.5 },
-        { left: "46%", top: "17%", size: 2, duration: 5, delay: 1.5 },
-        { left: "53%", top: "68%", size: 2, duration: 6, delay: 2 },
-        { left: "64%", top: "27%", size: 3, duration: 4, delay: 0.5 },
-        { left: "72%", top: "80%", size: 2, duration: 7, delay: 1 },
-        { left: "83%", top: "20%", size: 3, duration: 5, delay: 2.5 },
-        { left: "91%", top: "60%", size: 2, duration: 6, delay: 1 },
-        { left: "76%", top: "45%", size: 1.5, duration: 5, delay: 3 },
-        { left: "20%", top: "45%", size: 1.5, duration: 8, delay: 1.5 },
-      ].map((particle, index) => (
-        <motion.div
-          key={index}
-          className="pointer-events-none absolute -z-10 rounded-full bg-[#F5C35B]"
-          style={{
-            left: particle.left,
-            top: particle.top,
-            width: particle.size,
-            height: particle.size,
-            boxShadow:
-              "0 0 8px rgba(245,195,91,0.9), 0 0 18px rgba(217,158,48,0.5)",
-          }}
-          animate={{
-            y: [0, -35, 15, -20, 0],
-            x: [0, 15, -12, 8, 0],
-            opacity: [0.15, 1, 0.3, 0.85, 0.15],
-            scale: [1, 1.8, 0.7, 1.4, 1],
-          }}
-          transition={{
-            duration: particle.duration,
-            delay: particle.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-
-      {/* ========================================================= */}
-      {/* CONTENIDO                                                */}
+      {/* CONTENIDO                                                 */}
       {/* ========================================================= */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
@@ -553,7 +290,7 @@ export default function Process() {
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{
-              duration: 1.4,
+              duration: 1.2,
               ease: "easeInOut",
             }}
             style={{
@@ -591,57 +328,24 @@ export default function Process() {
                   className="group relative"
                 >
                   <div className="relative rounded-2xl">
-                    {/* BORDE LED */}
+                    {/* BORDE */}
 
-                    <motion.div
-                      className="pointer-events-none absolute inset-0 z-30 rounded-2xl border-2 border-[#D99E30]/25 shadow-[0_0_14px_rgba(217,158,48,0.10),0_0_35px_rgba(180,120,25,0.05),inset_0_0_14px_rgba(217,158,48,0.04)]"
-                      animate={{
-                        opacity: [0.5, 0.9, 0.5],
-                      }}
-                      transition={{
-                        duration: 4,
-                        delay: index * 0.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                    />
+                    <div className="pointer-events-none absolute inset-0 z-30 rounded-2xl border-2 border-[#D99E30]/25 shadow-[0_0_14px_rgba(217,158,48,0.08),0_0_35px_rgba(180,120,25,0.04),inset_0_0_14px_rgba(217,158,48,0.03)] transition-all duration-500 group-hover:border-[#D99E30]/40 group-hover:shadow-[0_0_20px_rgba(217,158,48,0.12)]" />
 
                     <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#090807]/90 transition-all duration-500 group-hover:border-[#D99E30]/30 group-hover:bg-[#0D0B08]">
-                      {/* GLOW DE TARJETA */}
+                      {/* GLOW ESTÁTICO DE TARJETA */}
 
-                      <motion.div
-                        className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#D99E30]/[0.05] blur-[90px]"
-                        animate={{
-                          scale: [1, 1.2, 0.9, 1],
-                          opacity: [0.4, 0.8, 0.45, 0.4],
-                        }}
-                        transition={{
-                          duration: 6,
-                          delay: index * 0.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                      />
+                      <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#D99E30]/[0.045] blur-[90px]" />
 
-                      {/* BORDE GIRATORIO */}
+                      {/* EFECTO DE LUZ EN HOVER */}
 
-                      <motion.div
-                        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      <div
+                        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                         style={{
                           background:
-                            "conic-gradient(from 0deg, transparent 0deg, transparent 250deg, rgba(217,158,48,0.03) 280deg, rgba(217,158,48,0.65) 315deg, rgba(217,158,48,0.03) 350deg, transparent 360deg)",
-                        }}
-                        animate={{
-                          rotate: [0, 360],
-                        }}
-                        transition={{
-                          duration: 5,
-                          repeat: Infinity,
-                          ease: "linear",
+                            "radial-gradient(circle at 85% 15%, rgba(217,158,48,0.07), transparent 30%)",
                         }}
                       />
-
-                      <div className="pointer-events-none absolute inset-px rounded-[15px] bg-[#090807]/95 transition-colors duration-500 group-hover:bg-[#0C0A07]/95" />
 
                       {/* NUMBER */}
 
@@ -664,23 +368,7 @@ export default function Process() {
                             }}
                             className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.1] bg-[#090807] transition-all duration-500 group-hover:border-[#D99E30]/50 group-hover:shadow-[0_0_25px_rgba(217,158,48,0.15)]"
                           >
-                            <motion.div
-                              className="h-1.5 w-1.5 rounded-full bg-[#D99E30]"
-                              animate={{
-                                scale: [1, 1.5, 1],
-                                opacity: [0.4, 1, 0.4],
-                                boxShadow: [
-                                  "0 0 0 rgba(217,158,48,0)",
-                                  "0 0 12px rgba(217,158,48,0.8)",
-                                  "0 0 0 rgba(217,158,48,0)",
-                                ],
-                              }}
-                              transition={{
-                                duration: 2.5,
-                                repeat: Infinity,
-                                delay: index * 0.35,
-                              }}
-                            />
+                            <div className="h-1.5 w-1.5 rounded-full bg-[#D99E30] shadow-[0_0_8px_rgba(217,158,48,0.5)]" />
                           </motion.div>
                         </div>
 
@@ -693,12 +381,12 @@ export default function Process() {
                                 rotate: 5,
                                 scale: 1.08,
                               }}
+                              transition={{
+                                duration: 0.25,
+                              }}
                               className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#D99E30]/20 bg-[#D99E30]/[0.07] text-zinc-400 transition-all duration-500 group-hover:border-[#D99E30]/40 group-hover:bg-[#D99E30]/10 group-hover:text-[#E2AC3B]"
                             >
-                              <Icon
-                                size={18}
-                                strokeWidth={1.6}
-                              />
+                              <Icon size={18} strokeWidth={1.6} />
                             </motion.div>
 
                             <span className="font-mono text-xs tracking-[0.16em] text-zinc-600">
@@ -741,37 +429,17 @@ export default function Process() {
                         <div className="relative hidden min-h-[180px] overflow-hidden border-l border-white/[0.06] bg-[#D99E30]/[0.015] md:block">
                           {index === 0 && (
                             <div className="absolute inset-0 flex items-center justify-center">
-                              <motion.div
-                                animate={{
-                                  scale: [1, 1.08, 1],
-                                  rotate: [0, 2, 0],
-                                }}
-                                transition={{
-                                  duration: 4,
-                                  repeat: Infinity,
-                                  ease: "easeInOut",
-                                }}
-                                className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D99E30]/30 bg-[#D99E30]/10 shadow-[0_0_35px_rgba(217,158,48,0.14)]"
-                              >
+                              <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D99E30]/30 bg-[#D99E30]/10 shadow-[0_0_35px_rgba(217,158,48,0.10)]">
                                 <Compass
                                   size={22}
                                   className="text-[#E2AC3B]"
                                 />
-                              </motion.div>
+                              </div>
 
                               {[0, 1, 2, 3].map((node) => (
-                                <motion.div
+                                <div
                                   key={node}
-                                  animate={{
-                                    scale: [1, 1.4, 1],
-                                    opacity: [0.25, 1, 0.25],
-                                  }}
-                                  transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    delay: node * 0.35,
-                                  }}
-                                  className="absolute h-2.5 w-2.5 rounded-full bg-[#D99E30]/70"
+                                  className="absolute h-2.5 w-2.5 rounded-full bg-[#D99E30]/50"
                                   style={{
                                     transform: `rotate(${node * 90}deg) translateY(-52px)`,
                                   }}
@@ -782,18 +450,7 @@ export default function Process() {
 
                           {index === 1 && (
                             <div className="absolute inset-0 flex items-center justify-center">
-                              <motion.div
-                                animate={{
-                                  y: [0, -4, 0],
-                                  rotate: [0, 0.5, 0],
-                                }}
-                                transition={{
-                                  duration: 4,
-                                  repeat: Infinity,
-                                  ease: "easeInOut",
-                                }}
-                                className="relative h-32 w-44 rounded-xl border border-white/[0.1] bg-[#0D0B08] p-3 shadow-2xl"
-                              >
+                              <div className="relative h-32 w-44 rounded-xl border border-white/[0.1] bg-[#0D0B08] p-3 shadow-2xl transition-transform duration-500 group-hover:-translate-y-1">
                                 <div className="flex gap-1">
                                   <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
                                   <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
@@ -801,34 +458,16 @@ export default function Process() {
                                 </div>
 
                                 <div className="mt-3 flex gap-2">
-                                  <motion.div
-                                    animate={{
-                                      opacity: [0.4, 0.8, 0.4],
-                                    }}
-                                    transition={{
-                                      duration: 2,
-                                      repeat: Infinity,
-                                    }}
-                                    className="h-20 w-12 rounded-lg bg-[#D99E30]/15"
-                                  />
+                                  <div className="h-20 w-12 rounded-lg bg-[#D99E30]/15" />
 
                                   <div className="flex flex-1 flex-col gap-2">
                                     <div className="h-2 w-4/5 rounded-full bg-white/10" />
                                     <div className="h-2 w-3/5 rounded-full bg-white/[0.06]" />
 
-                                    <motion.div
-                                      animate={{
-                                        opacity: [0.25, 0.85, 0.25],
-                                      }}
-                                      transition={{
-                                        duration: 2,
-                                        repeat: Infinity,
-                                      }}
-                                      className="mt-1 h-9 rounded-lg border border-[#D99E30]/20 bg-[#D99E30]/[0.06]"
-                                    />
+                                    <div className="mt-1 h-9 rounded-lg border border-[#D99E30]/20 bg-[#D99E30]/[0.06]" />
                                   </div>
                                 </div>
-                              </motion.div>
+                              </div>
                             </div>
                           )}
 
@@ -841,16 +480,7 @@ export default function Process() {
                                   <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
                                 </div>
 
-                                <motion.div
-                                  animate={{
-                                    opacity: [0.4, 1, 0.4],
-                                  }}
-                                  transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                  }}
-                                  className="space-y-0.5"
-                                >
+                                <div className="space-y-0.5">
                                   <p>
                                     <span className="text-[#D99E30]/80">
                                       const
@@ -871,22 +501,13 @@ export default function Process() {
                                   </p>
 
                                   <p>{"}"}</p>
-                                </motion.div>
+                                </div>
 
                                 <div className="mt-3 flex items-center gap-2">
-                                  <motion.span
-                                    animate={{
-                                      opacity: [0.3, 1, 0.3],
-                                    }}
-                                    transition={{
-                                      duration: 1.5,
-                                      repeat: Infinity,
-                                    }}
-                                    className="h-1.5 w-1.5 rounded-full bg-[#D99E30]"
-                                  />
+                                  <span className="h-1.5 w-1.5 rounded-full bg-[#D99E30]" />
 
                                   <span className="text-zinc-700">
-                                    compiling...
+                                    ready.
                                   </span>
                                 </div>
                               </div>
@@ -895,48 +516,11 @@ export default function Process() {
 
                           {index === 3 && (
                             <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="relative">
-                                <motion.div
-                                  animate={{
-                                    scale: [1, 1.4],
-                                    opacity: [0.45, 0],
-                                  }}
-                                  transition={{
-                                    duration: 2.5,
-                                    repeat: Infinity,
-                                  }}
-                                  className="absolute inset-0 rounded-full border border-[#D99E30]/35"
+                              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#D99E30]/35 bg-[#D99E30]/10 shadow-[0_0_40px_rgba(217,158,48,0.10)] transition-transform duration-500 group-hover:-translate-y-1">
+                                <Rocket
+                                  size={24}
+                                  className="text-[#E2AC3B]"
                                 />
-
-                                <motion.div
-                                  animate={{
-                                    scale: [1, 1.2],
-                                    opacity: [0.3, 0],
-                                  }}
-                                  transition={{
-                                    duration: 2.5,
-                                    repeat: Infinity,
-                                    delay: 0.5,
-                                  }}
-                                  className="absolute inset-0 rounded-full border border-[#F5B741]/20"
-                                />
-
-                                <motion.div
-                                  animate={{
-                                    y: [0, -6, 0],
-                                  }}
-                                  transition={{
-                                    duration: 3,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                  }}
-                                  className="relative flex h-16 w-16 items-center justify-center rounded-full border border-[#D99E30]/35 bg-[#D99E30]/10 shadow-[0_0_40px_rgba(217,158,48,0.14)]"
-                                >
-                                  <Rocket
-                                    size={24}
-                                    className="text-[#E2AC3B]"
-                                  />
-                                </motion.div>
                               </div>
                             </div>
                           )}
@@ -953,18 +537,10 @@ export default function Process() {
                           {index === 3 && "Publicamos"}
                         </span>
 
-                        <motion.div
-                          animate={{
-                            x: [0, 4, 0],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                          }}
-                          className="text-zinc-600"
-                        >
-                          <ArrowUpRight size={16} />
-                        </motion.div>
+                        <ArrowUpRight
+                          size={16}
+                          className="text-zinc-600 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                        />
                       </div>
                     </div>
                   </div>
@@ -1028,17 +604,7 @@ export default function Process() {
           </p>
 
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-zinc-600">
-            <motion.span
-              animate={{
-                opacity: [0.3, 1, 0.3],
-                scale: [1, 1.3, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-              }}
-              className="h-1.5 w-1.5 rounded-full bg-[#D99E30]"
-            />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#D99E30] shadow-[0_0_7px_rgba(217,158,48,0.45)]" />
 
             De la idea al lanzamiento
           </div>
