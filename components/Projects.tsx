@@ -22,14 +22,14 @@ const projects = [
     url: "https://negocio-fanny.vercel.app/",
   },
   {
-    number: "02",
-    category: "Contenido",
-    title: "Blog Editorial",
-    description:
-      "Plataforma editorial enfocada en contenido, legibilidad y una experiencia de navegación fluida.",
-    tags: ["React", "Node.js", "PostgreSQL"],
-    url: "#",
-  },
+  number: "02",
+  category: "Restaurante",
+  title: "Jamil's Food",
+  description:
+    "Sitio web gastronómico para Jamil's Food en Arequipa, con carta digital, presentación de platos, reservas y una experiencia moderna para sus clientes.",
+  tags: ["Next.js", "React", "TypeScript"],
+  url: "https://jamilsfood.vercel.app/",
+},
   {
     number: "03",
     category: "Corporativo",
