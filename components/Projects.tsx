@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import {
   ArrowUpRight,
@@ -38,6 +39,107 @@ const projects = [
     url: "https://casonasanlazaro.netlify.app/",
   },
 ];
+
+function ProjectPreview({
+  url,
+  title,
+  onOpen,
+}: {
+  url: string;
+  title: string;
+  onOpen: () => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const element = containerRef.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "250px",
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative overflow-hidden rounded-xl border border-white/10 bg-[#111827] shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+    >
+      {/* BROWSER BAR */}
+
+      <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-[#172033] px-3">
+        <span className="h-2 w-2 rounded-full bg-red-400/60" />
+        <span className="h-2 w-2 rounded-full bg-yellow-400/60" />
+        <span className="h-2 w-2 rounded-full bg-green-400/60" />
+
+        <div className="mx-auto flex h-[18px] w-[55%] items-center rounded-md border border-white/5 bg-white/[0.035] px-2">
+          <span className="truncate text-[8px] text-zinc-500">
+            {url.replace("https://", "").replace(/\/$/, "")}
+          </span>
+        </div>
+
+        <ExternalLink className="h-3 w-3 text-zinc-600" />
+      </div>
+
+      {/* WEBSITE REAL */}
+
+      <div
+        className="group/preview relative aspect-[16/10] cursor-pointer overflow-hidden bg-white"
+        onClick={onOpen}
+      >
+        {shouldLoad ? (
+          <iframe
+            src={url}
+            title={`Vista previa de ${title}`}
+            className="pointer-events-none absolute left-0 top-0 h-[200%] w-[200%] origin-top-left border-0"
+            style={{
+              transform: "scale(0.5)",
+            }}
+            loading="lazy"
+            scrolling="no"
+            tabIndex={-1}
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-[#0B1220]">
+            <div className="flex items-center gap-2 text-xs text-zinc-500">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400/60" />
+              Cargando preview...
+            </div>
+          </div>
+        )}
+
+        {/* CAPA QUE BLOQUEA LA INTERACCIÓN DEL IFRAME */}
+
+        <div className="absolute inset-0 z-10" />
+
+        {/* OVERLAY */}
+
+        <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/preview:bg-black/20">
+          <div className="translate-y-2 rounded-full border border-white/20 bg-black/70 px-4 py-2 opacity-0 backdrop-blur-md transition-all duration-300 group-hover/preview:translate-y-0 group-hover/preview:opacity-100">
+            <div className="flex items-center gap-2 text-xs font-medium text-white">
+              <ExternalLink className="h-3.5 w-3.5" />
+              Abrir proyecto
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Projects() {
   const visibleProjects = projects.slice(0, 4);
@@ -387,74 +489,17 @@ export default function Projects() {
               ==================================================== */}
 
               <div className="relative overflow-hidden bg-[#07101D] p-4 sm:p-5">
-
-                <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#111827] shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
-
-                  {/* BROWSER BAR */}
-
-                  <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-[#172033] px-3">
-
-                    <span className="h-2 w-2 rounded-full bg-red-400/60" />
-                    <span className="h-2 w-2 rounded-full bg-yellow-400/60" />
-                    <span className="h-2 w-2 rounded-full bg-green-400/60" />
-
-                    <div className="mx-auto flex h-4.5 w-[55%] items-center rounded-md border border-white/5 bg-white/[0.035] px-2">
-
-                      <span className="truncate text-[8px] text-zinc-500">
-                        {project.url.replace("https://", "")}
-                      </span>
-
-                    </div>
-
-                    <ExternalLink className="h-3 w-3 text-zinc-600" />
-
-                  </div>
-
-                  {/* WEBSITE */}
-
-                  <div
-                    onClick={() =>
-                      window.open(
-                        project.url,
-                        "_blank",
-                        "noopener,noreferrer"
-                      )
-                    }
-                    className="group/preview relative aspect-[16/10] cursor-pointer overflow-hidden bg-white"
-                  >
-
-                    <iframe
-                      src={project.url}
-                      title={`Vista previa de ${project.title}`}
-                      className="absolute left-0 top-0 h-[200%] w-[200%] origin-top-left border-0"
-                      style={{
-                        transform: "scale(0.5)",
-                      }}
-                      loading="lazy"
-                      scrolling="no"
-                    />
-
-                    {/* HOVER */}
-
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/preview:bg-black/20">
-
-                      <div className="translate-y-2 rounded-full border border-white/20 bg-black/70 px-4 py-2 opacity-0 backdrop-blur-md transition-all duration-300 group-hover/preview:translate-y-0 group-hover/preview:opacity-100">
-
-                        <div className="flex items-center gap-2 text-xs font-medium text-white">
-
-                          <ExternalLink className="h-3.5 w-3.5" />
-
-                          Abrir proyecto
-
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
+                <ProjectPreview
+                  url={project.url}
+                  title={project.title}
+                  onOpen={() =>
+                    window.open(
+                      project.url,
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                />
               </div>
 
               {/* ===================================================
@@ -462,9 +507,7 @@ export default function Projects() {
               ==================================================== */}
 
               <div className="relative p-6">
-
                 <div className="mb-5 flex items-center justify-between">
-
                   <span className="font-mono text-xs tracking-[0.16em] text-zinc-600">
                     {project.number}
                   </span>
@@ -472,7 +515,6 @@ export default function Projects() {
                   <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-400">
                     {project.category}
                   </span>
-
                 </div>
 
                 <h3 className="text-2xl font-semibold tracking-[-0.025em] text-white transition-transform duration-500 group-hover:translate-x-1">
@@ -486,7 +528,6 @@ export default function Projects() {
                 {/* TAGS */}
 
                 <div className="mt-5 flex flex-wrap gap-2">
-
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -495,20 +536,18 @@ export default function Projects() {
                       {tag}
                     </span>
                   ))}
-
                 </div>
 
                 {/* BARRA */}
 
                 <div className="mt-6 h-px w-full overflow-hidden bg-white/[0.06]">
-
                   <div className="h-full w-[30%] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-400 transition-all duration-700 group-hover:w-full" />
-
                 </div>
 
                 {/* BOTÓN */}
 
                 <button
+                  type="button"
                   onClick={() =>
                     window.open(
                       project.url,
@@ -526,19 +565,12 @@ export default function Projects() {
                 {/* CTA */}
 
                 <div className="mt-4 flex items-center gap-2 text-xs text-zinc-600">
-
                   <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/[0.025]">
-
                     <MousePointer2 className="h-3 w-3" />
-
                   </span>
 
-                  <span>
-                    Haz clic para visitar el sitio
-                  </span>
-
+                  <span>Haz clic para visitar el sitio</span>
                 </div>
-
               </div>
             </motion.article>
           ))}
