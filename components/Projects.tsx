@@ -17,6 +17,7 @@ const projects = [
       "Experiencia digital para una granja familiar de Arequipa, enfocada en presentar sus productos y facilitar el contacto con clientes.",
     tags: ["Next.js", "TypeScript", "Tailwind"],
     url: "https://negocio-fanny.vercel.app/",
+    image: "/images/pagina1.png",
   },
   {
     number: "02",
@@ -26,6 +27,7 @@ const projects = [
       "Sitio web gastronómico para Jamil's Food en Arequipa, con carta digital, presentación de platos, reservas y una experiencia moderna para sus clientes.",
     tags: ["Next.js", "React", "TypeScript"],
     url: "https://jamilsfood.vercel.app/",
+    image: "/images/pagina2.png",
   },
   {
     number: "03",
@@ -35,14 +37,11 @@ const projects = [
       "Sitio web gastronómico diseñado para presentar la propuesta culinaria, carta, ambiente y experiencia del restaurante.",
     tags: ["Next.js", "TypeScript", "Restaurante"],
     url: "https://casonasanlazaro.netlify.app/",
+    image: "/images/pagina3.png",
   },
 ];
 
 const visibleProjects = projects.slice(0, 4);
-
-function getScreenshotUrl(url: string) {
-  return `https://image.thum.io/get/width/1400/crop/850/noanimate/${url}`;
-}
 
 export default function Projects() {
   return (
@@ -51,7 +50,7 @@ export default function Projects() {
       className="relative overflow-hidden bg-[#050B16] py-14 lg:py-18"
     >
       {/* ============================================================
-          FONDO DE STATS — ESTÁTICO
+          FONDO ESTÁTICO
       ============================================================ */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -143,7 +142,7 @@ export default function Projects() {
 
         <div className="absolute right-[18%] top-0 h-full w-px bg-gradient-to-b from-transparent via-blue-400/[0.07] to-transparent" />
 
-        {/* PARTÍCULAS ESTÁTICAS */}
+        {/* PARTÍCULAS */}
         {Array.from({ length: 30 }).map((_, index) => (
           <span
             key={index}
@@ -170,8 +169,8 @@ export default function Projects() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* HEADER */}
 
-        <div className="max-w-3xl">
-          <div className="mb-5 flex items-center gap-3">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-5 flex items-center justify-center gap-3">
             <div className="h-px w-6 bg-cyan-400/50" />
 
             <span className="text-sm font-medium uppercase tracking-[0.28em] text-cyan-300/70">
@@ -187,7 +186,7 @@ export default function Projects() {
             <span className="text-white/40">Hechas para destacar.</span>
           </h2>
 
-          <p className="mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400">
+          <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400">
             Diseñamos y desarrollamos sitios web modernos, rápidos y
             orientados a generar resultados reales para cada negocio.
           </p>
@@ -197,76 +196,62 @@ export default function Projects() {
             PROYECTOS
         ============================================================ */}
 
-        <div className="relative mt-10">
+        <div className="relative mt-12">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {visibleProjects.map((project) => (
               <article
                 key={project.number}
                 className="group overflow-hidden rounded-2xl border border-cyan-300/[0.10] bg-[#07101D]/95 shadow-[0_0_30px_rgba(0,0,0,0.20)] transition-colors duration-300 hover:border-cyan-300/[0.18] hover:bg-[#091522]"
               >
-                {/* ==================================================
-                    PREVIEW
-                ================================================== */}
+                {/* PREVIEW */}
 
-                <div className="relative aspect-[16/10] bg-[#07101D] p-4">
-                  <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
-                    {/* BARRA DEL NAVEGADOR */}
-
-                    <div className="absolute left-0 top-0 z-20 flex h-9 w-full items-center border-b border-white/[0.06] bg-[#111827]/95 px-4">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-                      </div>
-
-                      <div className="mx-auto flex h-5 max-w-[68%] flex-1 items-center justify-center rounded-md bg-white/[0.06] px-3">
-                        <span className="truncate text-[9px] text-white/30">
-                          {project.url
-                            .replace("https://", "")
-                            .replace(/\/$/, "")}
-                        </span>
-                      </div>
-
-                      <div className="w-[44px]" />
-                    </div>
-
-                    {/* IMAGEN DE LA PÁGINA */}
-
-                    <div className="absolute bottom-0 left-0 right-0 top-9 overflow-hidden bg-white">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visitar ${project.title}`}
+                  className="block"
+                >
+                  <div className="relative aspect-[16/10] bg-[#07101D] p-4">
+                    <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
                       <img
-                        src={getScreenshotUrl(project.url)}
+                        src={project.image}
                         alt={`Vista previa de ${project.title}`}
                         loading="lazy"
                         decoding="async"
-                        className="absolute left-0 top-0 h-auto min-h-full w-full object-cover object-top"
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
                       />
-                    </div>
 
-                    {/* OVERLAY */}
+                      {/* OVERLAY */}
 
-                    <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#050B16]/30 via-transparent to-transparent" />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050B16]/35 via-transparent to-transparent" />
 
-                    {/* NUMERO */}
+                      {/* ICONO */}
 
-                    <div className="pointer-events-none absolute bottom-3 left-3 z-30">
-                      <span className="text-xs font-medium tracking-[0.2em] text-cyan-300/60">
-                        {project.number}
-                      </span>
-                    </div>
+                      <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/70 opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100">
+                        <ArrowUpRight className="h-4 w-4" />
+                      </div>
 
-                    {/* CATEGORIA */}
+                      {/* NUMERO */}
 
-                    <div className="pointer-events-none absolute bottom-3 right-3 z-30">
-                      <span className="rounded-full border border-cyan-300/10 bg-black/50 px-3 py-1.5 text-[10px] uppercase tracking-[0.15em] text-white/60 backdrop-blur-md">
-                        {project.category}
-                      </span>
+                      <div className="pointer-events-none absolute bottom-3 left-3">
+                        <span className="text-xs font-medium tracking-[0.2em] text-cyan-300/70">
+                          {project.number}
+                        </span>
+                      </div>
+
+                      {/* CATEGORIA */}
+
+                      <div className="pointer-events-none absolute bottom-3 right-3">
+                        <span className="rounded-full border border-cyan-300/10 bg-black/50 px-3 py-1.5 text-[10px] uppercase tracking-[0.15em] text-white/60 backdrop-blur-md">
+                          {project.category}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
 
-                {/* ==================================================
-                    INFO
-                ================================================== */}
+                {/* INFO */}
 
                 <div className="relative p-6 sm:p-7">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/[0.04] blur-3xl" />
