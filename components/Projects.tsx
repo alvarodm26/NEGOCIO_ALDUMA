@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import {
   ArrowUpRight,
   ExternalLink,
+  ArrowRight,
   MousePointer2,
 } from "lucide-react";
 import Link from "next/link";
