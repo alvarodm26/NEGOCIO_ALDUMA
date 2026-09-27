@@ -31,14 +31,14 @@ const projects = [
   url: "https://jamilsfood.vercel.app/",
 },
   {
-    number: "03",
-    category: "Corporativo",
-    title: "Portal Corporativo",
-    description:
-      "Presencia digital profesional diseñada para comunicar servicios y fortalecer la marca.",
-    tags: ["Next.js", "TypeScript", "CMS"],
-    url: "#",
-  },
+  number: "03",
+  category: "Restaurante",
+  title: "Casa San Lázaro",
+  description:
+    "Sitio web gastronómico diseñado para presentar la propuesta culinaria, carta, ambiente y experiencia del restaurante.",
+  tags: ["Next.js", "TypeScript", "Restaurante"],
+  url: "https://casonasanlazaro.netlify.app/",
+},
 ];
 
 export default function Projects() {
