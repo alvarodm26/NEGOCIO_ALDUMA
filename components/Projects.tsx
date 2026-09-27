@@ -1,15 +1,12 @@
-
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   ExternalLink,
   MousePointer2,
 } from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -22,43 +19,27 @@ const projects = [
     url: "https://negocio-fanny.vercel.app/",
   },
   {
-  number: "02",
-  category: "Restaurante",
-  title: "Jamil's Food",
-  description:
-    "Sitio web gastronómico para Jamil's Food en Arequipa, con carta digital, presentación de platos, reservas y una experiencia moderna para sus clientes.",
-  tags: ["Next.js", "React", "TypeScript"],
-  url: "https://jamilsfood.vercel.app/",
-},
+    number: "02",
+    category: "Restaurante",
+    title: "Jamil's Food",
+    description:
+      "Sitio web gastronómico para Jamil's Food en Arequipa, con carta digital, presentación de platos, reservas y una experiencia moderna para sus clientes.",
+    tags: ["Next.js", "React", "TypeScript"],
+    url: "https://jamilsfood.vercel.app/",
+  },
   {
-  number: "03",
-  category: "Restaurante",
-  title: "Casa San Lázaro",
-  description:
-    "Sitio web gastronómico diseñado para presentar la propuesta culinaria, carta, ambiente y experiencia del restaurante.",
-  tags: ["Next.js", "TypeScript", "Restaurante"],
-  url: "https://casonasanlazaro.netlify.app/",
-},
+    number: "03",
+    category: "Restaurante",
+    title: "Casa San Lázaro",
+    description:
+      "Sitio web gastronómico diseñado para presentar la propuesta culinaria, carta, ambiente y experiencia del restaurante.",
+    tags: ["Next.js", "TypeScript", "Restaurante"],
+    url: "https://casonasanlazaro.netlify.app/",
+  },
 ];
 
 export default function Projects() {
-  const [current, setCurrent] = useState(0);
-
-  const project = projects[current];
-
-  const nextProject = () => {
-    setCurrent((prev) => (prev + 1) % projects.length);
-  };
-
-  const previousProject = () => {
-    setCurrent((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const openProject = () => {
-    if (project.url !== "#") {
-      window.open(project.url, "_blank", "noopener,noreferrer");
-    }
-  };
+  const visibleProjects = projects.slice(0, 4);
 
   return (
     <section
@@ -66,7 +47,7 @@ export default function Projects() {
       className="relative isolate overflow-hidden border-t border-white/[0.06] bg-[#050B16] py-20 lg:py-24"
     >
       {/* =========================================================
-          FONDO BASE — AZUL NOCHE
+          FONDO BASE
       ========================================================== */}
 
       <div className="pointer-events-none absolute inset-0 -z-40 bg-[#050B16]" />
@@ -90,7 +71,7 @@ export default function Projects() {
       />
 
       {/* =========================================================
-          AURORA DIAGONAL PRINCIPAL
+          AURORA DIAGONAL
       ========================================================== */}
 
       <motion.div
@@ -162,7 +143,7 @@ export default function Projects() {
       />
 
       {/* =========================================================
-          ONDA DE LUZ 1
+          ONDA 1
       ========================================================== */}
 
       <motion.div
@@ -188,7 +169,7 @@ export default function Projects() {
       />
 
       {/* =========================================================
-          ONDA DE LUZ 2
+          ONDA 2
       ========================================================== */}
 
       <motion.div
@@ -214,7 +195,7 @@ export default function Projects() {
       />
 
       {/* =========================================================
-          GLOW CYAN IZQUIERDO
+          GLOW IZQUIERDO
       ========================================================== */}
 
       <motion.div
@@ -237,7 +218,7 @@ export default function Projects() {
       />
 
       {/* =========================================================
-          GLOW AZUL DERECHO
+          GLOW DERECHO
       ========================================================== */}
 
       <motion.div
@@ -282,11 +263,11 @@ export default function Projects() {
       />
 
       {/* =========================================================
-          FLUJOS VERTICALES
+          LÍNEAS VERTICALES
       ========================================================== */}
 
       <motion.div
-        className="pointer-events-none absolute left-[12%] top-[-10%] -z-20 h-[120%] w-[2px] origin-top"
+        className="pointer-events-none absolute left-[12%] top-[-10%] -z-20 h-[120%] w-[2px]"
         style={{
           background:
             "linear-gradient(to bottom, transparent, rgba(34,211,238,0.18), transparent)",
@@ -318,71 +299,6 @@ export default function Projects() {
           repeat: Infinity,
           ease: "easeInOut",
           delay: 2,
-        }}
-      />
-
-      {/* =========================================================
-          PARTÍCULAS
-      ========================================================== */}
-
-      <motion.div
-        className="pointer-events-none absolute left-[18%] top-[22%] -z-10 h-1 w-1 rounded-full bg-cyan-300/60 shadow-[0_0_12px_rgba(34,211,238,0.5)]"
-        animate={{
-          y: [0, -45, 0],
-          x: [0, 20, 0],
-          opacity: [0.1, 0.9, 0.1],
-          scale: [1, 1.8, 1],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      <motion.div
-        className="pointer-events-none absolute left-[76%] top-[25%] -z-10 h-1 w-1 rounded-full bg-blue-300/60 shadow-[0_0_12px_rgba(59,130,246,0.5)]"
-        animate={{
-          y: [0, 55, 0],
-          x: [0, -25, 0],
-          opacity: [0.1, 0.8, 0.1],
-          scale: [1, 1.7, 1],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
-
-      <motion.div
-        className="pointer-events-none absolute left-[84%] top-[70%] -z-10 h-1 w-1 rounded-full bg-indigo-300/50 shadow-[0_0_10px_rgba(99,102,241,0.5)]"
-        animate={{
-          x: [0, -40, 0],
-          y: [0, -20, 0],
-          opacity: [0.1, 0.75, 0.1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-      />
-
-      <motion.div
-        className="pointer-events-none absolute left-[28%] top-[76%] -z-10 h-1 w-1 rounded-full bg-cyan-300/40 shadow-[0_0_10px_rgba(34,211,238,0.4)]"
-        animate={{
-          x: [0, 45, 0],
-          y: [0, -25, 0],
-          opacity: [0.1, 0.7, 0.1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1.5,
         }}
       />
 
@@ -429,120 +345,62 @@ export default function Projects() {
         </motion.div>
 
         {/* =========================================================
-            PROJECT
+            PROYECTOS — 2 POR FILA
         ========================================================== */}
 
-        <div className="relative mt-12 overflow-hidden rounded-2xl border border-white/10 bg-[#09111F]/80 backdrop-blur-sm lg:mt-14">
-
-          <AnimatePresence mode="wait">
-
-            <motion.div
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:mt-14">
+          {visibleProjects.map((project, index) => (
+            <motion.article
               key={project.number}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{
-                duration: 0.45,
-                ease: "easeOut",
+              initial={{
+                opacity: 0,
+                y: 25,
               }}
-              className="grid min-h-[500px] lg:grid-cols-[0.85fr_1.15fr]"
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#09111F]/80 backdrop-blur-sm transition-all duration-500 hover:border-cyan-400/20"
             >
+              {/* GLOW */}
 
-              {/* =====================================================
-                  INFO
-              ====================================================== */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(circle at 80% 10%, rgba(34,211,238,0.07), transparent 35%)",
+                }}
+              />
 
-              <div className="flex flex-col justify-between border-b border-white/10 p-6 lg:border-b-0 lg:border-r lg:p-9">
+              {/* ===================================================
+                  PREVIEW
+              ==================================================== */}
 
-                <div>
+              <div className="relative overflow-hidden bg-[#07101D] p-4 sm:p-5">
 
-                  <div className="mb-8 flex items-center justify-between">
-
-                    <span className="text-sm font-medium text-zinc-500">
-                      {project.number}
-                    </span>
-
-                    <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-400">
-                      {project.category}
-                    </span>
-
-                  </div>
-
-                  <h3 className="max-w-md text-2xl font-semibold tracking-[-0.025em] text-white sm:text-3xl">
-                    {project.title}
-                  </h3>
-
-                  <p className="mt-5 max-w-md text-[16px] leading-7 text-zinc-400">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-7 flex flex-wrap gap-2">
-
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-zinc-400"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-
-                  </div>
-
-                </div>
-
-                {/* BOTÓN */}
-
-                <button
-                  onClick={openProject}
-                  disabled={project.url === "#"}
-                  className="group mt-10 flex w-fit items-center gap-2 text-sm font-medium text-white transition-colors hover:text-cyan-300 disabled:cursor-default disabled:hover:text-white"
-                >
-                  Ver proyecto
-
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </button>
-
-              </div>
-
-              {/* =====================================================
-                  WEBSITE PREVIEW
-              ====================================================== */}
-
-              <div className="relative flex flex-col items-center justify-center overflow-hidden bg-[#07101D] p-5 sm:p-6 lg:p-10">
-
-                <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 50% 50%, rgba(37,99,235,0.16), transparent 58%)",
-                  }}
-                />
-
-                {/* MOCKUP */}
-
-                <motion.div
-                  initial={{ scale: 0.97, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                  onClick={openProject}
-                  className="group relative w-full max-w-2xl cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-[#111827] shadow-[0_25px_80px_rgba(0,0,0,0.45)]"
-                >
+                <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#111827] shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
 
                   {/* BROWSER BAR */}
 
-                  <div className="flex h-9 items-center gap-1.5 border-b border-white/10 bg-[#172033] px-3">
+                  <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-[#172033] px-3">
 
-                    <span className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/60" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-green-400/60" />
+                    <span className="h-2 w-2 rounded-full bg-red-400/60" />
+                    <span className="h-2 w-2 rounded-full bg-yellow-400/60" />
+                    <span className="h-2 w-2 rounded-full bg-green-400/60" />
 
-                    <div className="mx-auto flex h-5 w-[58%] items-center rounded-md border border-white/5 bg-white/[0.035] px-3">
+                    <div className="mx-auto flex h-4.5 w-[55%] items-center rounded-md border border-white/5 bg-white/[0.035] px-2">
 
-                      <span className="truncate text-[9px] text-zinc-500">
-                        negocio-fanny.vercel.app
+                      <span className="truncate text-[8px] text-zinc-500">
+                        {project.url.replace("https://", "")}
                       </span>
 
                     </div>
@@ -551,142 +409,171 @@ export default function Projects() {
 
                   </div>
 
-                  {/* PÁGINA REAL */}
+                  {/* WEBSITE */}
 
-                  <div className="relative aspect-[16/10] overflow-hidden bg-white">
+                  <div
+                    onClick={() =>
+                      window.open(
+                        project.url,
+                        "_blank",
+                        "noopener,noreferrer"
+                      )
+                    }
+                    className="group/preview relative aspect-[16/10] cursor-pointer overflow-hidden bg-white"
+                  >
 
-                    {project.url !== "#" ? (
-                      <iframe
-                        src={project.url}
-                        title={`Vista previa de ${project.title}`}
-                        className="absolute left-0 top-0 h-[200%] w-[200%] origin-top-left border-0"
-                        style={{
-                          transform: "scale(0.5)",
-                        }}
-                        loading="lazy"
-                        scrolling="no"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center bg-[#0D1726]">
-
-                        <div className="text-center">
-
-                          <div className="mx-auto mb-3 h-8 w-8 rounded-full border border-white/10 bg-white/5" />
-
-                          <p className="text-sm text-zinc-500">
-                            Próximamente
-                          </p>
-
-                        </div>
-
-                      </div>
-                    )}
+                    <iframe
+                      src={project.url}
+                      title={`Vista previa de ${project.title}`}
+                      className="absolute left-0 top-0 h-[200%] w-[200%] origin-top-left border-0"
+                      style={{
+                        transform: "scale(0.5)",
+                      }}
+                      loading="lazy"
+                      scrolling="no"
+                    />
 
                     {/* HOVER */}
 
-                    {project.url !== "#" && (
-                      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/20">
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/preview:bg-black/20">
 
-                        <div className="translate-y-2 rounded-full border border-white/20 bg-black/70 px-4 py-2 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                      <div className="translate-y-2 rounded-full border border-white/20 bg-black/70 px-4 py-2 opacity-0 backdrop-blur-md transition-all duration-300 group-hover/preview:translate-y-0 group-hover/preview:opacity-100">
 
-                          <div className="flex items-center gap-2 text-xs font-medium text-white">
+                        <div className="flex items-center gap-2 text-xs font-medium text-white">
 
-                            <ExternalLink className="h-3.5 w-3.5" />
+                          <ExternalLink className="h-3.5 w-3.5" />
 
-                            Abrir proyecto
-
-                          </div>
+                          Abrir proyecto
 
                         </div>
 
                       </div>
-                    )}
+
+                    </div>
 
                   </div>
 
-                </motion.div>
+                </div>
+              </div>
 
-                {/* =====================================================
-                    CTA PROFESIONAL
-                ====================================================== */}
+              {/* ===================================================
+                  INFO
+              ==================================================== */}
+
+              <div className="relative p-6">
+
+                <div className="mb-5 flex items-center justify-between">
+
+                  <span className="font-mono text-xs tracking-[0.16em] text-zinc-600">
+                    {project.number}
+                  </span>
+
+                  <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-400">
+                    {project.category}
+                  </span>
+
+                </div>
+
+                <h3 className="text-2xl font-semibold tracking-[-0.025em] text-white transition-transform duration-500 group-hover:translate-x-1">
+                  {project.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-6 text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
+                  {project.description}
+                </p>
+
+                {/* TAGS */}
+
+                <div className="mt-5 flex flex-wrap gap-2">
+
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-zinc-400"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+
+                </div>
+
+                {/* BARRA */}
+
+                <div className="mt-6 h-px w-full overflow-hidden bg-white/[0.06]">
+
+                  <div className="h-full w-[30%] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-400 transition-all duration-700 group-hover:w-full" />
+
+                </div>
+
+                {/* BOTÓN */}
 
                 <button
-                  onClick={openProject}
-                  disabled={project.url === "#"}
-                  className="group relative z-10 mt-5 flex items-center gap-2 text-xs text-zinc-500 transition-colors hover:text-cyan-300 disabled:cursor-default disabled:hover:text-zinc-500"
+                  onClick={() =>
+                    window.open(
+                      project.url,
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                  className="group/button mt-5 flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-cyan-300"
                 >
+                  Ver proyecto
 
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/[0.025] transition-all duration-300 group-hover:border-cyan-400/30 group-hover:bg-cyan-400/5">
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5" />
+                </button>
+
+                {/* CTA */}
+
+                <div className="mt-4 flex items-center gap-2 text-xs text-zinc-600">
+
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/[0.025]">
+
                     <MousePointer2 className="h-3 w-3" />
+
                   </span>
 
                   <span>
-                    Explora este proyecto ·{" "}
-                    <span className="text-zinc-400 group-hover:text-cyan-300">
-                      haz clic para visitar el sitio
-                    </span>
+                    Haz clic para visitar el sitio
                   </span>
 
-                  <ArrowUpRight className="h-3 w-3 opacity-50 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-
-                </button>
+                </div>
 
               </div>
-
-            </motion.div>
-
-          </AnimatePresence>
-
-          {/* =========================================================
-              CONTROLES
-          ========================================================== */}
-
-          <div className="flex items-center justify-between border-t border-white/10 px-6 py-4 lg:px-9">
-
-            {/* INDICADORES */}
-
-            <div className="flex items-center gap-2">
-
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  aria-label={`Ir al proyecto ${index + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === current
-                      ? "w-8 bg-cyan-400"
-                      : "w-1.5 bg-white/20 hover:bg-white/40"
-                  }`}
-                />
-              ))}
-
-            </div>
-
-            {/* FLECHAS */}
-
-            <div className="flex items-center gap-2">
-
-              <button
-                onClick={previousProject}
-                aria-label="Proyecto anterior"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition hover:border-cyan-400/30 hover:bg-cyan-400/5 hover:text-white"
-              >
-                <ArrowLeft className="h-4 w-4" />
-              </button>
-
-              <button
-                onClick={nextProject}
-                aria-label="Siguiente proyecto"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition hover:border-cyan-400/30 hover:bg-cyan-400/5 hover:text-white"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </button>
-
-            </div>
-
-          </div>
-
+            </motion.article>
+          ))}
         </div>
+
+        {/* =========================================================
+            VER TODOS
+        ========================================================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: 0.6,
+          }}
+          className="mt-10 flex justify-center"
+        >
+          <Link
+            href="/proyectos"
+            className="group flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-zinc-300 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/30 hover:bg-cyan-400/[0.05] hover:text-white"
+          >
+            Ver todos los proyectos
+
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
