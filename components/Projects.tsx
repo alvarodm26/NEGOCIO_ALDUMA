@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
 import {
   ArrowUpRight,
   ExternalLink,
@@ -40,490 +38,355 @@ const projects = [
   },
 ];
 
-function ProjectPreview({
-  url,
-  title,
-  onOpen,
-}: {
-  url: string;
-  title: string;
-  onOpen: () => void;
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [shouldLoad, setShouldLoad] = useState(false);
-
-  useEffect(() => {
-    const element = containerRef.current;
-
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: "250px",
-      }
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative overflow-hidden rounded-xl border border-white/10 bg-[#111827] shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
-    >
-      {/* BROWSER BAR */}
-
-      <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-[#172033] px-3">
-        <span className="h-2 w-2 rounded-full bg-red-400/60" />
-        <span className="h-2 w-2 rounded-full bg-yellow-400/60" />
-        <span className="h-2 w-2 rounded-full bg-green-400/60" />
-
-        <div className="mx-auto flex h-[18px] w-[55%] items-center rounded-md border border-white/5 bg-white/[0.035] px-2">
-          <span className="truncate text-[8px] text-zinc-500">
-            {url.replace("https://", "").replace(/\/$/, "")}
-          </span>
-        </div>
-
-        <ExternalLink className="h-3 w-3 text-zinc-600" />
-      </div>
-
-      {/* WEBSITE REAL */}
-
-      <div
-        className="group/preview relative aspect-[16/10] cursor-pointer overflow-hidden bg-white"
-        onClick={onOpen}
-      >
-        {shouldLoad ? (
-          <iframe
-            src={url}
-            title={`Vista previa de ${title}`}
-            className="pointer-events-none absolute left-0 top-0 h-[200%] w-[200%] origin-top-left border-0"
-            style={{
-              transform: "scale(0.5)",
-            }}
-            loading="lazy"
-            scrolling="no"
-            tabIndex={-1}
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#0B1220]">
-            <div className="flex items-center gap-2 text-xs text-zinc-500">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400/60" />
-              Cargando preview...
-            </div>
-          </div>
-        )}
-
-        {/* CAPA QUE BLOQUEA LA INTERACCIÓN DEL IFRAME */}
-
-        <div className="absolute inset-0 z-10" />
-
-        {/* OVERLAY */}
-
-        <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover/preview:bg-black/20">
-          <div className="translate-y-2 rounded-full border border-white/20 bg-black/70 px-4 py-2 opacity-0 backdrop-blur-md transition-all duration-300 group-hover/preview:translate-y-0 group-hover/preview:opacity-100">
-            <div className="flex items-center gap-2 text-xs font-medium text-white">
-              <ExternalLink className="h-3.5 w-3.5" />
-              Abrir proyecto
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const visibleProjects = projects.slice(0, 4);
 
 export default function Projects() {
-  const visibleProjects = projects.slice(0, 4);
-
   return (
     <section
       id="proyectos"
-      className="relative isolate overflow-hidden border-t border-white/[0.06] bg-[#050B16] py-20 lg:py-24"
+      className="relative isolate overflow-hidden border-y border-blue-400/[0.08] bg-[#050B16] py-20 lg:py-24"
     >
-      {/* =========================================================
+      {/* ==================================================
           FONDO BASE
-      ========================================================== */}
+      ================================================== */}
 
-      <div className="pointer-events-none absolute inset-0 -z-40 bg-[#050B16]" />
+      <div className="pointer-events-none absolute inset-0 -z-50 bg-[#050B16]" />
+
+      {/* ==================================================
+          GRID AZUL — ESTÁTICO
+      ================================================== */}
 
       <div
         className="pointer-events-none absolute inset-0 -z-40"
         style={{
-          background: `
-            radial-gradient(
-              ellipse 100% 80% at 50% 100%,
-              rgba(30,64,175,0.22),
-              transparent 65%
-            ),
-            radial-gradient(
-              ellipse 80% 60% at 0% 0%,
-              rgba(14,116,144,0.10),
-              transparent 65%
-            )
+          backgroundImage: `
+            linear-gradient(rgba(37,99,235,0.16) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37,99,235,0.16) 1px, transparent 1px)
           `,
+          backgroundSize: "72px 72px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 20%, transparent 82%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 20%, transparent 82%)",
+          opacity: 0.55,
         }}
       />
 
-      {/* =========================================================
-          AURORA DIAGONAL
-      ========================================================== */}
+      {/* ==================================================
+          GRID SECUNDARIO — ESTÁTICO
+      ================================================== */}
 
-      <motion.div
-        className="pointer-events-none absolute -left-[25%] top-[18%] -z-30 h-[420px] w-[150%] rotate-[-12deg]"
+      <div
+        className="pointer-events-none absolute inset-0 -z-40"
         style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(37,99,235,0.02) 15%, rgba(59,130,246,0.18) 35%, rgba(34,211,238,0.13) 50%, rgba(79,70,229,0.16) 68%, transparent 88%)",
-          filter: "blur(45px)",
-        }}
-        animate={{
-          x: ["-8%", "8%", "-8%"],
-          y: [0, 80, 0],
-          rotate: [-12, -8, -12],
-          scaleY: [0.85, 1.1, 0.85],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
+          backgroundImage: `
+            linear-gradient(rgba(34,211,238,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(34,211,238,0.08) 1px, transparent 1px)
+          `,
+          backgroundSize: "140px 140px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 5%, transparent 72%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 5%, transparent 72%)",
+          opacity: 0.35,
         }}
       />
 
-      {/* =========================================================
-          SEGUNDA AURORA
-      ========================================================== */}
+      {/* ==================================================
+          AURORA AZUL CENTRAL — ESTÁTICA
+      ================================================== */}
 
-      <motion.div
-        className="pointer-events-none absolute -right-[30%] top-[42%] -z-30 h-[360px] w-[150%] rotate-[10deg]"
+      <div
+        className="pointer-events-none absolute left-[-35%] top-[10%] -z-30 h-[45%] w-[170%] rotate-[-7deg]"
         style={{
           background:
-            "linear-gradient(90deg, transparent 5%, rgba(79,70,229,0.05) 25%, rgba(59,130,246,0.15) 42%, rgba(37,99,235,0.09) 57%, rgba(34,211,238,0.11) 72%, transparent 92%)",
+            "linear-gradient(90deg, transparent 4%, rgba(6,182,212,0.025) 15%, rgba(14,165,233,0.12) 30%, rgba(37,99,235,0.20) 44%, rgba(99,102,241,0.18) 58%, rgba(34,211,238,0.11) 72%, rgba(59,130,246,0.05) 85%, transparent 97%)",
           filter: "blur(55px)",
-        }}
-        animate={{
-          x: ["8%", "-8%", "8%"],
-          y: [0, -70, 0],
-          rotate: [10, 5, 10],
-          scaleY: [1, 0.82, 1],
-        }}
-        transition={{
-          duration: 21,
-          repeat: Infinity,
-          ease: "easeInOut",
+          opacity: 0.8,
         }}
       />
 
-      {/* =========================================================
-          BANDA LUMINOSA
-      ========================================================== */}
+      {/* ==================================================
+          AURORA INFERIOR — ESTÁTICA
+      ================================================== */}
 
-      <motion.div
-        className="pointer-events-none absolute -left-[30%] top-[48%] -z-20 h-px w-[160%]"
+      <div
+        className="pointer-events-none absolute right-[-40%] bottom-[-5%] -z-30 h-[50%] w-[180%] rotate-[8deg]"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(34,211,238,0.05), rgba(96,165,250,0.55), rgba(129,140,248,0.35), transparent)",
+            "linear-gradient(90deg, transparent 3%, rgba(79,70,229,0.04) 18%, rgba(37,99,235,0.14) 32%, rgba(59,130,246,0.20) 47%, rgba(34,211,238,0.12) 61%, rgba(99,102,241,0.18) 76%, rgba(37,99,235,0.06) 90%, transparent 98%)",
+          filter: "blur(60px)",
+          opacity: 0.75,
+        }}
+      />
+
+      {/* ==================================================
+          GLOW CENTRAL — ESTÁTICO
+      ================================================== */}
+
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-30 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, rgba(34,211,238,0.08) 28%, rgba(79,70,229,0.07) 48%, transparent 72%)",
+          filter: "blur(75px)",
+          opacity: 0.75,
+        }}
+      />
+
+      {/* ==================================================
+          ONDA SUPERIOR — ESTÁTICA
+      ================================================== */}
+
+      <div
+        className="pointer-events-none absolute -left-[25%] top-[12%] -z-20 h-[130px] w-[150%] rounded-[50%]"
+        style={{
+          borderTop: "1px solid rgba(34,211,238,0.20)",
+          borderBottom: "1px solid rgba(59,130,246,0.10)",
           boxShadow:
-            "0 0 30px rgba(34,211,238,0.16), 0 0 90px rgba(59,130,246,0.08)",
-        }}
-        animate={{
-          x: ["-10%", "10%", "-10%"],
-          opacity: [0.3, 0.85, 0.3],
-          scaleX: [0.9, 1.05, 0.9],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "0 -15px 55px rgba(34,211,238,0.08), 0 10px 35px rgba(37,99,235,0.05)",
+          opacity: 0.75,
         }}
       />
 
-      {/* =========================================================
-          ONDA 1
-      ========================================================== */}
+      {/* ==================================================
+          ONDA INFERIOR — ESTÁTICA
+      ================================================== */}
 
-      <motion.div
-        className="pointer-events-none absolute -left-[25%] top-[30%] -z-20 h-[180px] w-[150%] rounded-[50%]"
+      <div
+        className="pointer-events-none absolute -left-[25%] bottom-[10%] -z-20 h-[140px] w-[150%] rounded-[50%]"
         style={{
-          borderTop: "1px solid rgba(56,189,248,0.18)",
-          borderBottom: "1px solid rgba(79,70,229,0.08)",
-          transform: "rotate(-8deg)",
+          borderTop: "1px solid rgba(99,102,241,0.15)",
+          borderBottom: "1px solid rgba(34,211,238,0.12)",
           boxShadow:
-            "0 -15px 60px rgba(37,99,235,0.08), 0 20px 70px rgba(34,211,238,0.05)",
-        }}
-        animate={{
-          x: ["-4%", "4%", "-4%"],
-          y: [0, -25, 0],
-          scaleY: [1, 1.18, 1],
-          rotate: [-8, -4, -8],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "0 15px 55px rgba(79,70,229,0.07), 0 -10px 35px rgba(34,211,238,0.04)",
+          opacity: 0.7,
         }}
       />
 
-      {/* =========================================================
-          ONDA 2
-      ========================================================== */}
+      {/* ==================================================
+          LÍNEAS DE LUZ — ESTÁTICAS
+      ================================================== */}
 
-      <motion.div
-        className="pointer-events-none absolute -left-[25%] top-[60%] -z-20 h-[240px] w-[150%] rounded-[50%]"
+      <div
+        className="pointer-events-none absolute left-[-30%] top-[34%] -z-10 h-px w-[160%]"
         style={{
-          borderTop: "1px solid rgba(99,102,241,0.12)",
-          borderBottom: "1px solid rgba(34,211,238,0.07)",
-          transform: "rotate(7deg)",
+          background:
+            "linear-gradient(90deg, transparent, rgba(34,211,238,0.05), rgba(56,189,248,0.40), rgba(96,165,250,0.20), rgba(129,140,248,0.30), transparent)",
           boxShadow:
-            "0 -20px 80px rgba(79,70,229,0.05), 0 20px 80px rgba(37,99,235,0.06)",
-        }}
-        animate={{
-          x: ["4%", "-4%", "4%"],
-          y: [0, 30, 0],
-          scaleY: [1, 0.88, 1],
-          rotate: [7, 3, 7],
-        }}
-        transition={{
-          duration: 19,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "0 0 25px rgba(34,211,238,0.14), 0 0 70px rgba(37,99,235,0.10)",
+          opacity: 0.65,
         }}
       />
 
-      {/* =========================================================
-          GLOW IZQUIERDO
-      ========================================================== */}
-
-      <motion.div
-        className="pointer-events-none absolute -left-[220px] top-[5%] -z-20 h-[600px] w-[600px] rounded-full"
+      <div
+        className="pointer-events-none absolute left-[-30%] top-[70%] -z-10 h-px w-[160%]"
         style={{
           background:
-            "radial-gradient(circle, rgba(6,182,212,0.14) 0%, rgba(14,116,144,0.06) 35%, transparent 70%)",
-          filter: "blur(70px)",
-        }}
-        animate={{
-          x: [0, 130, 50, 0],
-          y: [0, 100, -30, 0],
-          scale: [1, 1.18, 0.9, 1],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.06), rgba(37,99,235,0.30), rgba(34,211,238,0.22), transparent)",
+          boxShadow: "0 0 40px rgba(37,99,235,0.10)",
+          opacity: 0.6,
         }}
       />
 
-      {/* =========================================================
-          GLOW DERECHO
-      ========================================================== */}
+      {/* ==================================================
+          GLOW IZQUIERDO — ESTÁTICO
+      ================================================== */}
 
-      <motion.div
-        className="pointer-events-none absolute -right-[240px] bottom-0 -z-20 h-[650px] w-[650px] rounded-full"
+      <div
+        className="pointer-events-none absolute -left-[180px] top-1/2 -z-20 h-[420px] w-[420px] -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(37,99,235,0.16) 0%, rgba(79,70,229,0.07) 38%, transparent 72%)",
-          filter: "blur(80px)",
-        }}
-        animate={{
-          x: [0, -120, -40, 0],
-          y: [0, -80, 40, 0],
-          scale: [1, 0.88, 1.15, 1],
-        }}
-        transition={{
-          duration: 24,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* =========================================================
-          GLOW CENTRAL
-      ========================================================== */}
-
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-20 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(37,99,235,0.08) 0%, rgba(34,211,238,0.025) 35%, transparent 70%)",
+            "radial-gradient(circle, rgba(6,182,212,0.16) 0%, rgba(14,116,144,0.07) 35%, transparent 72%)",
           filter: "blur(65px)",
-        }}
-        animate={{
-          scale: [1, 1.15, 0.95, 1],
-          opacity: [0.5, 0.8, 0.55, 0.5],
-        }}
-        transition={{
-          duration: 13,
-          repeat: Infinity,
-          ease: "easeInOut",
+          opacity: 0.7,
         }}
       />
 
-      {/* =========================================================
-          LÍNEAS VERTICALES
-      ========================================================== */}
+      {/* ==================================================
+          GLOW DERECHO — ESTÁTICO
+      ================================================== */}
 
-      <motion.div
-        className="pointer-events-none absolute left-[12%] top-[-10%] -z-20 h-[120%] w-[2px]"
+      <div
+        className="pointer-events-none absolute -right-[180px] top-1/2 -z-20 h-[450px] w-[450px] -translate-y-1/2 rounded-full"
         style={{
           background:
-            "linear-gradient(to bottom, transparent, rgba(34,211,238,0.18), transparent)",
-          filter: "blur(1px)",
-        }}
-        animate={{
-          y: ["-4%", "4%", "-4%"],
-          opacity: [0.15, 0.55, 0.15],
-        }}
-        transition={{
-          duration: 11,
-          repeat: Infinity,
-          ease: "easeInOut",
+            "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(79,70,229,0.08) 38%, transparent 72%)",
+          filter: "blur(70px)",
+          opacity: 0.75,
         }}
       />
 
-      <motion.div
-        className="pointer-events-none absolute right-[15%] top-[-10%] -z-20 h-[120%] w-px"
-        style={{
-          background:
-            "linear-gradient(to bottom, transparent, rgba(99,102,241,0.16), transparent)",
-        }}
-        animate={{
-          y: ["4%", "-4%", "4%"],
-          opacity: [0.1, 0.45, 0.1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-      />
+      {/* ==================================================
+          PARTÍCULAS — ESTÁTICAS
+      ================================================== */}
 
-      {/* =========================================================
+      {[
+        {
+          left: "10%",
+          top: "20%",
+          color: "bg-cyan-300",
+          shadow: "0 0 14px rgba(34,211,238,0.8)",
+        },
+        {
+          left: "24%",
+          top: "70%",
+          color: "bg-blue-300",
+          shadow: "0 0 14px rgba(59,130,246,0.8)",
+        },
+        {
+          left: "42%",
+          top: "25%",
+          color: "bg-indigo-300",
+          shadow: "0 0 14px rgba(129,140,248,0.8)",
+        },
+        {
+          left: "58%",
+          top: "76%",
+          color: "bg-cyan-200",
+          shadow: "0 0 14px rgba(34,211,238,0.8)",
+        },
+        {
+          left: "74%",
+          top: "18%",
+          color: "bg-blue-300",
+          shadow: "0 0 14px rgba(59,130,246,0.8)",
+        },
+        {
+          left: "88%",
+          top: "68%",
+          color: "bg-indigo-300",
+          shadow: "0 0 14px rgba(129,140,248,0.8)",
+        },
+      ].map((particle, index) => (
+        <div
+          key={index}
+          className={`pointer-events-none absolute -z-10 h-1 w-1 rounded-full ${particle.color}`}
+          style={{
+            left: particle.left,
+            top: particle.top,
+            boxShadow: particle.shadow,
+            opacity: 0.5,
+          }}
+        />
+      ))}
+
+      {/* ==================================================
           CONTENIDO
-      ========================================================== */}
+      ================================================== */}
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* HEADER */}
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mx-auto max-w-3xl text-center"
-        >
-          <div className="mb-5 flex items-center justify-center gap-3">
-            <span className="h-px w-7 bg-cyan-400/60" />
+        <div className="max-w-3xl">
+          <div className="mb-5 flex items-center gap-3">
+            <div className="h-px w-8 bg-blue-500" />
 
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-cyan-300">
+            <span className="text-xs font-medium uppercase tracking-[0.25em] text-blue-400">
               Proyectos
-            </p>
-
-            <span className="h-px w-7 bg-cyan-400/60" />
+            </span>
           </div>
 
-          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-5xl">
+          <h2 className="text-4xl font-medium tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
             Experiencias digitales
             <br />
-            <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">
-              hechas para destacar.
-            </span>
+            <span className="text-white/40">hechas para destacar.</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400">
-            Algunos ejemplos de cómo combinamos diseño, tecnología y estrategia
-            para crear productos digitales de alto nivel.
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/45 sm:text-lg">
+            Diseñamos y desarrollamos sitios web modernos, rápidos y
+            orientados a generar resultados reales para cada negocio.
           </p>
-        </motion.div>
+        </div>
 
-        {/* =========================================================
-            PROYECTOS — 2 POR FILA
-        ========================================================== */}
+        {/* ==================================================
+            PROYECTOS
+        ================================================== */}
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:mt-14">
-          {visibleProjects.map((project, index) => (
-            <motion.article
+          {visibleProjects.map((project) => (
+            <article
               key={project.number}
-              initial={{
-                opacity: 0,
-                y: 25,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#09111F]/80 backdrop-blur-sm transition-all duration-500 hover:border-cyan-400/20"
+              className="group overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] backdrop-blur-sm"
             >
-              {/* GLOW */}
+              {/* PREVIEW */}
 
-              <div
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(circle at 80% 10%, rgba(34,211,238,0.07), transparent 35%)",
-                }}
-              />
+              <div className="relative aspect-[16/10] overflow-hidden border-b border-white/[0.08] bg-[#0A101C]">
+                {/* Browser bar */}
 
-              {/* ===================================================
-                  PREVIEW
-              ==================================================== */}
+                <div className="absolute left-0 top-0 z-20 flex h-9 w-full items-center border-b border-black/10 bg-[#111827]/95 px-4">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+                  </div>
 
-              <div className="relative overflow-hidden bg-[#07101D] p-4 sm:p-5">
-                <ProjectPreview
-                  url={project.url}
-                  title={project.title}
-                  onOpen={() =>
-                    window.open(
-                      project.url,
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
-                />
-              </div>
+                  <div className="mx-auto flex h-5 max-w-[65%] flex-1 items-center justify-center rounded-md bg-white/[0.06] px-3">
+                    <span className="truncate text-[9px] text-white/25">
+                      {project.url.replace("https://", "").replace("/", "")}
+                    </span>
+                  </div>
 
-              {/* ===================================================
-                  INFO
-              ==================================================== */}
+                  <div className="w-[44px]" />
+                </div>
 
-              <div className="relative p-6">
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="font-mono text-xs tracking-[0.16em] text-zinc-600">
+                {/* REAL WEBSITE */}
+
+                <div className="absolute left-0 top-9 h-[calc(100%-36px)] w-full overflow-hidden">
+                  <iframe
+                    src={project.url}
+                    title={`Vista previa de ${project.title}`}
+                    sandbox="allow-same-origin"
+                    className="pointer-events-none absolute left-0 top-0 h-[200%] w-[200%] origin-top-left border-0"
+                    style={{
+                      transform: "scale(0.5)",
+                    }}
+                    loading="lazy"
+                    scrolling="no"
+                  />
+
+                  <div className="absolute inset-0 z-10 cursor-default" />
+                </div>
+
+                {/* OVERLAY */}
+
+                <div className="pointer-events-none absolute inset-0 z-30 bg-gradient-to-t from-[#050B16]/20 via-transparent to-transparent" />
+
+                {/* NUMBER */}
+
+                <div className="pointer-events-none absolute bottom-4 left-4 z-30">
+                  <span className="text-xs font-medium tracking-[0.2em] text-white/35">
                     {project.number}
-                  </span>
-
-                  <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-zinc-400">
-                    {project.category}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-semibold tracking-[-0.025em] text-white transition-transform duration-500 group-hover:translate-x-1">
-                  {project.title}
-                </h3>
+                {/* CATEGORY */}
 
-                <p className="mt-3 text-sm leading-6 text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
-                  {project.description}
-                </p>
+                <div className="pointer-events-none absolute bottom-4 right-4 z-30">
+                  <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1.5 text-[10px] uppercase tracking-[0.15em] text-white/50 backdrop-blur-md">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* INFO */}
+
+              <div className="p-6 sm:p-7">
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <h3 className="text-2xl font-medium tracking-[-0.03em] text-white">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-3 max-w-xl text-sm leading-6 text-white/45">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/50 transition-all duration-300 group-hover:border-blue-400/30 group-hover:bg-blue-500/10 group-hover:text-blue-400">
+                    <ExternalLink className="h-4 w-4" />
+                  </div>
+                </div>
 
                 {/* TAGS */}
 
@@ -531,82 +394,50 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-zinc-400"
+                      className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] text-white/35"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                {/* BARRA */}
+                {/* LINE */}
 
-                <div className="mt-6 h-px w-full overflow-hidden bg-white/[0.06]">
-                  <div className="h-full w-[30%] bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-400 transition-all duration-700 group-hover:w-full" />
-                </div>
-
-                {/* BOTÓN */}
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    window.open(
-                      project.url,
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
-                  className="group/button mt-5 flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-cyan-300"
-                >
-                  Ver proyecto
-
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/button:-translate-y-0.5 group-hover/button:translate-x-0.5" />
-                </button>
+                <div className="my-6 h-px w-full bg-white/[0.07]" />
 
                 {/* CTA */}
 
-                <div className="mt-4 flex items-center gap-2 text-xs text-zinc-600">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/[0.025]">
-                    <MousePointer2 className="h-3 w-3" />
-                  </span>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link inline-flex items-center gap-2 text-sm font-medium text-white/60 transition-colors hover:text-white"
+                >
+                  Ver proyecto
 
-                  <span>Haz clic para visitar el sitio</span>
-                </div>
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                </a>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 
-        {/* =========================================================
-            VER TODOS
-        ========================================================== */}
+        {/* ==================================================
+            BOTÓN FINAL
+        ================================================== */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 0.6,
-          }}
-          className="mt-10 flex justify-center"
-        >
+        <div className="mt-12 flex justify-center lg:mt-14">
           <Link
             href="/proyectos"
-            className="group flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-zinc-300 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/30 hover:bg-cyan-400/[0.05] hover:text-white"
+            className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3.5 text-sm font-medium text-white/70 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
           >
+            <MousePointer2 className="h-4 w-4" />
+
             Ver todos los proyectos
 
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
