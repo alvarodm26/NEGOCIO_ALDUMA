@@ -40,8 +40,8 @@ const projects = [
 
 const visibleProjects = projects.slice(0, 4);
 
-function getPreviewUrl(url: string) {
-  return `https://image.thum.io/get/width/1400/crop/900/noanimate/${url}`;
+function getScreenshotUrl(url: string) {
+  return `https://image.thum.io/get/width/1400/crop/850/noanimate/${url}`;
 }
 
 export default function Projects() {
@@ -51,7 +51,7 @@ export default function Projects() {
       className="relative overflow-hidden bg-[#050B16] py-14 lg:py-18"
     >
       {/* ============================================================
-          FONDO ESTÁTICO
+          FONDO DE STATS — ESTÁTICO
       ============================================================ */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -198,7 +198,7 @@ export default function Projects() {
         ============================================================ */}
 
         <div className="relative mt-10">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {visibleProjects.map((project) => (
               <article
                 key={project.number}
@@ -208,20 +208,18 @@ export default function Projects() {
                     PREVIEW
                 ================================================== */}
 
-                <div className="relative aspect-[16/10] bg-[#07101D] p-3">
-                  {/* MARCO DEL NAVEGADOR */}
-
-                  <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-[#0B1220] shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+                <div className="relative aspect-[16/10] bg-[#07101D] p-4">
+                  <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
                     {/* BARRA DEL NAVEGADOR */}
 
-                    <div className="absolute left-0 top-0 z-20 flex h-9 w-full items-center border-b border-white/[0.06] bg-[#111827] px-4">
+                    <div className="absolute left-0 top-0 z-20 flex h-9 w-full items-center border-b border-white/[0.06] bg-[#111827]/95 px-4">
                       <div className="flex items-center gap-1.5">
                         <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
                         <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
                         <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
                       </div>
 
-                      <div className="mx-auto flex h-5 max-w-[65%] flex-1 items-center justify-center rounded-md bg-white/[0.06] px-3">
+                      <div className="mx-auto flex h-5 max-w-[68%] flex-1 items-center justify-center rounded-md bg-white/[0.06] px-3">
                         <span className="truncate text-[9px] text-white/30">
                           {project.url
                             .replace("https://", "")
@@ -232,20 +230,21 @@ export default function Projects() {
                       <div className="w-[44px]" />
                     </div>
 
-                    {/* IMAGEN REAL DEL SITIO */}
+                    {/* IMAGEN DE LA PÁGINA */}
 
                     <div className="absolute bottom-0 left-0 right-0 top-9 overflow-hidden bg-white">
                       <img
-                        src={getPreviewUrl(project.url)}
+                        src={getScreenshotUrl(project.url)}
                         alt={`Vista previa de ${project.title}`}
                         loading="lazy"
                         decoding="async"
-                        className="block h-full w-full object-cover object-top"
+                        className="absolute left-0 top-0 h-auto min-h-full w-full object-cover object-top"
                       />
-
-                      {/* CAPA SUTIL */}
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050B16]/25 via-transparent to-transparent" />
                     </div>
+
+                    {/* OVERLAY */}
+
+                    <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#050B16]/30 via-transparent to-transparent" />
 
                     {/* NUMERO */}
 
@@ -270,8 +269,6 @@ export default function Projects() {
                 ================================================== */}
 
                 <div className="relative p-6 sm:p-7">
-                  {/* GLOW INTERNO */}
-
                   <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/[0.04] blur-3xl" />
 
                   <div className="relative flex items-start justify-between gap-5">
@@ -332,7 +329,7 @@ export default function Projects() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/proyectos"
-            className="group inline-flex items-center gap-3 rounded-full border border-cyan-300/10 bg-white/[0.02] px-6 py-3.5 text-sm font-medium text-white/60 transition-all duration-300 hover:border-cyan-300/20 hover:bg-cyan-400/[0.04] hover:text-white"
+            className="group inline-flex items-center gap-3 rounded-full border border-cyan-300/10 bg-white/[0.02] px-6 py-3.5 text-sm font-medium text-white/60 backdrop-blur-sm transition-all duration-300 hover:border-cyan-300/20 hover:bg-cyan-400/[0.04] hover:text-white"
           >
             <MousePointer2 className="h-4 w-4 text-cyan-300/60" />
 
