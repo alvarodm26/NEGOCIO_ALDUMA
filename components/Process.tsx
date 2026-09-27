@@ -3,10 +3,9 @@
 import { motion } from "motion/react";
 import {
   ArrowUpRight,
-  Check,
-  Code2,
   Compass,
   Layers3,
+  Code2,
   Rocket,
 } from "lucide-react";
 
@@ -283,23 +282,7 @@ export default function Process() {
         {/* ========================================================= */}
 
         <div className="relative mt-12">
-          {/* TIMELINE */}
-
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{
-              duration: 1.2,
-              ease: "easeInOut",
-            }}
-            style={{
-              transformOrigin: "top",
-            }}
-            className="absolute left-5 top-0 hidden h-full w-px bg-gradient-to-b from-[#D99E30]/60 via-white/[0.08] to-transparent md:block"
-          />
-
-          <div className="space-y-4 md:space-y-5">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {steps.map((step, index) => {
               const Icon = step.icon;
 
@@ -327,12 +310,12 @@ export default function Process() {
                   }}
                   className="group relative"
                 >
-                  <div className="relative rounded-2xl">
+                  <div className="relative h-full rounded-2xl">
                     {/* BORDE */}
 
                     <div className="pointer-events-none absolute inset-0 z-30 rounded-2xl border-2 border-[#D99E30]/25 shadow-[0_0_14px_rgba(217,158,48,0.08),0_0_35px_rgba(180,120,25,0.04),inset_0_0_14px_rgba(217,158,48,0.03)] transition-all duration-500 group-hover:border-[#D99E30]/40 group-hover:shadow-[0_0_20px_rgba(217,158,48,0.12)]" />
 
-                    <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#090807]/90 transition-all duration-500 group-hover:border-[#D99E30]/30 group-hover:bg-[#0D0B08]">
+                    <div className="relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-2xl border border-white/[0.07] bg-[#090807]/90 transition-all duration-500 group-hover:border-[#D99E30]/30 group-hover:bg-[#0D0B08]">
                       {/* GLOW ESTÁTICO DE TARJETA */}
 
                       <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#D99E30]/[0.045] blur-[90px]" />
@@ -353,29 +336,11 @@ export default function Process() {
                         {step.number}
                       </span>
 
-                      <div className="relative grid md:grid-cols-[64px_1fr_220px]">
-                        {/* NODE */}
-
-                        <div className="relative hidden items-start justify-center pt-7 md:flex">
-                          <motion.div
-                            whileHover={{
-                              scale: 1.12,
-                            }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 18,
-                            }}
-                            className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.1] bg-[#090807] transition-all duration-500 group-hover:border-[#D99E30]/50 group-hover:shadow-[0_0_25px_rgba(217,158,48,0.15)]"
-                          >
-                            <div className="h-1.5 w-1.5 rounded-full bg-[#D99E30] shadow-[0_0_8px_rgba(217,158,48,0.5)]" />
-                          </motion.div>
-                        </div>
-
+                      <div className="relative flex h-full flex-col">
                         {/* CONTENT */}
 
-                        <div className="p-6 md:p-7">
-                          <div className="mb-4 flex items-center gap-3">
+                        <div className="flex flex-1 flex-col p-6 md:p-7">
+                          <div className="mb-5 flex items-center gap-3">
                             <motion.div
                               whileHover={{
                                 rotate: 5,
@@ -384,7 +349,7 @@ export default function Process() {
                               transition={{
                                 duration: 0.25,
                               }}
-                              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#D99E30]/20 bg-[#D99E30]/[0.07] text-zinc-400 transition-all duration-500 group-hover:border-[#D99E30]/40 group-hover:bg-[#D99E30]/10 group-hover:text-[#E2AC3B]"
+                              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#D99E30]/20 bg-[#D99E30]/[0.07] text-zinc-400 transition-all duration-500 group-hover:border-[#D99E30]/40 group-hover:bg-[#D99E30]/10 group-hover:text-[#E2AC3B]"
                             >
                               <Icon size={18} strokeWidth={1.6} />
                             </motion.div>
@@ -402,55 +367,32 @@ export default function Process() {
                             {step.description}
                           </p>
 
-                          {/* BARRA */}
+                          {/* VISUAL */}
 
-                          <div className="mt-5 h-px w-full overflow-hidden bg-white/[0.06]">
-                            <motion.div
-                              initial={{
-                                width: 0,
-                              }}
-                              whileInView={{
-                                width: "30%",
-                              }}
-                              viewport={{
-                                once: true,
-                              }}
-                              transition={{
-                                duration: 0.8,
-                                delay: index * 0.1 + 0.25,
-                              }}
-                              className="h-full bg-gradient-to-r from-[#8A5A12] via-[#D99E30] to-[#F5C35B] transition-all duration-700 group-hover:w-full"
-                            />
-                          </div>
-                        </div>
+                          <div className="mt-6 flex flex-1 items-center justify-center">
+                            {index === 0 && (
+                              <div className="relative flex h-20 w-20 items-center justify-center">
+                                <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D99E30]/30 bg-[#D99E30]/10 shadow-[0_0_35px_rgba(217,158,48,0.10)]">
+                                  <Compass
+                                    size={22}
+                                    className="text-[#E2AC3B]"
+                                  />
+                                </div>
 
-                        {/* VISUAL */}
-
-                        <div className="relative hidden min-h-[180px] overflow-hidden border-l border-white/[0.06] bg-[#D99E30]/[0.015] md:block">
-                          {index === 0 && (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D99E30]/30 bg-[#D99E30]/10 shadow-[0_0_35px_rgba(217,158,48,0.10)]">
-                                <Compass
-                                  size={22}
-                                  className="text-[#E2AC3B]"
-                                />
+                                {[0, 1, 2, 3].map((node) => (
+                                  <div
+                                    key={node}
+                                    className="absolute h-2.5 w-2.5 rounded-full bg-[#D99E30]/50"
+                                    style={{
+                                      transform: `rotate(${node * 90}deg) translateY(-38px)`,
+                                    }}
+                                  />
+                                ))}
                               </div>
+                            )}
 
-                              {[0, 1, 2, 3].map((node) => (
-                                <div
-                                  key={node}
-                                  className="absolute h-2.5 w-2.5 rounded-full bg-[#D99E30]/50"
-                                  style={{
-                                    transform: `rotate(${node * 90}deg) translateY(-52px)`,
-                                  }}
-                                />
-                              ))}
-                            </div>
-                          )}
-
-                          {index === 1 && (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="relative h-32 w-44 rounded-xl border border-white/[0.1] bg-[#0D0B08] p-3 shadow-2xl transition-transform duration-500 group-hover:-translate-y-1">
+                            {index === 1 && (
+                              <div className="relative h-28 w-40 rounded-xl border border-white/[0.1] bg-[#0D0B08] p-3 shadow-2xl transition-transform duration-500 group-hover:-translate-y-1">
                                 <div className="flex gap-1">
                                   <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
                                   <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
@@ -458,22 +400,20 @@ export default function Process() {
                                 </div>
 
                                 <div className="mt-3 flex gap-2">
-                                  <div className="h-20 w-12 rounded-lg bg-[#D99E30]/15" />
+                                  <div className="h-16 w-10 rounded-lg bg-[#D99E30]/15" />
 
                                   <div className="flex flex-1 flex-col gap-2">
                                     <div className="h-2 w-4/5 rounded-full bg-white/10" />
                                     <div className="h-2 w-3/5 rounded-full bg-white/[0.06]" />
 
-                                    <div className="mt-1 h-9 rounded-lg border border-[#D99E30]/20 bg-[#D99E30]/[0.06]" />
+                                    <div className="mt-1 h-8 rounded-lg border border-[#D99E30]/20 bg-[#D99E30]/[0.06]" />
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          )}
+                            )}
 
-                          {index === 2 && (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-44 rounded-xl border border-white/[0.08] bg-[#0B0A08] p-4 font-mono text-[9px] leading-4 text-zinc-600 shadow-2xl">
+                            {index === 2 && (
+                              <div className="w-40 rounded-xl border border-white/[0.08] bg-[#0B0A08] p-4 font-mono text-[9px] leading-4 text-zinc-600 shadow-2xl">
                                 <div className="mb-2 flex gap-1">
                                   <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
                                   <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
@@ -511,66 +451,58 @@ export default function Process() {
                                   </span>
                                 </div>
                               </div>
-                            </div>
-                          )}
+                            )}
 
-                          {index === 3 && (
-                            <div className="absolute inset-0 flex items-center justify-center">
+                            {index === 3 && (
                               <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#D99E30]/35 bg-[#D99E30]/10 shadow-[0_0_40px_rgba(217,158,48,0.10)] transition-transform duration-500 group-hover:-translate-y-1">
                                 <Rocket
                                   size={24}
                                   className="text-[#E2AC3B]"
                                 />
                               </div>
-                            </div>
-                          )}
+                            )}
+                          </div>
+
+                          {/* BARRA */}
+
+                          <div className="mt-6 h-px w-full overflow-hidden bg-white/[0.06]">
+                            <motion.div
+                              initial={{
+                                width: 0,
+                              }}
+                              whileInView={{
+                                width: "30%",
+                              }}
+                              viewport={{
+                                once: true,
+                              }}
+                              transition={{
+                                duration: 0.8,
+                                delay: index * 0.1 + 0.25,
+                              }}
+                              className="h-full bg-gradient-to-r from-[#8A5A12] via-[#D99E30] to-[#F5C35B] transition-all duration-700 group-hover:w-full"
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      {/* MOBILE */}
+                        {/* MOBILE */}
 
-                      <div className="flex items-center justify-between border-t border-white/[0.06] px-6 py-4 md:hidden">
-                        <span className="text-xs uppercase tracking-[0.18em] text-zinc-700">
-                          {index === 0 && "Analizamos"}
-                          {index === 1 && "Diseñamos"}
-                          {index === 2 && "Construimos"}
-                          {index === 3 && "Publicamos"}
-                        </span>
+                        <div className="flex items-center justify-between border-t border-white/[0.06] px-6 py-4 md:hidden">
+                          <span className="text-xs uppercase tracking-[0.18em] text-zinc-700">
+                            {index === 0 && "Analizamos"}
+                            {index === 1 && "Diseñamos"}
+                            {index === 2 && "Construimos"}
+                            {index === 3 && "Publicamos"}
+                          </span>
 
-                        <ArrowUpRight
-                          size={16}
-                          className="text-zinc-600 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                        />
+                          <ArrowUpRight
+                            size={16}
+                            className="text-zinc-600 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* CHECKPOINT */}
-
-                  {index < steps.length - 1 && (
-                    <motion.div
-                      initial={{
-                        opacity: 0,
-                      }}
-                      whileInView={{
-                        opacity: 1,
-                      }}
-                      viewport={{
-                        once: true,
-                      }}
-                      transition={{
-                        delay: index * 0.1 + 0.4,
-                      }}
-                      className="hidden h-5 items-center justify-center md:flex"
-                    >
-                      <div className="flex h-4 w-4 items-center justify-center rounded-full border border-[#D99E30]/10 bg-[#0A0907]">
-                        <Check
-                          size={9}
-                          className="text-[#80601F]"
-                        />
-                      </div>
-                    </motion.div>
-                  )}
                 </motion.article>
               );
             })}
