@@ -55,6 +55,21 @@ const projects = [
       x: ["0%", "1%", "-1%", "0%"],
     },
   },
+  {
+    number: "04",
+    category: "Restaurante",
+    title: "Casa San Lázaro",
+    description:
+      "Sitio web gastronómico diseñado para presentar la propuesta culinaria, carta, ambiente y experiencia del restaurante.",
+    tags: ["Next.js", "TypeScript", "Restaurante"],
+    url: "https://casonasanlazaro.netlify.app/",
+    image: "/images/pagina4.png",
+    animation: {
+      scale: [1, 1.09, 1.05, 1],
+      y: ["0%", "-8%", "-3%", "0%"],
+      x: ["0%", "1%", "-1%", "0%"],
+    },
+  },
 ];
 
 const visibleProjects = projects.slice(0, 4);
@@ -311,7 +326,9 @@ export default function Projects() {
                 }}
                 className="group overflow-hidden rounded-2xl border border-cyan-300/[0.10] bg-[#07101D]/95 shadow-[0_0_30px_rgba(0,0,0,0.20)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-300/[0.22] hover:bg-[#091522] hover:shadow-[0_15px_50px_rgba(34,211,238,0.08)]"
               >
-                {/* PREVIEW ANIMADO */}
+                {/* ====================================================
+                    PREVIEW ANIMADO
+                ==================================================== */}
 
                 <a
                   href={project.url}
@@ -320,9 +337,8 @@ export default function Projects() {
                   aria-label={`Visitar ${project.title}`}
                   className="block"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-[#07101D] p-4">
+                  <div className="relative aspect-[16/11] overflow-hidden bg-[#07101D] p-4">
                     {/* GLOW */}
-
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.10),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
                     <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.30)]">
@@ -456,94 +472,119 @@ export default function Projects() {
                   </div>
                 </a>
 
-                {/* INFO */}
+                {/* ====================================================
+                    INFO
+                ==================================================== */}
 
-                <div className="relative p-6 sm:p-7">
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/[0.04] blur-3xl" />
+                <div className="relative bg-gradient-to-br from-[#3A220F] via-[#462A13] to-[#2D1A0B] p-6 sm:p-7">
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-orange-400/[0.06] blur-3xl" />
 
-                  <div className="relative flex items-start justify-between gap-5">
-                    <div>
-                      <motion.h3
-                        initial={{
-                          opacity: 0,
-                          x: -15,
-                        }}
-                        whileInView={{
-                          opacity: 1,
-                          x: 0,
-                        }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.6,
-                          delay: 0.25 + index * 0.12,
-                        }}
-                        className="text-2xl font-medium tracking-[-0.03em] text-white"
-                      >
-                        {project.title}
-                      </motion.h3>
+                  <div className="relative flex flex-col items-center text-center">
+                    {/* TITULO */}
 
-                      <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-500">
-                        {project.description}
-                      </p>
-                    </div>
+                    <motion.h3
+                      initial={{
+                        opacity: 0,
+                        y: 15,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 0.25 + index * 0.12,
+                      }}
+                      className="text-2xl font-medium tracking-[-0.03em] text-white"
+                    >
+                      {project.title}
+                    </motion.h3>
 
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.07] bg-white/[0.02] text-cyan-300/60 transition-all duration-500 group-hover:border-cyan-300/20 group-hover:bg-cyan-300/[0.05] group-hover:text-cyan-300">
-                      <ExternalLink className="h-4 w-4 transition-transform duration-500 group-hover:rotate-12" />
-                    </div>
+                    {/* DESCRIPCION */}
+
+                    <p className="mt-3 max-w-xl text-sm leading-6 text-orange-100/65">
+                      {project.description}
+                    </p>
                   </div>
 
-                  {/* TAGS */}
+                  {/* ====================================================
+                      TAGS
+                  ==================================================== */}
 
-                  <div className="relative mt-5 flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <motion.span
-                        key={tag}
-                        initial={{
-                          opacity: 0,
-                          y: 10,
-                        }}
-                        whileInView={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.4,
-                          delay:
-                            0.45 +
-                            index * 0.12 +
-                            tagIndex * 0.08,
-                        }}
-                        className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] text-zinc-500 transition-colors duration-300 group-hover:border-cyan-300/[0.12] group-hover:text-zinc-400"
-                      >
-                        {tag}
-                      </motion.span>
-                    ))}
+                  <div className="relative mt-5 flex flex-wrap justify-center gap-2">
+                    {project.tags.map((tag, tagIndex) => {
+                      const tagStyles: Record<string, string> = {
+                        "Next.js":
+                          "bg-black/60 text-white border-white/15 shadow-[0_0_15px_rgba(0,0,0,0.15)]",
+
+                        React:
+                          "bg-[#087EA4]/25 text-[#61DAFB] border-[#61DAFB]/25 shadow-[0_0_15px_rgba(97,218,251,0.08)]",
+
+                        TypeScript:
+                          "bg-[#3178C6]/25 text-[#6FA8FF] border-[#3178C6]/35 shadow-[0_0_15px_rgba(49,120,198,0.10)]",
+
+                        Tailwind:
+                          "bg-[#06B6D4]/20 text-[#67E8F9] border-[#06B6D4]/30 shadow-[0_0_15px_rgba(6,182,212,0.08)]",
+
+                        Restaurante:
+                          "bg-[#F97316]/20 text-[#FDBA74] border-[#F97316]/30 shadow-[0_0_15px_rgba(249,115,22,0.08)]",
+                      };
+
+                      return (
+                        <motion.span
+                          key={tag}
+                          initial={{
+                            opacity: 0,
+                            y: 10,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            y: 0,
+                          }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 0.4,
+                            delay:
+                              0.45 +
+                              index * 0.12 +
+                              tagIndex * 0.08,
+                          }}
+                          className={`rounded-full border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] transition-all duration-300 ${tagStyles[tag] || "bg-white/5 text-zinc-300 border-white/10"}`}
+                        >
+                          {tag}
+                        </motion.span>
+                      );
+                    })}
                   </div>
 
                   {/* LINE */}
 
-                  <div className="my-6 h-px w-full bg-white/[0.05]" />
+                  <div className="my-6 h-px w-full bg-orange-200/[0.10]" />
 
                   {/* CTA */}
 
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-2 text-sm font-medium text-white/60 transition-colors hover:text-white"
-                  >
-                    Ver proyecto
+                  <div className="flex justify-center">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-center gap-2 rounded-full bg-white/[0.08] px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/[0.14] hover:text-white"
+                    >
+                      Ver proyecto
 
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                  </a>
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                    </a>
+                  </div>
                 </div>
               </motion.article>
             ))}
           </div>
         </div>
 
-        {/* BOTÓN FINAL */}
+        {/* ============================================================
+            BOTÓN FINAL
+        ============================================================ */}
 
         <motion.div
           initial={{
