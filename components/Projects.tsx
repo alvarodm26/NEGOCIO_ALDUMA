@@ -55,20 +55,20 @@ const projects = [
     },
   },
   {
-    number: "04",
-    category: "Restaurante",
-    title: "Casa San Lázaro",
-    description:
-      "Sitio web gastronómico diseñado para presentar la propuesta culinaria, carta, ambiente y experiencia del restaurante.",
-    tags: ["Next.js", "TypeScript", "Restaurante"],
-    url: "https://casonasanlazaro.netlify.app/",
-    image: "/images/pagina4.png",
-    animation: {
-      scale: [1, 1.09, 1.05, 1],
-      y: ["0%", "-8%", "-3%", "0%"],
-      x: ["0%", "1%", "-1%", "0%"],
-    },
+  number: "04",
+  category: "Ecommerce",
+  title: "Navidad",
+  description:
+    "Ecommerce de productos navideños diseñado para presentar y vender adornos, personajes y regalos, con una experiencia de compra enfocada en la temporada de Navidad.",
+  tags: ["Next.js", "TypeScript", "Ecommerce"],
+  url: "https://negocio-nelly.vercel.app/",
+  image: "/images/pagina4.png",
+  animation: {
+    scale: [1, 1.09, 1.05, 1],
+    y: ["0%", "-8%", "-3%", "0%"],
+    x: ["0%", "1%", "-1%", "0%"],
   },
+},
 ];
 
 const visibleProjects = projects.slice(0, 4);
