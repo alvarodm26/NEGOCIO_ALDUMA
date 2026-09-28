@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import {
   ArrowUpRight,
   ExternalLink,
@@ -18,6 +19,11 @@ const projects = [
     tags: ["Next.js", "TypeScript", "Tailwind"],
     url: "https://negocio-fanny.vercel.app/",
     image: "/images/pagina1.png",
+    animation: {
+      scale: [1, 1.08, 1.04, 1],
+      y: ["0%", "-7%", "-3%", "0%"],
+      x: ["0%", "0%", "1%", "0%"],
+    },
   },
   {
     number: "02",
@@ -28,6 +34,11 @@ const projects = [
     tags: ["Next.js", "React", "TypeScript"],
     url: "https://jamilsfood.vercel.app/",
     image: "/images/pagina2.png",
+    animation: {
+      scale: [1, 1.07, 1.04, 1],
+      y: ["0%", "-4%", "-8%", "0%"],
+      x: ["0%", "-1%", "1%", "0%"],
+    },
   },
   {
     number: "03",
@@ -38,10 +49,33 @@ const projects = [
     tags: ["Next.js", "TypeScript", "Restaurante"],
     url: "https://casonasanlazaro.netlify.app/",
     image: "/images/pagina3.png",
+    animation: {
+      scale: [1, 1.09, 1.05, 1],
+      y: ["0%", "-8%", "-3%", "0%"],
+      x: ["0%", "1%", "-1%", "0%"],
+    },
   },
 ];
 
 const visibleProjects = projects.slice(0, 4);
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+    scale: 0.96,
+  },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      delay: index * 0.16,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
 
 export default function Projects() {
   return (
@@ -50,7 +84,7 @@ export default function Projects() {
       className="relative overflow-hidden bg-[#050B16] py-14 lg:py-18"
     >
       {/* ============================================================
-          FONDO ESTÁTICO
+          FONDO
       ============================================================ */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -167,30 +201,105 @@ export default function Projects() {
       ============================================================ */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        {/* HEADER */}
+        {/* ============================================================
+            HEADER ANIMADO
+        ============================================================ */}
 
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 flex items-center justify-center gap-3">
-            <div className="h-px w-6 bg-cyan-400/50" />
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.12,
+              },
+            },
+          }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <motion.div
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 20,
+              },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.7,
+                },
+              },
+            }}
+            className="mb-5 flex items-center justify-center gap-3"
+          >
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 24 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="h-px bg-cyan-400/50"
+            />
 
             <span className="text-sm font-medium uppercase tracking-[0.28em] text-cyan-300/70">
               Proyectos
             </span>
 
-            <div className="h-px w-6 bg-cyan-400/50" />
-          </div>
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 24 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="h-px bg-cyan-400/50"
+            />
+          </motion.div>
 
-          <h2 className="text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
+          <motion.h2
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 30,
+                filter: "blur(8px)",
+              },
+              visible: {
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                transition: {
+                  duration: 0.9,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              },
+            }}
+            className="text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
+          >
             Experiencias digitales.
             <br />
             <span className="text-white/40">Hechas para destacar.</span>
-          </h2>
+          </motion.h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400">
+          <motion.p
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 20,
+              },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.7,
+                },
+              },
+            }}
+            className="mx-auto mt-5 max-w-2xl text-[17px] leading-7 text-zinc-400"
+          >
             Diseñamos y desarrollamos sitios web modernos, rápidos y
             orientados a generar resultados reales para cada negocio.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* ============================================================
             PROYECTOS
@@ -198,12 +307,22 @@ export default function Projects() {
 
         <div className="relative mt-12">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {visibleProjects.map((project) => (
-              <article
+            {visibleProjects.map((project, index) => (
+              <motion.article
                 key={project.number}
-                className="group overflow-hidden rounded-2xl border border-cyan-300/[0.10] bg-[#07101D]/95 shadow-[0_0_30px_rgba(0,0,0,0.20)] transition-colors duration-300 hover:border-cyan-300/[0.18] hover:bg-[#091522]"
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{
+                  once: true,
+                  amount: 0.18,
+                }}
+                variants={cardVariants}
+                className="group overflow-hidden rounded-2xl border border-cyan-300/[0.10] bg-[#07101D]/95 shadow-[0_0_30px_rgba(0,0,0,0.20)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-300/[0.22] hover:bg-[#091522] hover:shadow-[0_15px_50px_rgba(34,211,238,0.08)]"
               >
-                {/* PREVIEW */}
+                {/* ====================================================
+                    PREVIEW ANIMADO
+                ==================================================== */}
 
                 <a
                   href={project.url}
@@ -212,25 +331,102 @@ export default function Projects() {
                   aria-label={`Visitar ${project.title}`}
                   className="block"
                 >
-                  <div className="relative aspect-[16/10] bg-[#07101D] p-4">
-                    <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
-                      <img
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#07101D] p-4">
+                    {/* GLOW ALREDEDOR DE LA PREVIEW */}
+
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.10),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+
+                    <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.30)]">
+                      {/* IMAGEN QUE SE MUEVE COMO SI FUERA LA WEB */}
+
+                      <motion.img
                         src={project.image}
                         alt={`Vista previa de ${project.title}`}
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
+                        initial={{
+                          scale: 1,
+                          y: "0%",
+                          x: "0%",
+                        }}
+                        whileInView={{
+                          scale: project.animation.scale,
+                          y: project.animation.y,
+                          x: project.animation.x,
+                        }}
+                        viewport={{
+                          once: true,
+                          amount: 0.2,
+                        }}
+                        transition={{
+                          duration: 9,
+                          delay: 0.45 + index * 0.2,
+                          repeat: Infinity,
+                          repeatType: "loop",
+                          ease: "easeInOut",
+                        }}
+                        className="h-full w-full object-cover object-top will-change-transform"
                       />
 
-                      {/* OVERLAY */}
+                      {/* CAPA DE PROFUNDIDAD */}
 
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050B16]/35 via-transparent to-transparent" />
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 1.2,
+                          delay: 0.5 + index * 0.15,
+                        }}
+                        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050B16]/45 via-transparent to-transparent"
+                      />
+
+                      {/* REFLEJO */}
+
+                      <motion.div
+                        initial={{
+                          x: "-120%",
+                          opacity: 0,
+                        }}
+                        whileInView={{
+                          x: "120%",
+                          opacity: [0, 0.12, 0],
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 1.6,
+                          delay: 0.9 + index * 0.25,
+                          ease: "easeInOut",
+                        }}
+                        className="pointer-events-none absolute inset-y-0 left-0 w-[35%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white to-transparent blur-xl"
+                      />
+
+                      {/* BORDE LUMINOSO */}
+
+                      <div className="pointer-events-none absolute inset-0 rounded-xl border border-cyan-300/0 transition-all duration-700 group-hover:border-cyan-300/20 group-hover:shadow-[inset_0_0_30px_rgba(34,211,238,0.08)]" />
 
                       {/* ICONO */}
 
-                      <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/70 opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100">
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          scale: 0.7,
+                          rotate: -15,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          scale: 1,
+                          rotate: 0,
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.5,
+                          delay: 1 + index * 0.15,
+                        }}
+                        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/70 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-cyan-400/10 group-hover:text-cyan-200"
+                      >
                         <ArrowUpRight className="h-4 w-4" />
-                      </div>
+                      </motion.div>
 
                       {/* NUMERO */}
 
@@ -248,40 +444,93 @@ export default function Projects() {
                         </span>
                       </div>
                     </div>
+
+                    {/* LÍNEA DE ESCANEO */}
+
+                    <motion.div
+                      initial={{
+                        top: "-10%",
+                        opacity: 0,
+                      }}
+                      whileInView={{
+                        top: "110%",
+                        opacity: [0, 0.5, 0],
+                      }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 2.2,
+                        delay: 0.8 + index * 0.2,
+                        ease: "easeInOut",
+                      }}
+                      className="pointer-events-none absolute left-4 right-4 z-20 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent shadow-[0_0_12px_rgba(34,211,238,0.5)]"
+                    />
                   </div>
                 </a>
 
-                {/* INFO */}
+                {/* ====================================================
+                    INFO
+                ==================================================== */}
 
                 <div className="relative p-6 sm:p-7">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/[0.04] blur-3xl" />
 
                   <div className="relative flex items-start justify-between gap-5">
                     <div>
-                      <h3 className="text-2xl font-medium tracking-[-0.03em] text-white">
+                      <motion.h3
+                        initial={{
+                          opacity: 0,
+                          x: -15,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          x: 0,
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.6,
+                          delay: 0.25 + index * 0.12,
+                        }}
+                        className="text-2xl font-medium tracking-[-0.03em] text-white"
+                      >
                         {project.title}
-                      </h3>
+                      </motion.h3>
 
                       <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-500">
                         {project.description}
                       </p>
                     </div>
 
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.07] bg-white/[0.02] text-cyan-300/60">
-                      <ExternalLink className="h-4 w-4" />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.07] bg-white/[0.02] text-cyan-300/60 transition-all duration-500 group-hover:border-cyan-300/20 group-hover:bg-cyan-300/[0.05] group-hover:text-cyan-300">
+                      <ExternalLink className="h-4 w-4 transition-transform duration-500 group-hover:rotate-12" />
                     </div>
                   </div>
 
                   {/* TAGS */}
 
                   <div className="relative mt-5 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
+                    {project.tags.map((tag, tagIndex) => (
+                      <motion.span
                         key={tag}
-                        className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] text-zinc-500"
+                        initial={{
+                          opacity: 0,
+                          y: 10,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.4,
+                          delay:
+                            0.45 +
+                            index * 0.12 +
+                            tagIndex * 0.08,
+                        }}
+                        className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] text-zinc-500 transition-colors duration-300 group-hover:border-cyan-300/[0.12] group-hover:text-zinc-400"
                       >
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
@@ -302,7 +551,7 @@ export default function Projects() {
                     <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
                   </a>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -311,18 +560,36 @@ export default function Projects() {
             BOTÓN FINAL
         ============================================================ */}
 
-        <div className="mt-10 flex justify-center">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 25,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5,
+          }}
+          transition={{
+            duration: 0.7,
+            delay: 0.2,
+          }}
+          className="mt-10 flex justify-center"
+        >
           <Link
             href="/proyectos"
-            className="group inline-flex items-center gap-3 rounded-full border border-cyan-300/10 bg-white/[0.02] px-6 py-3.5 text-sm font-medium text-white/60 backdrop-blur-sm transition-all duration-300 hover:border-cyan-300/20 hover:bg-cyan-400/[0.04] hover:text-white"
+            className="group inline-flex items-center gap-3 rounded-full border border-cyan-300/10 bg-white/[0.02] px-6 py-3.5 text-sm font-medium text-white/60 backdrop-blur-sm transition-all duration-300 hover:border-cyan-300/20 hover:bg-cyan-400/[0.04] hover:text-white hover:shadow-[0_0_25px_rgba(34,211,238,0.08)]"
           >
-            <MousePointer2 className="h-4 w-4 text-cyan-300/60" />
+            <MousePointer2 className="h-4 w-4 text-cyan-300/60 transition-transform duration-300 group-hover:rotate-12" />
 
             Ver todos los proyectos
 
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
