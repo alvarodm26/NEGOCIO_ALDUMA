@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import {
   ArrowUpRight,
-  ExternalLink,
   ArrowRight,
   MousePointer2,
 } from "lucide-react";
@@ -341,9 +340,8 @@ export default function Projects() {
                     {/* GLOW */}
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.10),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
-                    <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.30)]">
-                      {/* IMAGEN EN MOVIMIENTO */}
-
+                    {/* IMAGEN */}
+                    <div className="relative h-full w-full overflow-hidden rounded-xl bg-transparent">
                       <motion.img
                         src={project.image}
                         alt={`Vista previa de ${project.title}`}
@@ -406,7 +404,7 @@ export default function Projects() {
                         className="pointer-events-none absolute inset-y-0 left-0 w-[35%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white to-transparent blur-xl"
                       />
 
-                      {/* BORDE */}
+                      {/* BORDE HOVER */}
 
                       <div className="pointer-events-none absolute inset-0 rounded-xl border border-cyan-300/0 transition-all duration-700 group-hover:border-cyan-300/20 group-hover:shadow-[inset_0_0_30px_rgba(34,211,238,0.08)]" />
 
@@ -476,9 +474,7 @@ export default function Projects() {
                     INFO
                 ==================================================== */}
 
-                <div className="relative bg-gradient-to-br from-[#3A220F] via-[#462A13] to-[#2D1A0B] p-6 sm:p-7">
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-orange-400/[0.06] blur-3xl" />
-
+                <div className="relative p-6 sm:p-7">
                   <div className="relative flex flex-col items-center text-center">
                     {/* TITULO */}
 
@@ -503,7 +499,7 @@ export default function Projects() {
 
                     {/* DESCRIPCION */}
 
-                    <p className="mt-3 max-w-xl text-sm leading-6 text-orange-100/65">
+                    <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400">
                       {project.description}
                     </p>
                   </div>
@@ -550,7 +546,10 @@ export default function Projects() {
                               index * 0.12 +
                               tagIndex * 0.08,
                           }}
-                          className={`rounded-full border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] transition-all duration-300 ${tagStyles[tag] || "bg-white/5 text-zinc-300 border-white/10"}`}
+                          className={`rounded-full border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] transition-all duration-300 ${
+                            tagStyles[tag] ||
+                            "bg-white/5 text-zinc-300 border-white/10"
+                          }`}
                         >
                           {tag}
                         </motion.span>
@@ -560,7 +559,7 @@ export default function Projects() {
 
                   {/* LINE */}
 
-                  <div className="my-6 h-px w-full bg-orange-200/[0.10]" />
+                  <div className="my-6 h-px w-full bg-white/[0.08]" />
 
                   {/* CTA */}
 
@@ -569,7 +568,7 @@ export default function Projects() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-2 rounded-full bg-white/[0.08] px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/[0.14] hover:text-white"
+                      className="group/link inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-medium text-white shadow-[0_8px_25px_rgba(249,115,22,0.18)] transition-all duration-300 hover:bg-orange-400 hover:shadow-[0_10px_30px_rgba(249,115,22,0.28)]"
                     >
                       Ver proyecto
 
