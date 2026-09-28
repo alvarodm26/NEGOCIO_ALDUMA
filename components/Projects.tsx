@@ -59,24 +59,6 @@ const projects = [
 
 const visibleProjects = projects.slice(0, 4);
 
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 60,
-    scale: 0.96,
-  },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      delay: index * 0.16,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  }),
-};
-
 export default function Projects() {
   return (
     <section
@@ -201,9 +183,7 @@ export default function Projects() {
       ============================================================ */}
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        {/* ============================================================
-            HEADER ANIMADO
-        ============================================================ */}
+        {/* HEADER */}
 
         <motion.div
           initial="hidden"
@@ -310,19 +290,28 @@ export default function Projects() {
             {visibleProjects.map((project, index) => (
               <motion.article
                 key={project.number}
-                custom={index}
-                initial="hidden"
-                whileInView="visible"
+                initial={{
+                  opacity: 0,
+                  y: 60,
+                  scale: 0.96,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
                 viewport={{
                   once: true,
                   amount: 0.18,
                 }}
-                variants={cardVariants}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.16,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="group overflow-hidden rounded-2xl border border-cyan-300/[0.10] bg-[#07101D]/95 shadow-[0_0_30px_rgba(0,0,0,0.20)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-300/[0.22] hover:bg-[#091522] hover:shadow-[0_15px_50px_rgba(34,211,238,0.08)]"
               >
-                {/* ====================================================
-                    PREVIEW ANIMADO
-                ==================================================== */}
+                {/* PREVIEW ANIMADO */}
 
                 <a
                   href={project.url}
@@ -332,12 +321,12 @@ export default function Projects() {
                   className="block"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-[#07101D] p-4">
-                    {/* GLOW ALREDEDOR DE LA PREVIEW */}
+                    {/* GLOW */}
 
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.10),transparent_65%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
                     <div className="relative h-full w-full overflow-hidden rounded-xl border border-white/[0.08] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.30)]">
-                      {/* IMAGEN QUE SE MUEVE COMO SI FUERA LA WEB */}
+                      {/* IMAGEN EN MOVIMIENTO */}
 
                       <motion.img
                         src={project.image}
@@ -368,7 +357,7 @@ export default function Projects() {
                         className="h-full w-full object-cover object-top will-change-transform"
                       />
 
-                      {/* CAPA DE PROFUNDIDAD */}
+                      {/* OVERLAY */}
 
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -401,7 +390,7 @@ export default function Projects() {
                         className="pointer-events-none absolute inset-y-0 left-0 w-[35%] skew-x-[-18deg] bg-gradient-to-r from-transparent via-white to-transparent blur-xl"
                       />
 
-                      {/* BORDE LUMINOSO */}
+                      {/* BORDE */}
 
                       <div className="pointer-events-none absolute inset-0 rounded-xl border border-cyan-300/0 transition-all duration-700 group-hover:border-cyan-300/20 group-hover:shadow-[inset_0_0_30px_rgba(34,211,238,0.08)]" />
 
@@ -445,7 +434,7 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* LÍNEA DE ESCANEO */}
+                    {/* SCAN LINE */}
 
                     <motion.div
                       initial={{
@@ -467,9 +456,7 @@ export default function Projects() {
                   </div>
                 </a>
 
-                {/* ====================================================
-                    INFO
-                ==================================================== */}
+                {/* INFO */}
 
                 <div className="relative p-6 sm:p-7">
                   <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/[0.04] blur-3xl" />
@@ -556,9 +543,7 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* ============================================================
-            BOTÓN FINAL
-        ============================================================ */}
+        {/* BOTÓN FINAL */}
 
         <motion.div
           initial={{
